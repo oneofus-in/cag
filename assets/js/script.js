@@ -2,6 +2,53 @@
 (function () {
     'use strict';
 
+    /* ---------- Hero video — lazy-load after page ready, then ping-pong ---------- */
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        let reversing = false;
+        let lastSeekTs = 0;
+        const SEEK_INTERVAL = 50;   // ms between seeks — safe for browser seek queue
+        const SEEK_STEP     = 0.12; // seconds jumped back per seek → ~2.4× reverse speed
+
+        function pingPongTick(ts) {
+            if (!reversing) return;
+            if (ts - lastSeekTs >= SEEK_INTERVAL) {
+                lastSeekTs = ts;
+                const next = heroVideo.currentTime - SEEK_STEP;
+                if (next <= 0) {
+                    reversing = false;
+                    heroVideo.currentTime = 0;
+                    heroVideo.play();
+                    return;
+                }
+                heroVideo.currentTime = next;
+            }
+            requestAnimationFrame(pingPongTick);
+        }
+
+        heroVideo.addEventListener('ended', () => {
+            reversing = true;
+            lastSeekTs = 0;
+            requestAnimationFrame(pingPongTick);
+        });
+
+        // Load the video only after the page finishes loading critical assets,
+        // so the 12 MB file never competes with fonts/CSS/images on first paint.
+        // The poster image (hero-compound.jpg) is shown instantly in the meantime.
+        const startVideo = () => {
+            if (heroVideo.dataset.src && !heroVideo.src) {
+                heroVideo.src = heroVideo.dataset.src;
+                heroVideo.load();
+                heroVideo.play().catch(() => {});
+            }
+        };
+        if (document.readyState === 'complete') {
+            startVideo();
+        } else {
+            window.addEventListener('load', startVideo, { once: true });
+        }
+    }
+
     /* ---------- Mobile drawer ---------- */
     const hamburger = document.getElementById('hamburger');
     const drawer = document.getElementById('drawer');
@@ -159,7 +206,7 @@
                 });
             };
             stagger('.bullets', 'li');
-            stagger('.contact-rows', '.contact-row');
+            // stagger('.contact-rows', '.contact-row');
 
             /* Catalog active pane: stagger its cards on first scroll-into-view */
             const activePane = document.querySelector('.tab-pane.active');
@@ -206,34 +253,6 @@
                     gsap.to(tween, { timeScale: 1, duration: 0.8, ease: 'power2.out' });
                 });
             }
-        }
-    }
-
-    /* ---------- Side navigation ---------- */
-    const sideNav = document.getElementById('sideNav');
-    if (sideNav) {
-        const toggleVisible = () => sideNav.classList.toggle('fn-visible', window.scrollY > 80);
-        window.addEventListener('scroll', toggleVisible, { passive: true });
-        toggleVisible();
-
-        const snItems = sideNav.querySelectorAll('.sn-item[href^="#"]');
-        const snMap = new Map();
-        snItems.forEach(item => {
-            const sec = document.getElementById(item.getAttribute('href').slice(1));
-            if (sec) snMap.set(sec, item);
-        });
-
-        if (snMap.size) {
-            const snObs = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        snItems.forEach(d => d.classList.remove('is-active'));
-                        const item = snMap.get(e.target);
-                        if (item) item.classList.add('is-active');
-                    }
-                });
-            }, { rootMargin: '-35% 0px -35% 0px' });
-            snMap.forEach((_, sec) => snObs.observe(sec));
         }
     }
 
