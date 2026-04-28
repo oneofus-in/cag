@@ -72,7 +72,7 @@ ul { list-style: none; }
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    display: inline-block;
+    /* display: inline-block; */
 }
 .gradient-text-light {
     background: white;
@@ -635,7 +635,7 @@ ul { list-style: none; }
     border: 1px solid rgba(255,255,255,.2);
 }
 h2 {
-    font-size: clamp(30px, 4.5vw, 52px);
+    font-size: clamp(30px, 4.5vw, 48px);
     font-weight: 900;
     color: #0c3058;
     line-height: 1.08;
