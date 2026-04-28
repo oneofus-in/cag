@@ -72,7 +72,10 @@
     <section class="hero" id="hero">
         <div class="hero-stage">
             <div class="hero-frame">
-                <img src="assets/img/hero-compound.jpg" alt="" class="hero-img">
+                <video class="hero-img hero-video"
+                       poster="assets/img/hero-compound.jpg"
+                       muted playsinline preload="none"
+                       data-src="uploads/bg.mp4"></video>
                 <div class="hero-veil"></div>
                 <div class="hero-scrim" aria-hidden="true"></div>
                 <div class="hero-pattern" aria-hidden="true"></div>
@@ -617,7 +620,7 @@
             <div class="contact-shell">
 
                 <!-- Feature image card -->
-                <div class="contact-feature" data-anim="fade-right">
+                <div class="contact-feature">
                     <img src="assets/img/caravan-side.jpg" alt="" class="contact-feature-img">
                     <div class="contact-feature-overlay"></div>
                     <div class="contact-feature-content">
@@ -753,15 +756,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="assets/js/script.js"></script>
-
-    <nav class="sidenav" id="sideNav" aria-label="ניווט מהיר">
-        <a href="#about"           class="sn-item"><span class="sn-pip"></span><span class="sn-label">אודותינו</span></a>
-        <a href="#models"          class="sn-item"><span class="sn-pip"></span><span class="sn-label">כחול לבן</span></a>
-        <a href="#foodtrack"       class="sn-item"><span class="sn-pip"></span><span class="sn-label">פודטראקים</span></a>
-        <a href="#security-sector" class="sn-item"><span class="sn-pip"></span><span class="sn-label">מגזר בטחוני</span></a>
-        <a href="#catalog"         class="sn-item"><span class="sn-pip"></span><span class="sn-label">קרוואנים למכירה</span></a>
-        <a href="#articles"        class="sn-item"><span class="sn-pip"></span><span class="sn-label">מאמרים</span></a>
-        <a href="#contact"         class="sn-item"><span class="sn-pip"></span><span class="sn-label">צור קשר</span></a>
-    </nav>
 </body>
 </html>
