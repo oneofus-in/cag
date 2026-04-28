@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>א.ג קראוונים – גרורי לינה, מתחמים וקראוונים נגררים</title>
+    <meta name="description" content="א.ג קראוונים מתמחה בייצור מקומי כחול לבן ובייבוא של קראוונים, גרורי לינה ומתחמי אירוח. פתרונות מבניים ברמה הגבוהה ביותר.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo" aria-label="א.ג קראוונים">
+                <img src="assets/img/logo_white.png" alt="א.ג קראוונים" class="logo-img logo-white">
+                <img src="assets/img/logo.png" alt="א.ג קראוונים" class="logo-img logo-dark">
+            </a>
+
+            <nav class="nav" id="nav">
+                <a href="#about">אודותינו</a>
+                <a href="#models">כחול לבן</a>
+                <a href="#foodtrack">פודטראקים</a>
+                <a href="#security-sector">מגזר בטחוני</a>
+                <a href="#catalog">קרוואנים למכירה</a>
+                <a href="#videos">סרטונים</a>
+                <a href="#articles">מאמרים</a>
+                <a href="#contact">צור קשר</a>
+            </nav>
+
+            <div class="header-cta">
+                <a href="tel:050-550-0180" class="phone-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>
+                        <small>מכירות</small>
+                        050-550-0180
+                    </span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="תפריט">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer" id="drawer">
+        <div class="drawer-inner">
+            <button class="drawer-close" id="drawerClose" aria-label="סגירה">×</button>
+            <nav class="drawer-nav">
+                <a href="#about">אודותינו</a>
+                <a href="#models">כחול לבן</a>
+                <a href="#foodtrack">פודטראקים</a>
+                <a href="#security-sector">מגזר בטחוני</a>
+                <a href="#catalog">קרוואנים למכירה</a>
+                <a href="#videos">סרטונים</a>
+                <a href="#articles">מאמרים</a>
+                <a href="#contact">צור קשר</a>
+            </nav>
+            <a href="tel:050-550-0180" class="drawer-phone">
+                <i class="fa-solid fa-phone"></i> 050-550-0180
+            </a>
+        </div>
+    </div>
+
+    <!-- HERO — masked frame expands on scroll -->
+    <section class="hero" id="hero">
+        <div class="hero-stage">
+            <div class="hero-frame">
+                <video class="hero-img hero-video"
+                       poster="assets/img/hero-compound.jpg"
+                       muted playsinline preload="none"
+                       data-src="uploads/bg.mp4"></video>
+                <div class="hero-veil"></div>
+                <div class="hero-scrim" aria-hidden="true"></div>
+                <div class="hero-pattern" aria-hidden="true"></div>
+                <div class="hero-corner hero-corner-tl" aria-hidden="true"></div>
+                <div class="hero-corner hero-corner-tr" aria-hidden="true"></div>
+                <div class="hero-corner hero-corner-bl" aria-hidden="true"></div>
+                <div class="hero-corner hero-corner-br" aria-hidden="true"></div>
+                <div class="hero-dimension" aria-hidden="true"><span>תכנון מדויק · ייצור ישראלי</span></div>
+
+                <div class="hero-content">
+                    <div class="hero-eyebrow">תוצרת ישראלית · מאז 2008</div>
+                    <h1>
+                        <span class="hero-line-1">א.ג. קרוואנים</span>
+                        <span class="hero-line-2 gradient-text-light">מבני לינה ומתחמי תיירות</span>
+                        <span class="hero-line-3">בהתאמה אישית כחול לבן.</span>
+                    </h1>
+                    <p class="hero-text">
+                        ללקוחות פרטיים, עסקים ורשויות — משלב התכנון ועד ההקמה בשטח.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#models" class="btn btn-ghost">
+                            כל הדגמים
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">התחילו פרויקט</a>
+                    </div>
+                </div>
+
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-num">01</span>
+                        <span class="hero-meta-label">תכנון בהתאמה אישית</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-num">02</span>
+                        <span class="hero-meta-label">ייצור כחול-לבן במפעל שלנו</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-num">03</span>
+                        <span class="hero-meta-label">ליווי מקצה לקצה עם צוות מנוסה</span>
+                    </div>
+                </div>
+
+                <div class="hero-scroll-hint">
+                    <span>גלילה</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Models -->
+    <section class="section models" id="models">
+        <div class="container">
+            <div class="models-head" data-anim="fade-up">
+                <div class="models-head-text">
+                    <span class="eyebrow">כחול לבן</span>
+                    <h2>מבני לינה <span class="gradient-text">בייצור מקומי</span></h2>
+                    <p>ארבעה דגמים מובילים בייצור כחול-לבן — תכנון, עיצוב וייצור ברמה הגבוהה ביותר, עם חשיבה מדוייקת על כל פרט ואפשרות לביצוע התאמות לצרכים שלכם.</p>
+                </div>
+                <div class="models-head-ctas">
+                    <a href="#contact" class="models-head-cta">
+                        <span>בקשו הצעת מחיר</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <a href="pages/models.html" class="models-head-cta">
+                        <span>מידע נוסף</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="models-showcase">
+                <article class="model-card" data-anim="fade-up">
+                    <span class="model-num">01</span>
+                    <div class="model-img">
+                        <img src="assets/img/model-shahaf.jpg" alt="דגם שחף">
+                    </div>
+                    <div class="model-body">
+                        <span class="model-meta">דו-קומתי</span>
+                        <h3>דגם שחף</h3>
+                        <p>מבנה לינה דו-קומתי לאירוח קבוצות עם פתרונות אוורור ובידוד מתקדמים.</p>
+                        <div class="model-price">
+                            <span class="price-from">החל מ–</span>
+                            <span class="price-amount">₪320,000</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="model-card" data-anim="fade-up" data-delay="0.05">
+                    <span class="model-num">02</span>
+                    <div class="model-img">
+                        <img src="assets/img/model-loft.jpg" alt="דגם לופט">
+                    </div>
+                    <div class="model-body">
+                        <span class="model-meta">חדר שינה יחיד</span>
+                        <h3>דגם לופט</h3>
+                        <p>קראוון אינטימי במידות מצומצמות, פתרון לזוגות או יחידים שמחפשים פרטיות.</p>
+                        <div class="model-price">
+                            <span class="price-from">החל מ–</span>
+                            <span class="price-amount">₪185,000</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="model-card" data-anim="fade-up" data-delay="0.1">
+                    <span class="model-num">03</span>
+                    <div class="model-img">
+                        <img src="assets/img/model-school.jpg" alt="דגם בית ספר שדה">
+                    </div>
+                    <div class="model-body">
+                        <span class="model-meta">מיטות דו-קומתיות</span>
+                        <h3>דגם בית ספר שדה</h3>
+                        <p>פתרון יעיל לקבוצות מאורגנות, מחנות לימוד ופעילויות חינוכיות.</p>
+                        <div class="model-price">
+                            <span class="price-from">החל מ–</span>
+                            <span class="price-amount">₪270,000</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="model-card" data-anim="fade-up" data-delay="0.15">
+                    <span class="model-num">04</span>
+                    <div class="model-img">
+                        <img src="assets/img/services-bath.jpg" alt="מבני שירותים ומקלחות">
+                    </div>
+                    <div class="model-body">
+                        <span class="model-meta">בקרוב</span>
+                        <h3>דגם חדש</h3>
+                        <p>דגם חדש בדרך — עיצוב ייחודי, מפרט מתקדם ואפשרויות התאמה אישית רחבות.</p>
+                        <div class="model-price">
+                            <span class="price-from">החל מ–</span>
+                            <span class="price-amount">₪145,000</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Compounds Section -->
+    <section class="section about" id="about">
+        <div class="container about-grid">
+            <div class="about-text" data-anim="fade-right">
+                <span class="eyebrow">מתחמי נופש ותיירות | קראוונים | מבנים למגורים</span>
+                <h2>בניית מתחמי לינה ותיירות עם כל הנדרש <span class="gradient-text">לאירוח מושלם</span></h2>
+                <p>
+                    בא.ג נגררים וקראוונים אנו מתכננים ומייצרים מתחמי אירוח ומבנים בהתאמה אישית.
+                    לאורך השנים צברנו ניסיון בליווי תהליכים ופרויקטים מורכבים מקצה לקצה – מתכנון ועד הקמה בשטח.
+                    הפתרונות שלנו מותאמים למטרות ותנאי השטח, ויוצרים חוויה של חופש, שלווה וסטייל מקומי שמתחבר לנוף ולאנשים.
+                </p>
+
+                <ul class="bullets">
+                    <li><i class="fa-solid fa-check"></i> שירותים ומקלחות</li>
+                    <li><i class="fa-solid fa-check"></i> פודטראקים וחדרי אוכל</li>
+                    <li><i class="fa-solid fa-check"></i> משרדים</li>
+                    <li><i class="fa-solid fa-check"></i> יחידות מגורים ואירוח</li>
+                </ul>
+
+                <div class="card-actions">
+                    <a href="#contact" class="btn btn-primary">צור קשר <i class="fa-solid fa-arrow-left"></i></a>
+                    <a href="pages/about.html" class="btn btn-outline">מידע נוסף</a>
+                </div>
+            </div>
+
+            <div class="about-media" data-anim="fade-left">
+                <div class="media-main">
+                    <img src="assets/img/services-bath.jpg" alt="מתחמי שירותים ומקלחות">
+                </div>
+                <div class="media-side">
+                    <img src="assets/img/desert-caravan.jpg" alt="מבנה במדבר">
+                </div>
+                <div class="media-badge">
+                    <i class="fa-solid fa-medal"></i>
+                    <div>
+                        <strong>בהתאמה לתנאי השטח</strong>
+                        <small>פרויקט מקצה לקצה</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Foodtrack Section -->
+    <section class="section foodtrack" id="foodtrack">
+        <div class="container">
+            <div class="foodtrack-grid">
+                <div class="foodtrack-gallery" data-anim="fade-right">
+                    <div class="ft-main">
+                        <img src="uploads/Images/foodtrack/WhatsApp Image 2026-04-28 at 12.28.28 (1).jpeg" alt="פודטראק א.ג נגררים">
+                    </div>
+                    <div class="ft-thumbs">
+                        <div class="ft-thumb">
+                            <img src="uploads/Images/foodtrack/WhatsApp Image 2026-04-28 at 12.28.27.jpeg" alt="פודטראק כחול">
+                        </div>
+                        <div class="ft-thumb">
+                            <img src="uploads/Images/foodtrack/WhatsApp Image 2026-04-28 at 12.28.28.jpeg" alt="מבנה פודטראק בפארק">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="foodtrack-text" data-anim="fade-left">
+                    <span class="eyebrow">פוד טראקים | א.ג נגררים</span>
+                    <h2>פוד טראקים ניידים ונייחים <span class="gradient-text">בהתאמה אישית</span></h2>
+                    <p>
+                        תכנון, עיצוב ובניית פוד טראקים ניידים ונייחים בהתאמה מלאה לצרכי הלקוח. הפודטראקים שלנו מתאימים לעסקים, לקוחות פרטיים, עיריות ורשויות ויכולים לשמש כפתרונות למגוון רחב של צרכים — ביניהם אירועים, עסקים ומתחמי נופש ותיירות — פתרון מקצועי, יעיל ונוח ברמה הגבוהה ביותר.
+                    </p>
+                    <p>
+                        כל פוד טראק מתוכנן ומיוצר כאן בא.ג נגררים, בייצור מקומי כחול לבן ובהתאמה אישית מלאה. אנו מדייקים כל פרט – מהמערכות ועד לנגרות ולאחסון – לפי התכנון, מטרות ואופי הפרויקט.
+                    </p>
+
+                    <ul class="bullets">
+                        <li><i class="fa-solid fa-check"></i> מטבח מאובזר לפי דרישה</li>
+                        <li><i class="fa-solid fa-check"></i> חיבורי חשמל ומים מובנים</li>
+                        <li><i class="fa-solid fa-check"></i> מיזוג ותשתיות</li>
+                        <li><i class="fa-solid fa-check"></i> בנייה בהתאמה אישית</li>
+                    </ul>
+
+                    <div class="card-actions">
+                        <a href="#contact" class="btn btn-primary">צור קשר <i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="pages/foodtrack.html" class="btn btn-outline">מידע נוסף</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authorities Strip — with bg image -->
+    <section class="section authorities" id="authorities">
+        <div class="auth-bg" aria-hidden="true">
+            <img src="assets/img/services-bath.jpg" alt="">
+            <div class="auth-bg-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="auth-card" data-anim="zoom-in">
+                <div class="auth-text">
+                    <span class="eyebrow light">רשויות | מועצות | עיריות | קיבוצים</span>
+                    <h2>פתרונות לרשויות ועיריות</h2>
+                    <p>
+                        א.ג קראוונים מספקת פתרונות מבניים וקראוונים לרשויות מקומיות, עיריות וגופים ציבוריים, לצרכים מגוונים — מבני ציבור, משרדים, כיתות לימוד, מבני שירות ופתרונות ייעודיים נוספים. המבנים מתוכננים ומיוצרים בהתאם לדרישות הרשות והתקנים הרלוונטיים, תוך התאמה מלאה לצרכים, לתנאי השטח, למאפייני הפרויקט ולתקציב.
+                    </p>
+                    <div class="card-actions">
+                        <a href="#contact" class="btn btn-white">צור קשר <i class="fa-solid fa-arrow-left"></i></a>
+                        <a href="pages/authorities.html" class="btn btn-ghost">מידע נוסף</a>
+                    </div>
+                </div>
+                <div class="auth-icons">
+                    <div class="auth-ico"><i class="fa-solid fa-utensils"></i><span>חדרי אוכל</span></div>
+                    <div class="auth-ico"><i class="fa-solid fa-briefcase"></i><span>משרדים</span></div>
+                    <div class="auth-ico"><i class="fa-solid fa-graduation-cap"></i><span>כיתות לימוד ומבנים לבתי ספר</span></div>
+                    <div class="auth-ico"><i class="fa-solid fa-shower"></i><span>שירותים ומקלחות</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="section security" id="security-sector">
+        <div class="container">
+            <div class="section-head" data-anim="fade-up">
+                <span class="eyebrow">מגזר הביטחוני</span>
+                <h2>פתרונות ייעודיים לגופי <span class="gradient-text">ביטחון</span></h2>
+                <p>תכנון וייצור נגררים ומבני לינה לגופי ביטחון, צבא ומשטרה. הפתרונות מותאמים לתנאי שטח ולצרכים מבצעיים, בדגש על אמינות, בטיחות ויכולת תפקוד בתנאים מורכבים.</p>
+            </div>
+
+            <div class="security-panels">
+                <div class="security-panel" data-anim="fade-right">
+                    <div class="security-panel-img">
+                        <img src="uploads/Images/security/WhatsApp Image 2026-04-28 at 12.29.01.jpeg" alt="נגרר בטחוני - משטרת ישראל">
+                        <div class="security-panel-overlay"></div>
+                    </div>
+                    <div class="security-panel-body">
+                        <span class="security-panel-num">01</span>
+                        <h3>נגררים בטחוניים</h3>
+                        <p>נגררים מיוחדים בייצור כחול לבן, המתוכננים לשימוש מבצעי ומותאמים לצרכי השטח. כל נגרר מתוכנן בקפידה בהתאם לדרישות הפרויקט, עם מערכות ואבזור לפי הצורך.</p>
+                        <ul class="security-features">
+                            <li><i class="fa-solid fa-shield-halved"></i> עמידות גבוהה בתנאי שטח</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> התאמה למפרט בטיחותי מדויק</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> ייצור כחול-לבן מלא</li>
+                        </ul>
+                        <div class="card-actions">
+                            <a href="#contact" class="btn btn-primary btn-sm">צור קשר <i class="fa-solid fa-arrow-left"></i></a>
+                            <a href="pages/security-trailers.html" class="btn btn-ghost btn-sm">מידע נוסף</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="security-panel" data-anim="fade-left">
+                    <div class="security-panel-img">
+                        <img src="uploads/Images/security/WhatsApp Image 2026-04-28 at 12.29.02.jpeg" alt="קראוון לינה למגזר הבטחוני - חיל הרפואה">
+                        <div class="security-panel-overlay"></div>
+                    </div>
+                    <div class="security-panel-body">
+                        <span class="security-panel-num">02</span>
+                        <h3>מבנים ומתחמי לינה למגזר הבטחוני</h3>
+                        <p>מבני לינה ומתחמים ייעודיים לגופי הביטחון, עם יכולת הקמה מהירה והתאמה למגוון שימושים משתנים. הפתרונות מתאימים לפרויקטים זמניים או קבועים, תוך שמירה על בטיחות, נוחות ותפעול יעיל.</p>
+                        <ul class="security-features">
+                            <li><i class="fa-solid fa-shield-halved"></i> מבנים נגישים</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> הקמה מהירה בשטח</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> התאמה למגוון צרכים מבצעיים</li>
+                        </ul>
+                        <div class="card-actions">
+                            <a href="#contact" class="btn btn-primary btn-sm">צור קשר <i class="fa-solid fa-arrow-left"></i></a>
+                            <a href="pages/security-accommodations.html" class="btn btn-ghost btn-sm">מידע נוסף</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Intro -->
+    <section class="section catalog" id="catalog">
+        <div class="container">
+            <div class="section-head" data-anim="fade-up">
+                <span class="eyebrow">קראוונים ומבני לינה</span>
+                <h2>הדגמים <span class="gradient-text">המובילים</span> של<br>א.ג קראוונים</h2>
+            </div>
+
+            <div class="catalog-grid">
+                <div class="catalog-text" data-anim="fade-right">
+                    <p>
+                        א.ג קראוונים מתמחה בייבוא ובייצור קראוונים ומבנים איכותיים ומציעה מגוון רחב של פתרונות מגורים בסטנדרטים הגבוהים ביותר.
+                    </p>
+                    <p>
+                        המבנים שלנו כוללים קראוונים מייבוא היצרנים הטובים בעולם, לצד מבני לינה ומתחמים בייצור מקומי כחול-לבן תוך הקפדה על איכות, עמידות והתאמה מלאה לתקנים ולצרכים.
+                    </p>
+                    <p>
+                        הצוות שלנו בא.ג קראוונים זמין עבורכם לכל אורך הדרך ומעניק ייעוץ מקצועי, אמין ומקיף, במטרה לספק פתרון איכותי, מדויק ועמיד לאורך זמן.
+                    </p>
+                    <p>
+                        הפתרונות שלנו מתאימים למגוון רחב של שימושים, בהם: מתחמי לינה, מבנים לרשויות מקומיות ועיריות, מתחמי תיירות ונופש, מבנים למגורים וקראוונים לטיולים ופנאי.
+                    </p>
+                    <a href="https://wa.me/972505500180" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> להתכתבות עם נציג
+                    </a>
+                </div>
+
+                <div class="catalog-tabs" data-anim="fade-left">
+                    <div class="tabs-head">
+                        <button class="tab-btn active" data-tab="local">ייצור מקומי כחול לבן</button>
+                        <button class="tab-btn" data-tab="import">דגמים מייבוא</button>
+                    </div>
+
+                    <div class="tab-pane active" data-pane="local">
+                        <div class="weinsberg-grid">
+                            <div class="w-card"><img src="assets/img/model-shahaf.jpg" alt=""><span>דגם שחף</span><span class="w-price">₪320,000</span></div>
+                            <div class="w-card"><img src="assets/img/model-loft.jpg" alt=""><span>דגם לופט</span><span class="w-price">₪185,000</span></div>
+                            <div class="w-card"><img src="assets/img/model-school.jpg" alt=""><span>דגם בית ספר שדה</span><span class="w-price">₪270,000</span></div>
+                            <div class="w-card"><img src="assets/img/services-bath.jpg" alt=""><span>מבנה שירותים</span><span class="w-price">₪145,000</span></div>
+                            <div class="w-card"><img src="assets/img/desert-caravan.jpg" alt=""><span>מבנה לינה גדול</span><span class="w-price">₪390,000</span></div>
+                            <div class="w-card"><img src="assets/img/towing.jpg" alt=""><span>קראוון נגרר</span><span class="w-price">₪220,000</span></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" data-pane="import">
+                        <div class="weinsberg-grid">
+                            <div class="w-card"><img src="assets/img/caravan-front.jpg" alt=""><span>Weinsberg 450FU</span><span class="w-price">₪195,000</span></div>
+                            <div class="w-card"><img src="assets/img/caravan-side.jpg" alt=""><span>Weinsberg 550UK</span><span class="w-price">₪248,000</span></div>
+                            <div class="w-card"><img src="assets/img/caravan-front.jpg" alt=""><span>Weinsberg 550QDK</span><span class="w-price">₪265,000</span></div>
+                            <div class="w-card"><img src="assets/img/caravan-side.jpg" alt=""><span>Weinsberg 390QD</span><span class="w-price">₪168,000</span></div>
+                            <div class="w-card"><img src="assets/img/caravan-front.jpg" alt=""><span>Weinsberg 420QD</span><span class="w-price">₪188,000</span></div>
+                            <div class="w-card"><img src="assets/img/caravan-side.jpg" alt=""><span>Weinsberg 500FDK</span><span class="w-price">₪235,000</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles / Newsletter / Press -->
+    <section class="section articles" id="articles">
+        <div class="container">
+
+            <div class="section-head" data-anim="fade-up">
+                <span class="eyebrow">מידע ותוכן נוסף</span>
+                <h2>בלוג, ניוזלטרים <span class="gradient-text">וכתבות</span></h2>
+            </div>
+
+            <!-- Tab bar -->
+            <div class="art-tabs" data-anim="fade-up">
+                <button class="art-tab-btn active" data-art-tab="blog">
+                    <i class="fa-solid fa-pen-nib"></i> מהבלוג שלנו
+                </button>
+                <button class="art-tab-btn" data-art-tab="newsletters">
+                    <i class="fa-regular fa-envelope"></i> ניוזלטרים ומודעות
+                </button>
+                <button class="art-tab-btn" data-art-tab="press">
+                    <i class="fa-solid fa-newspaper"></i> כתבות ופרסומים
+                </button>
+            </div>
+
+            <!-- ── Blog pane ── -->
+            <div class="art-pane active" data-art-pane="blog">
+                <div class="articles-grid">
+                    <article class="article-card">
+                        <div class="article-img"><img src="assets/img/article1.jpg" alt=""></div>
+                        <div class="article-body">
+                            <span class="article-cat">כחול לבן</span>
+                            <h3>בנייה כחול לבן</h3>
+                            <a href="#" class="article-link">למידע נוסף <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-img"><img src="assets/img/article2.jpg" alt=""></div>
+                        <div class="article-body">
+                            <span class="article-cat">פוד טראק</span>
+                            <h3>פוד טראק בהתאמה אישית</h3>
+                            <a href="#" class="article-link">למידע נוסף <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-img"><img src="assets/img/article3.jpg" alt=""></div>
+                        <div class="article-body">
+                            <span class="article-cat">קראוונים</span>
+                            <h3>בית על גלגלים – הבית תמיד כאן</h3>
+                            <a href="#" class="article-link">למידע נוסף <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- ── Newsletters pane ── -->
+            <div class="art-pane" data-art-pane="newsletters">
+                <div class="articles-grid">
+                    <article class="nl-card">
+                        <div class="nl-header">
+                            <i class="fa-regular fa-newspaper"></i>
+                            <span class="nl-issue">גיליון 03 · אביב 2025</span>
+                        </div>
+                        <div class="nl-body">
+                            <h3>חדשות מהמפעל: דגמים חדשים ומגמות שוק הנגררים בישראל</h3>
+                            <p>סקירה של פרויקטים שהשלמנו, חידושים בקווי הייצור ועדכון על הביקוש הגובר למבני לינה מקומיים.</p>
+                            <a href="#" class="article-link">לקריאה <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="nl-card">
+                        <div class="nl-header">
+                            <i class="fa-regular fa-newspaper"></i>
+                            <span class="nl-issue">גיליון 02 · חורף 2024</span>
+                        </div>
+                        <div class="nl-body">
+                            <h3>בחרבות ברזל: כיצד סייענו לגופי חירום עם פתרונות לינה מהירים</h3>
+                            <p>תיאור פרויקטים שבוצעו בתנאי לחץ ומסגרת זמן קצרה לצרכי חירום לאומיים.</p>
+                            <a href="#" class="article-link">לקריאה <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="nl-card">
+                        <div class="nl-header">
+                            <i class="fa-regular fa-newspaper"></i>
+                            <span class="nl-issue">גיליון 01 · קיץ 2024</span>
+                        </div>
+                        <div class="nl-body">
+                            <h3>מדריך הקיץ: קראוונים, שטח פתוח ומה שצריך לדעת</h3>
+                            <p>טיפים לתחזוקת קראוון לפני העונה, המלצות על אתרי חניה ועדכוני מוצר.</p>
+                            <a href="#" class="article-link">לקריאה <i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- ── Press pane ── -->
+            <div class="art-pane" data-art-pane="press">
+                <div class="press-grid">
+                    <article class="press-card">
+                        <div class="press-source">
+                            <span class="press-name">כלכליסט</span>
+                            <span class="press-date">ינואר 2025</span>
+                        </div>
+                        <h3>א.ג קראוונים: החברה הישראלית שהפכה לשחקן מרכזי בשוק המבנים הניידים</h3>
+                        <a href="#" class="press-link">לכתבה המלאה <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <article class="press-card">
+                        <div class="press-source">
+                            <span class="press-name">גלובס</span>
+                            <span class="press-date">מרץ 2025</span>
+                        </div>
+                        <h3>הביקוש למתחמי לינה ניידים קפץ — חברות ישראליות מובילות את הגל</h3>
+                        <a href="#" class="press-link">לכתבה המלאה <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <article class="press-card">
+                        <div class="press-source">
+                            <span class="press-name">מעריב עסקים</span>
+                            <span class="press-date">פברואר 2025</span>
+                        </div>
+                        <h3>נגררים ביטחוניים: הספק הישראלי שעובד עם המשטרה, הצבא ורשויות החירום</h3>
+                        <a href="#" class="press-link">לכתבה המלאה <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Social Strip — marquee of latest posts -->
+    <section class="section social-strip" id="videos">
+        <div class="container">
+            <div class="social-head" data-anim="fade-up">
+                <div>
+                    <span class="eyebrow">עקבו אחרינו ברשתות החברתיות</span>
+                    <h2>הפוסטים <span class="gradient-text">האחרונים</span> שלנו</h2>
+                </div>
+                <div class="social-platforms">
+                    <a href="#" aria-label="Instagram" class="platform"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook" class="platform"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube" class="platform"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="TikTok" class="platform"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-marquee" data-anim="fade-up">
+            <div class="marquee-track">
+                <!-- Track is duplicated for seamless loop -->
+                <a href="#" class="post-card"><img src="assets/img/social-1.png" alt="פוסט מהפייסבוק"><span class="post-tag"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="#" class="post-card"><img src="assets/img/social-2.png" alt="פוסט"><span class="post-tag"><i class="fa-brands fa-facebook-f"></i> Facebook</span></a>
+                <a href="#" class="post-card"><img src="assets/img/social-3.png" alt="פוסט"><span class="post-tag"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="#" class="post-card"><img src="assets/img/model-loft.jpg" alt="פוסט"><span class="post-tag"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="#" class="post-card"><img src="assets/img/services-bath.jpg" alt="פוסט"><span class="post-tag"><i class="fa-brands fa-facebook-f"></i> Facebook</span></a>
+                <a href="#" class="post-card"><img src="assets/img/desert-caravan.jpg" alt="פוסט"><span class="post-tag"><i class="fa-brands fa-youtube"></i> YouTube</span></a>
+
+                <!-- duplicate -->
+                <a href="#" class="post-card" aria-hidden="true"><img src="assets/img/social-1.png" alt=""><span class="post-tag"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="#" class="post-card" aria-hidden="true"><img src="assets/img/social-2.png" alt=""><span class="post-tag"><i class="fa-brands fa-facebook-f"></i> Facebook</span></a>
+                <a href="#" class="post-card" aria-hidden="true"><img src="assets/img/social-3.png" alt=""><span class="post-tag"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="#" class="post-card" aria-hidden="true"><img src="assets/img/model-loft.jpg" alt=""><span class="post-tag"><i class="fa-brands fa-instagram"></i> Instagram</span></a>
+                <a href="#" class="post-card" aria-hidden="true"><img src="assets/img/services-bath.jpg" alt=""><span class="post-tag"><i class="fa-brands fa-facebook-f"></i> Facebook</span></a>
+                <a href="#" class="post-card" aria-hidden="true"><img src="assets/img/desert-caravan.jpg" alt=""><span class="post-tag"><i class="fa-brands fa-youtube"></i> YouTube</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact-shell">
+
+                <!-- Feature image card -->
+                <div class="contact-feature">
+                    <img src="assets/img/caravan-side.jpg" alt="" class="contact-feature-img">
+                    <div class="contact-feature-overlay"></div>
+                    <div class="contact-feature-content">
+                        <span class="contact-kicker"><i class="fa-solid fa-headset"></i> ייעוץ אישי וליווי מקצועי</span>
+                        <h2>שיחת ייעוץ והתאמה עם צוות המומחים שלנו בא.ג קראוונים, ללא עלות וללא התחייבות.</h2>
+                        <p>השאירו פרטים וניצור אתכם קשר בהקדם!</p>
+                        <p class="contact-tagline"><i class="fa-solid fa-quote-right"></i> אתם חולמים, אנחנו מגשימים</p>
+
+                        <div class="contact-rows">
+                            <a href="tel:050-550-0180" class="contact-row">
+                                <i class="fa-solid fa-phone"></i>
+                                <div>
+                                    <small>טלפון מכירות</small>
+                                    <strong>050-550-0180</strong>
+                                </div>
+                            </a>
+                            <a href="mailto:ag0505500180@gmail.com" class="contact-row">
+                                <i class="fa-solid fa-envelope"></i>
+                                <div>
+                                    <small>אימייל</small>
+                                    <strong>ag0505500180@gmail.com</strong>
+                                </div>
+                            </a>
+                            <div class="contact-row">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <small>השוורום שלנו</small>
+                                    <strong>יוחנן הסנדלר 8, אזור תעשייה כפר סבא</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form card -->
+                <form class="contact-form" data-anim="fade-left" onsubmit="event.preventDefault(); this.querySelector('.form-success').classList.add('show');">
+                    <div class="form-head">
+                        <h3>השאירו פרטים</h3>
+                        <p>מלאו את הטופס ונציג מכירות יחזור אליכם תוך זמן קצר עם הצעה מותאמת אישית.</p>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>שם מלא</span>
+                            <input type="text" required placeholder="הכניסו את שמכם המלא">
+                        </label>
+                    </div>
+                    <div class="form-row split">
+                        <label>
+                            <span>אימייל</span>
+                            <input type="email" required placeholder="name@example.com">
+                        </label>
+                        <label>
+                            <span>טלפון</span>
+                            <input type="tel" required placeholder="050-0000000">
+                        </label>
+                    </div>
+
+                    <label class="consent">
+                        <input type="checkbox">
+                        <span>
+                            אני מאשר/ת קבלת עדכונים, הצעות ותוכן שיווקי באמצעי דיוור.
+                            השארת הפרטים מהווה הסכמה ליצירת קשר בהתאם <a href="#">למדיניות הפרטיות</a>.
+                        </span>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        שליחה ויצירת קשר <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <p class="form-trust"><i class="fa-solid fa-shield-halved"></i> פרטיכם נשמרים אצלנו ולא מועברים לצד שלישי</p>
+                    <div class="form-success">תודה! קיבלנו את הפרטים, נחזור אליכם בהקדם.</div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        <img src="assets/img/logo_white.png" alt="א.ג קראוונים">
+                    </a>
+                    <p>מובילים בייצור ובייבוא של קראוונים, גרורי לינה ומתחמי אירוח — תוצרת כחול-לבן ויבוא מהיצרנים הטובים בעולם.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>קווי הייצור שלנו</h4>
+                    <ul>
+                        <li><a href="#models">דגם שחף</a></li>
+                        <li><a href="#models">דגם לופט</a></li>
+                        <li><a href="#models">דגם בית ספר שדה</a></li>
+                        <li><a href="#models">מבנה שירותים</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>שעות פתיחה</h4>
+                    <ul class="hours">
+                        <li><span>א – ה</span><span>08:00 – 16:00</span></li>
+                        <li><span>שישי</span><span>08:00 – 12:00</span></li>
+                        <li><span>שבת</span><span>סגור</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>צור קשר</h4>
+                    <ul class="contact-list">
+                        <li><a href="tel:050-550-0180"><i class="fa-solid fa-phone"></i> 050-550-0180</a></li>
+                        <li><a href="mailto:ag0505500180@gmail.com"><i class="fa-solid fa-envelope"></i> ag0505500180@gmail.com</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i> יוחנן הסנדלר 8, אזור תעשייה כפר סבא</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="#">הצהרת נגישות</a>
+                    <span>·</span>
+                    <a href="#">מדיניות פרטיות</a>
+                </div>
+                <p>© כל הזכויות שמורות לא.ג. קרוואנים בע״מ | האתר עוצב ופותח ע״י ONEOFUS</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972505500180" class="float-wa" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
