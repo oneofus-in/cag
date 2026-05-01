@@ -140,7 +140,8 @@
             const heroActions = hero?.querySelector('.hero-actions');
             const heroMeta = hero?.querySelector('.hero-meta');
 
-            if (hero && heroStage && heroFrame) {
+            const isMobile = window.matchMedia('(max-width: 900px)').matches;
+            if (hero && heroStage && heroFrame && !isMobile) {
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: hero,
