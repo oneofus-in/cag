@@ -207,6 +207,39 @@ ul { list-style: none; }
 .nav a:hover { color: var(--blue-700); }
 .nav a:hover::after, .nav a.is-active::after { transform: scaleX(1); }
 
+/* ── Dropdown nav items ── */
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-item > a { display: inline-flex; align-items: center; gap: 5px; }
+.nav-chevron { font-size: 10px; transition: transform var(--tr); margin-top: 1px; }
+.nav-item:hover .nav-chevron { transform: rotate(180deg); }
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 185px;
+    background: var(--blue-700);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    padding: 8px 0;
+    z-index: 300;
+}
+.nav-item:hover .dropdown { display: block; }
+.dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+}
+.dropdown a::after { display: none; }
+.dropdown a:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+.header:not(.scrolled) .nav-item > a { color: rgba(255,255,255,.95); text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+.header:not(.scrolled) .nav-item > a:hover { color: #fff; }
+.header:not(.scrolled) .nav-item > a::after { background: #fff; }
+
 .header-cta { display: flex; align-items: center; gap: 12px; }
 .phone-btn {
     display: inline-flex; align-items: center; gap: 10px;
@@ -266,14 +299,35 @@ ul { list-style: none; }
     margin-bottom: 22px;
 }
 .drawer-nav { display: flex; flex-direction: column; gap: 4px; }
-.drawer-nav a {
+.drawer-nav > a {
     padding: 12px 14px;
     border-radius: 10px;
     font-weight: 600;
     color: var(--ink-800);
     border-bottom: 1px solid var(--ink-100);
 }
-.drawer-nav a:hover { background: var(--blue-50); color: var(--blue-700); }
+.drawer-nav > a:hover { background: var(--blue-50); color: var(--blue-700); }
+
+/* ── Drawer accordion ── */
+.drawer-item { display: flex; flex-direction: column; border-bottom: 1px solid var(--ink-100); border-radius: 10px; overflow: hidden; }
+.drawer-parent {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 12px 14px;
+    font-weight: 600; font-size: inherit; font-family: inherit;
+    color: var(--ink-800); background: none; text-align: right; cursor: pointer;
+}
+.drawer-parent:hover { background: var(--blue-50); color: var(--blue-700); }
+.drawer-chevron { font-size: 11px; transition: transform .22s ease; }
+.drawer-item.open .drawer-chevron { transform: rotate(180deg); }
+.drawer-sub { display: none; flex-direction: column; background: var(--blue-700); border-radius: 0 0 10px 10px; }
+.drawer-item.open .drawer-sub { display: flex; }
+.drawer-sub a {
+    padding: 10px 24px;
+    font-size: 14px; font-weight: 500;
+    color: #fff;
+    border-top: 1px solid rgba(255,255,255,.12);
+}
+.drawer-sub a:hover { background: rgba(255,255,255,.12); }
 .drawer-phone {
     margin-top: 24px;
     display: flex; align-items: center; justify-content: center; gap: 10px;

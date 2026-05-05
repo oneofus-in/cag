@@ -62,6 +62,13 @@
     if (drawer) drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
+    /* ---------- Drawer accordion ---------- */
+    if (drawer) {
+        drawer.querySelectorAll('.drawer-parent').forEach(btn => {
+            btn.addEventListener('click', () => btn.closest('.drawer-item').classList.toggle('open'));
+        });
+    }
+
     /* ---------- Header scroll state ---------- */
     const header = document.getElementById('header');
     const onScroll = () => {

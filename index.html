@@ -25,10 +25,28 @@
 
             <nav class="nav" id="nav">
                 <a href="#about">אודותינו</a>
-                <a href="#models">כחול לבן</a>
-                <a href="#foodtrack">פודטראקים</a>
-                <a href="#security-sector">מגזר בטחוני</a>
-                <a href="#catalog">קרוואנים למכירה</a>
+                <div class="nav-item">
+                    <a href="/pages/kachol-lavan/">כחול לבן <i class="fa-solid fa-chevron-down nav-chevron"></i></a>
+                    <div class="dropdown">
+                        <a href="/pages/local-models/">דגמים</a>
+                        <a href="/pages/tourist-complexes/">מתחמי תיירות</a>
+                        <a href="/pages/foodtrucks/">פודטראקים</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#security-sector">מגזר בטחוני <i class="fa-solid fa-chevron-down nav-chevron"></i></a>
+                    <div class="dropdown">
+                        <a href="/pages/security-living/">מגורים</a>
+                        <a href="/pages/security-trailers/">נגררים</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#catalog">קרוואנים למכירה <i class="fa-solid fa-chevron-down nav-chevron"></i></a>
+                    <div class="dropdown">
+                        <a href="#">אביזרים</a>
+                        <a href="#">חניונים מומלצים</a>
+                    </div>
+                </div>
                 <a href="#videos">סרטונים</a>
                 <a href="#articles">מאמרים</a>
                 <a href="#contact">צור קשר</a>
@@ -55,10 +73,28 @@
             <button class="drawer-close" id="drawerClose" aria-label="סגירה">×</button>
             <nav class="drawer-nav">
                 <a href="#about">אודותינו</a>
-                <a href="#models">כחול לבן</a>
-                <a href="#foodtrack">פודטראקים</a>
-                <a href="#security-sector">מגזר בטחוני</a>
-                <a href="#catalog">קרוואנים למכירה</a>
+                <div class="drawer-item">
+                    <button class="drawer-parent">כחול לבן <i class="fa-solid fa-chevron-down drawer-chevron"></i></button>
+                    <div class="drawer-sub">
+                        <a href="/pages/local-models/">דגמים</a>
+                        <a href="/pages/tourist-complexes/">מתחמי תיירות</a>
+                        <a href="/pages/foodtrucks/">פודטראקים</a>
+                    </div>
+                </div>
+                <div class="drawer-item">
+                    <button class="drawer-parent">מגזר בטחוני <i class="fa-solid fa-chevron-down drawer-chevron"></i></button>
+                    <div class="drawer-sub">
+                        <a href="/pages/security-living/">מגורים</a>
+                        <a href="/pages/security-trailers/">נגררים</a>
+                    </div>
+                </div>
+                <div class="drawer-item">
+                    <button class="drawer-parent">קרוואנים למכירה <i class="fa-solid fa-chevron-down drawer-chevron"></i></button>
+                    <div class="drawer-sub">
+                        <a href="#">אביזרים</a>
+                        <a href="#">חניונים מומלצים</a>
+                    </div>
+                </div>
                 <a href="#videos">סרטונים</a>
                 <a href="#articles">מאמרים</a>
                 <a href="#contact">צור קשר</a>
@@ -143,7 +179,7 @@
                         <span>בקשו הצעת מחיר</span>
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
-                    <a href="pages/models.html" class="models-head-cta">
+                    <a href="/pages/kachol-lavan/" class="models-head-cta">
                         <span>מידע נוסף</span>
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
@@ -381,7 +417,7 @@
                         </ul>
                         <div class="card-actions">
                             <a href="#contact" class="btn btn-primary btn-sm">צור קשר <i class="fa-solid fa-arrow-left"></i></a>
-                            <a href="pages/security-accommodations.html" class="btn btn-ghost btn-sm">מידע נוסף</a>
+                            <a href="pages/security-living/" class="btn btn-ghost btn-sm">מידע נוסף</a>
                         </div>
                     </div>
                 </div>

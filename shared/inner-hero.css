@@ -1,0 +1,290 @@
+/* =========================================
+   HERO — masked frame expands on scroll
+   Extracted 1:1 from assets/css/styles.css so any inner page
+   can reuse the same hero. Pair with /shared/inner-hero.js.
+   ========================================= */
+
+.hero {
+    position: relative;
+    height: 72vh;
+    background: var(--ink-50);
+}
+.hero-stage {
+    position: relative;
+    height: 72vh;
+    overflow: hidden;
+    color: #fff;
+    background: var(--ink-50);
+}
+.hero-frame {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(12,48,88,.22);
+    will-change: top, right, bottom, left, border-radius;
+}
+.hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.04);
+    will-change: transform;
+}
+.hero-veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, #0068f526 0%, #0068f50f 55%, #0068f50f 100%), linear-gradient(305deg, #0068f500, #0068f538);
+    pointer-events: none;
+}
+/* top scrim — keeps menu readable on the hero image (lives inside the frame) */
+.hero-scrim {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 220px;
+    background: linear-gradient(180deg, rgba(3,19,46,.55) 0%, rgba(3,19,46,.18) 60%, rgba(3,19,46,0) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+.hero-pattern {
+    position: absolute;
+    top: 0; right: 0;
+    width: 360px; height: 360px;
+    pointer-events: none;
+    opacity: .22;
+    z-index: 3;
+    background-image:
+        linear-gradient(rgba(255,255,255,.55) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.55) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: linear-gradient(225deg, #000 0%, transparent 75%);
+    -webkit-mask-image: linear-gradient(225deg, #000 0%, transparent 75%);
+}
+/* architectural drafting corners */
+.hero-corner {
+    position: absolute;
+    width: 56px; height: 56px;
+    border-color: rgba(255,255,255,.6);
+    border-style: solid;
+    z-index: 4;
+    pointer-events: none;
+}
+.hero-corner-tl { top: 30px; left: 30px; border-width: 2px 0 0 2px; }
+.hero-corner-tr { top: 30px; right: 30px; border-width: 2px 2px 0 0; }
+.hero-corner-bl { bottom: 30px; left: 30px; border-width: 0 0 2px 2px; }
+.hero-corner-br { bottom: 30px; right: 30px; border-width: 0 2px 2px 0; }
+/* dimension marker on left side */
+.hero-dimension {
+    position: absolute;
+    left: 56px; top: 40%; bottom: 28%;
+    z-index: 4;
+    width: 14px;
+    border-left: 1px solid rgba(255,255,255,.5);
+    pointer-events: none;
+    visibility: hidden;
+}
+.hero-dimension::before, .hero-dimension::after {
+    content: '';
+    position: absolute;
+    left: -6px;
+    width: 14px; height: 1px;
+    background: rgba(255,255,255,.5);
+}
+.hero-dimension::before { top: 0; }
+.hero-dimension::after { bottom: 0; }
+.hero-dimension span {
+    position: absolute;
+    left: 28px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,.65);
+    white-space: nowrap;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 56px 56px 56px;
+    max-width: 1280px;
+    margin: 0 auto;
+    will-change: transform, opacity;
+}
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,.85);
+    margin-bottom: 22px;
+    width: fit-content;
+}
+.hero-eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: rgba(255,255,255,.55);
+}
+.hero h1 {
+    font-size: clamp(40px, 7.4vw, 96px);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    max-width: 1100px;
+}
+
+.hero h1 span { display: block; color: white;
+    -webkit-text-fill-color: initial;}
+.hero-line-3 {
+    background: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+}
+
+.hero-line-3,
+.hero-line-2,
+.hero-line-1{
+    font-size: clamp(28px, 5.2vw, 50px);
+    font-weight: 700;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+}
+
+.hero-line-1{
+    font-size: clamp(28px, 5.2vw, 67px);
+    font-weight: 900;
+}
+
+.hero-text {
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 500;
+    max-width: 580px;
+    color: white;
+    margin-bottom: 32px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* meta strip — bottom of hero, gov.il style */
+.hero-meta {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 2;
+    border-top: 1px solid rgba(255,255,255,.16);
+    background: linear-gradient(180deg, rgba(3,19,46,0), rgba(3,19,46,.2));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 24px 28px;
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.hero-meta-item {
+    display: flex; align-items: baseline; gap: 12px;
+    color: rgba(255,255,255,.92);
+    font-weight: 500;
+}
+.hero-meta-num {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 700;
+}
+.hero-meta-label { font-size: 15px; }
+
+.hero-scroll-hint {
+    position: absolute;
+    top: 50%;
+    left: 28px;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: top left;
+    color: rgba(255,255,255,.7);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+}
+.hero-scroll-hint .line {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, currentColor, transparent);
+    position: relative;
+    overflow: hidden;
+}
+.hero-scroll-hint .line::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,.95);
+    animation: hint 1.8s infinite;
+}
+@keyframes hint {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* When the hero is the first thing on a page, cancel the .page-top
+   header offset so the masked frame goes edge-to-edge under the
+   transparent header (same as homepage). */
+.page-top > .hero:first-child { margin-top: -120px; }
+
+@media (max-width: 900px) {
+    /* MOBILE HERO — disable pin/scrub. Plain section, full-bleed frame, content visible. */
+    .hero { height: auto; min-height: 72svh; min-height: 72vh; }
+    .hero-stage { position: relative; height: 72svh; height: 72vh; min-height: 520px; }
+    .hero-frame {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        border-radius: 0;
+        overflow: hidden;
+    }
+    .hero-content { padding: 0 32px 60px 32px; opacity: 1 !important; transform: none !important; }
+    .hero-content > * { opacity: 1 !important; transform: none !important; }
+    .hero-eyebrow,
+    .hero h1 span,
+    .hero-text,
+    .hero-actions,
+    .hero-meta { opacity: 1 !important; transform: none !important; }
+    .hero-veil,
+    .hero-scrim { opacity: 1 !important; }
+    .hero-img { transform: none !important; }
+    .hero-corner, .hero-dimension { display: none; }
+    .hero-pattern { width: 200px; height: 200px; }
+    .hero-meta { gap: 24px; padding: 18px 22px; display: none;}
+    .hero-meta-label { font-size: 13px; }
+    .hero-scroll-hint { display: none; }
+    .page-top > .hero:first-child { margin-top: -90px; }
+}
+
+@media (max-width: 640px) {
+    .hero h1 { font-size: clamp(24px, 7vw, 35px); line-height: 1.15; }
+    .hero-text { font-size: 14px; line-height: 1.7; padding: 0 4px; }
+    .hero-eyebrow { font-size: 12px; margin-bottom: 16px; }
+    .hero-content { padding: 0 22px 40px 22px; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+    .hero-actions .btn { justify-content: center; padding: 16px 22px; }
+    .hero-line-2 br { display: none; }
+    .page-top > .hero:first-child { margin-top: -80px; }
+}
+
+@media (max-width: 380px) {
+    .hero h1 { font-size: clamp(30px, 9.5vw, 44px); }
+}
