@@ -15,104 +15,7 @@
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container header-inner">
-            <a href="#" class="logo" aria-label="א.ג קראוונים">
-                <img src="assets/img/logo_white.png" alt="א.ג קראוונים" class="logo-img logo-white">
-                <img src="assets/img/logo.png" alt="א.ג קראוונים" class="logo-img logo-dark">
-            </a>
-
-            <nav class="nav" id="nav">
-                <a href="#about">אודותינו</a>
-                <div class="nav-item">
-                    <a href="/cag/pages/kachol-lavan/">כחול לבן <i class="fa-solid fa-chevron-down nav-chevron"></i></a>
-                    <div class="dropdown">
-                        <a href="/cag/pages/local-models/">דגמים</a>
-                        <a href="/cag/pages/tourist-complexes/">מתחמי תיירות</a>
-                        <a href="/cag/pages/foodtrucks/">פודטראקים</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="#security-sector">מגזר בטחוני <i class="fa-solid fa-chevron-down nav-chevron"></i></a>
-                    <div class="dropdown">
-                        <a href="/cag/pages/security-living/">מגורים</a>
-                        <a href="/cag/pages/security-trailers/">נגררים</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="#catalog">קרוואנים למכירה <i class="fa-solid fa-chevron-down nav-chevron"></i></a>
-                    <div class="dropdown">
-                        <a href="#">אביזרים</a>
-                        <a href="#">חניונים מומלצים</a>
-                    </div>
-                </div>
-                <a href="#videos">סרטונים</a>
-                <a href="#articles">מאמרים</a>
-                <a href="#contact">צור קשר</a>
-            </nav>
-
-            <div class="header-cta">
-                <a href="tel:050-550-0180" class="phone-btn">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>
-                        <small>להתקשרות</small>
-                        050-550-0180
-                    </span>
-                </a>
-                <button class="hamburger" id="hamburger" aria-label="תפריט">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Drawer -->
-    <div class="drawer" id="drawer">
-        <div class="drawer-inner">
-            <button class="drawer-close" id="drawerClose" aria-label="סגירה">×</button>
-            <nav class="drawer-nav">
-                <a href="#about">אודותינו</a>
-                <div class="drawer-item">
-                    <div class="drawer-parent">
-                        <a class="drawer-parent-link" href="/cag/pages/kachol-lavan/">כחול לבן</a>
-                        <button class="drawer-toggle" aria-label="פתח תת-תפריט"><i class="fa-solid fa-chevron-down drawer-chevron"></i></button>
-                    </div>
-                    <div class="drawer-sub">
-                        <a href="/cag/pages/local-models/">דגמים</a>
-                        <a href="/cag/pages/tourist-complexes/">מתחמי תיירות</a>
-                        <a href="/cag/pages/foodtrucks/">פודטראקים</a>
-                    </div>
-                </div>
-                <div class="drawer-item">
-                    <div class="drawer-parent">
-                        <a class="drawer-parent-link" href="/cag/#security-sector">מגזר בטחוני</a>
-                        <button class="drawer-toggle" aria-label="פתח תת-תפריט"><i class="fa-solid fa-chevron-down drawer-chevron"></i></button>
-                    </div>
-                    <div class="drawer-sub">
-                        <a href="/cag/pages/security-living/">מגורים</a>
-                        <a href="/cag/pages/security-trailers/">נגררים</a>
-                    </div>
-                </div>
-                <div class="drawer-item">
-                    <div class="drawer-parent">
-                        <a class="drawer-parent-link" href="/cag/pages/caravans/">קרוואנים למכירה</a>
-                        <button class="drawer-toggle" aria-label="פתח תת-תפריט"><i class="fa-solid fa-chevron-down drawer-chevron"></i></button>
-                    </div>
-                    <div class="drawer-sub">
-                        <a href="#">אביזרים</a>
-                        <a href="#">חניונים מומלצים</a>
-                    </div>
-                </div>
-                <a href="#videos">סרטונים</a>
-                <a href="#articles">מאמרים</a>
-                <a href="#contact">צור קשר</a>
-            </nav>
-            <a href="tel:050-550-0180" class="drawer-phone">
-                <i class="fa-solid fa-phone"></i> 050-550-0180
-            </a>
-        </div>
-    </div>
+    <div id="site-header"></div>
 
     <!-- HERO — masked frame expands on scroll -->
     <section class="hero" id="hero">
@@ -802,6 +705,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="/cag/shared/components.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
