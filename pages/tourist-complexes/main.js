@@ -61,7 +61,7 @@
 
         function goTo(index) {
             current = (index + total) % total;
-            track.style.transform = 'translateX(' + (current * 100) + '%)';
+            track.style.transform = 'translateX(' + (-current * 100) + '%)';
             updateDots();
         }
 

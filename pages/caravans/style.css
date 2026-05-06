@@ -1,0 +1,248 @@
+/* ═══════════════════════════════════════════════════
+   Caravans Page — pages/caravans/style.css
+═══════════════════════════════════════════════════ */
+
+/* ── Models Section ─────────────────────────────── */
+
+.cv-models-section {
+    background: #fff;
+}
+
+.cv-brand-block {
+    margin-top: 64px;
+}
+
+.cv-brand-block:first-of-type {
+    margin-top: 56px;
+}
+
+.cv-brand-head {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.cv-brand-logo {
+    display: block;
+    height: 56px;
+    width: auto;
+    max-width: 220px;
+    margin: 0 auto 16px;
+    object-fit: contain;
+}
+
+.cv-brand-title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.2vw, 34px);
+    font-weight: 800;
+    color: var(--blue-900);
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.cv-brand-title span {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-inline-start: 6px;
+}
+
+.cv-brand-tagline {
+    font-size: 15.5px;
+    color: var(--ink-600);
+    margin: 8px 0 0;
+}
+
+/* ── Models Grid ────────────────────────────────── */
+
+.cv-models-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* ── Model Card ─────────────────────────────────── */
+
+.cv-model-card {
+    position: relative;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid var(--ink-100);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+}
+
+.cv-model-card::before {
+    content: '';
+    position: absolute;
+    top: 0; inset-inline-start: 0; inset-inline-end: 0;
+    height: 4px;
+    background: var(--grad);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+    z-index: 2;
+}
+
+.cv-model-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--blue-200);
+}
+
+.cv-model-card:hover::before {
+    transform: scaleX(1);
+}
+
+.cv-model-img-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.cv-model-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.cv-model-badges {
+    position: absolute;
+    top: 14px;
+    inset-inline-start: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv-model-badge {
+    background: var(--grad);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.cv-model-badge--premium {
+    background: var(--grad);
+}
+
+.cv-model-tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--blue-500);
+    background: var(--blue-50);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.cv-model-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 22px 24px;
+    flex: 1;
+}
+
+.cv-model-card h4 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue-900);
+    margin: 0;
+}
+
+.cv-model-desc {
+    font-size: 14.5px;
+    color: var(--ink-600);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.cv-model-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.cv-spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    background: var(--blue-50);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.cv-spec i {
+    font-size: 18px;
+    color: var(--blue-500);
+}
+
+.cv-spec span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-700);
+}
+
+.cv-model-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-100);
+}
+
+.cv-model-price {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--blue-700);
+    line-height: 1.2;
+}
+
+.cv-model-price small {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-500);
+    display: block;
+}
+
+/* ── Responsive ─────────────────────────────────── */
+
+@media (max-width: 900px) {
+    .cv-models-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cv-brand-block {
+        margin-top: 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .cv-models-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-model-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cv-model-footer .btn {
+        justify-content: center;
+    }
+
+    .cv-brand-block {
+        margin-top: 40px;
+    }
+}

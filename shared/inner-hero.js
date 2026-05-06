@@ -56,15 +56,15 @@
     const hero = document.getElementById('hero');
     if (!hero) return;
 
-    const heroFrame   = hero.querySelector('.hero-frame');
-    const heroEyebrow = hero.querySelector('.hero-eyebrow');
-    const heroH1Lines = hero.querySelectorAll('.hero h1 span');
-    const heroP       = hero.querySelector('.hero-text');
-    const heroActions = hero.querySelector('.hero-actions');
+    const heroFrame       = hero.querySelector('.hero-frame');
+    const heroBreadcrumbs = hero.querySelector('.hero-breadcrumbs');
+    const heroH1Lines     = hero.querySelectorAll('.hero h1 span');
+    const heroP           = hero.querySelector('.hero-text');
+    const heroActions     = hero.querySelector('.hero-actions');
 
     /* Set initial states */
     gsap.set(heroFrame,             { borderRadius: 48, scale: 0.97, opacity: 0 });
-    gsap.set(heroEyebrow,           { autoAlpha: 0, y: 14 });
+    gsap.set(heroBreadcrumbs,       { autoAlpha: 0, y: 14 });
     gsap.set(heroH1Lines,           { autoAlpha: 0, y: 22 });
     gsap.set([heroP, heroActions],  { autoAlpha: 0, y: 14 });
 
@@ -72,7 +72,7 @@
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.1 });
     tl
         .to(heroFrame,            { borderRadius: 32, scale: 1, opacity: 1, duration: 0.7 })
-        .to(heroEyebrow,          { autoAlpha: 1, y: 0, duration: 0.5 },           '-=0.4')
+        .to(heroBreadcrumbs,      { autoAlpha: 1, y: 0, duration: 0.5 },           '-=0.4')
         .to(heroH1Lines,          { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 }, '-=0.35')
         .to([heroP, heroActions], { autoAlpha: 1, y: 0, duration: 0.5 },           '-=0.35');
 })();

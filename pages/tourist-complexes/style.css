@@ -30,62 +30,7 @@
 }
 
 /* ═══════════════════════════════════════════
-   1) Intro section
-   ═══════════════════════════════════════════ */
-.tc-intro-cols {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    margin-top: 16px;
-}
-
-.tc-intro-col {
-    background: #fff;
-    border: 1px solid var(--ink-200);
-    border-radius: var(--radius-lg);
-    padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
-}
-
-.tc-intro-col:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--blue-200);
-}
-
-.tc-intro-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius);
-    background: var(--grad);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    box-shadow: 0 8px 18px rgba(0, 104, 245, 0.28);
-    flex-shrink: 0;
-}
-
-.tc-intro-col h4 {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--blue-700);
-    margin: 0;
-}
-
-.tc-intro-col p {
-    font-size: 14.5px;
-    color: var(--ink-700);
-    line-height: 1.65;
-    margin: 0;
-}
-
-/* ═══════════════════════════════════════════
-   2) Solutions grid
+   1) Solutions grid
    ═══════════════════════════════════════════ */
 .tc-solutions-grid {
     display: grid;
@@ -345,6 +290,7 @@
 
 .tc-projects-track {
     display: flex;
+    direction: ltr;
     transition: transform 0.55s cubic-bezier(.4,0,.2,1);
     will-change: transform;
 }
@@ -354,6 +300,7 @@
     position: relative;
     aspect-ratio: 16/7;
     overflow: hidden;
+    direction: rtl;
 }
 
 .tc-slide-img {
@@ -437,11 +384,11 @@
 }
 
 .tc-slider-prev {
-    inset-inline-end: -26px;
+    inset-inline-start: -26px;
 }
 
 .tc-slider-next {
-    inset-inline-start: -26px;
+    inset-inline-end: -26px;
 }
 
 /* Dots */
@@ -580,8 +527,8 @@
     .tc-chars-split {
         gap: 40px;
     }
-    .tc-slider-prev { inset-inline-end: 8px; }
-    .tc-slider-next { inset-inline-start: 8px; }
+    .tc-slider-prev { inset-inline-start: 8px; }
+    .tc-slider-next { inset-inline-end: 8px; }
 }
 
 @media (max-width: 900px) {
@@ -591,11 +538,6 @@
     .tourist-complexes .tc-projects,
     .tourist-complexes .tc-chars {
         padding: 72px 0;
-    }
-
-    .tc-intro-cols {
-        grid-template-columns: 1fr;
-        gap: 18px;
     }
 
     .tc-solutions-grid {
@@ -691,6 +633,6 @@
         height: 40px;
         font-size: 14px;
     }
-    .tc-slider-prev { inset-inline-end: 4px; }
-    .tc-slider-next { inset-inline-start: 4px; }
+    .tc-slider-prev { inset-inline-start: 4px; }
+    .tc-slider-next { inset-inline-end: 4px; }
 }
