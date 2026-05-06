@@ -177,7 +177,7 @@
 }
 
 .hero-line-1{
-    font-size: clamp(28px, 5.2vw, 67px);
+    font-size: clamp(45px, 5.2vw, 67px);
     font-weight: 900;
 }
 
@@ -298,8 +298,8 @@
 
 @media (max-width: 640px) {
     .hero h1 { font-size: clamp(24px, 7vw, 35px); line-height: 1.15; }
-    .hero-text { font-size: 14px; line-height: 1.7; padding: 0 4px; }
-    .hero-breadcrumbs { font-size: 11px; margin-bottom: 16px; gap: 8px; }
+    .hero-text { font-size: 18px; line-height: 1.7; padding: 0 4px; }
+    .hero-breadcrumbs { font-size: 18px; margin-bottom: 16px; gap: 8px; }
     .hero-breadcrumbs i { font-size: 9px; }
     .hero-content { padding: 0 22px 40px 22px; }
     .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }

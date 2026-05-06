@@ -51,7 +51,7 @@
 
         /* ── Drawer accordion ── */
         if (drawer) {
-            drawer.querySelectorAll('.drawer-parent').forEach(btn => {
+            drawer.querySelectorAll('.drawer-toggle').forEach(btn => {
                 btn.addEventListener('click', () => btn.closest('.drawer-item').classList.toggle('open'));
             });
         }

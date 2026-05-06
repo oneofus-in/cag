@@ -409,4 +409,8 @@
         width: 100%;
         margin: 0;
     }
+
+    .resort-img--bot {
+        display: none;
+    }
 }

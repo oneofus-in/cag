@@ -311,12 +311,28 @@ ul { list-style: none; }
 /* ── Drawer accordion ── */
 .drawer-item { display: flex; flex-direction: column; border-bottom: 1px solid var(--ink-100); border-radius: 10px; overflow: hidden; }
 .drawer-parent {
-    display: flex; align-items: center; justify-content: space-between;
-    width: 100%; padding: 12px 14px;
+    display: flex; align-items: stretch; justify-content: space-between;
+    width: 100%;
     font-weight: 600; font-size: inherit; font-family: inherit;
-    color: var(--ink-800); background: none; text-align: right; cursor: pointer;
+    color: var(--ink-800); background: none;
 }
-.drawer-parent:hover { background: var(--blue-50); color: var(--blue-700); }
+.drawer-parent-link {
+    flex: 1;
+    padding: 12px 14px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+}
+.drawer-parent-link:hover { background: var(--blue-50); color: var(--blue-700); }
+.drawer-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 16px;
+    background: none; border: 0;
+    color: inherit; cursor: pointer;
+    font: inherit;
+    border-inline-start: 1px solid var(--ink-100);
+}
+.drawer-toggle:hover { background: var(--blue-50); color: var(--blue-700); }
 .drawer-chevron { font-size: 11px; transition: transform .22s ease; }
 .drawer-item.open .drawer-chevron { transform: rotate(180deg); }
 .drawer-sub { display: none; flex-direction: column; background: var(--blue-700); border-radius: 0 0 10px 10px; }
