@@ -257,7 +257,18 @@
    transparent header (same as homepage). */
 .page-top > .hero:first-child { margin-top: -120px; }
 
+/* Inner hero — lower the transparent nav so it sits deeper inside the
+   hero frame (~15% of the visible nav zone, ≈40px). Only applies on
+   inner-hero pages because this file is only loaded there. Reverts to
+   top:0 when the header switches to its scrolled (solid white) state. */
+.header:not(.scrolled) {
+    top: 40px;
+}
+
 @media (max-width: 900px) {
+    /* Inner hero — keep the lowered-nav offset proportional on mobile */
+    .header:not(.scrolled) { top: 30px; }
+
     /* MOBILE HERO — disable pin/scrub. Plain section, full-bleed frame, content visible. */
     .hero { height: auto; min-height: 72svh; min-height: 72vh; }
     .hero-stage { position: relative; height: 72svh; height: 72vh; min-height: 520px; }
