@@ -8,19 +8,11 @@
     background: #fff;
 }
 
-.ft-models-feature {
-    margin-top: 48px;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-}
-
-.ft-models-feature img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
+.ft-split-body {
+    font-size: 15px;
+    color: var(--ink-600);
+    line-height: 1.7;
+    margin: 0;
 }
 
 .ft-models-grid {
