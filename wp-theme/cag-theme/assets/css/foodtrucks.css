@@ -1,0 +1,608 @@
+/* ═══════════════════════════════════════════════════
+   Food Trucks Page — pages/foodtrucks/style.css
+═══════════════════════════════════════════════════ */
+
+/* ── Models Section ─────────────────────────────── */
+
+.ft-models-section {
+    background: #fff;
+}
+
+.ft-split-body {
+    font-size: 15px;
+    color: var(--ink-600);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.ft-models-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+}
+
+.ft-model-card {
+    position: relative;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid var(--ink-100);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+}
+
+.ft-model-card::before {
+    content: '';
+    position: absolute;
+    top: 0; inset-inline-start: 0; inset-inline-end: 0;
+    height: 4px;
+    background: var(--grad);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+    z-index: 2;
+}
+
+.ft-model-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--blue-200);
+}
+
+.ft-model-card:hover::before {
+    transform: scaleX(1);
+}
+
+.ft-model-img-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.ft-model-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.ft-model-badges {
+    position: absolute;
+    top: 14px;
+    inset-inline-start: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ft-model-badge {
+    background: var(--grad);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.ft-model-badge--premium {
+    background: var(--grad);
+}
+
+.ft-model-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 22px 24px;
+    flex: 1;
+}
+
+.ft-model-tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--blue-500);
+    background: var(--blue-50);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.ft-model-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue-900);
+    margin: 0;
+}
+
+.ft-model-desc {
+    font-size: 14.5px;
+    color: var(--ink-600);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.ft-model-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.ft-spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    background: var(--blue-50);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.ft-spec i {
+    font-size: 18px;
+    color: var(--blue-500);
+}
+
+.ft-spec span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-700);
+}
+
+.ft-model-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-100);
+}
+
+.ft-model-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue-700);
+}
+
+.ft-model-price small {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-500);
+}
+
+/* ── Features Section ───────────────────────────── */
+
+.ft-features-section {
+    background: var(--blue-50);
+}
+
+.ft-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 56px;
+}
+
+.ft-feature {
+    background: #fff;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+}
+
+.ft-feature:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--blue-200);
+}
+
+.ft-feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius);
+    background: var(--grad);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: var(--shadow-blue);
+    flex-shrink: 0;
+}
+
+.ft-feature h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--blue-700);
+    margin: 0;
+}
+
+.ft-feature p {
+    font-size: 14.5px;
+    color: var(--ink-700);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ── Split Layout (shared) ──────────────────────── */
+
+.ft-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.ft-split--reverse {
+    direction: ltr;
+}
+
+.ft-split--reverse .ft-split-content,
+.ft-split--reverse .ft-split-media {
+    direction: rtl;
+}
+
+.ft-split-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    display: block;
+    box-shadow: var(--shadow-lg);
+}
+
+.ft-split-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ft-split-content .btn {
+    align-self: flex-start;
+}
+
+.ft-split-lead {
+    font-size: 17px;
+    color: var(--ink-700);
+    line-height: 1.75;
+    margin: 0;
+}
+
+.ft-split-sub {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue-500);
+    margin: -8px 0;
+}
+
+/* ── Businesses Section ─────────────────────────── */
+
+.ft-businesses-section {
+    background: #fff;
+}
+
+/* ── Municipalities Section ─────────────────────── */
+
+.ft-municipalities-section {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.bullets--light li {
+    color: #fff;
+}
+
+.bullets--light li i {
+    background: rgba(255, 255, 255, .2);
+    color: #fff;
+}
+
+/* ── Complementary Section ──────────────────────── */
+
+.ft-complementary-section {
+    background: var(--blue-50);
+}
+
+.ft-use-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ft-use-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue-700);
+    background: #fff;
+    border: 1.5px solid var(--blue-200);
+    padding: 7px 16px;
+    border-radius: 999px;
+    transition: background var(--tr), border-color var(--tr), color var(--tr);
+}
+
+.ft-use-tag:hover {
+    background: var(--blue-700);
+    color: #fff;
+    border-color: var(--blue-700);
+}
+
+/* ── Gallery Carousel ────────────────────────────── */
+
+.ft-gallery-section {
+    background: #fff;
+}
+
+.ft-carousel-wrap {
+    position: relative;
+    margin-top: 56px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.ft-carousel {
+    overflow: hidden;
+}
+
+.ft-carousel-track {
+    display: flex;
+    gap: 16px;
+    direction: ltr;
+    transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+    will-change: transform;
+    user-select: none;
+    cursor: grab;
+}
+
+.ft-carousel-track.is-dragging {
+    transition: none;
+    cursor: grabbing;
+}
+
+.ft-carousel-slide {
+    flex: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    aspect-ratio: 4 / 3;
+}
+
+.ft-carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+}
+
+.ft-carousel-slide:hover img {
+    transform: scale(1.06);
+}
+
+.ft-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 28, 56, .4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--tr);
+    color: #fff;
+    font-size: 26px;
+}
+
+.ft-carousel-slide:hover .ft-slide-overlay {
+    opacity: 1;
+}
+
+.ft-car-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+    color: var(--blue-900);
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--tr), color var(--tr), box-shadow var(--tr), opacity var(--tr);
+}
+
+.ft-car-arrow:hover {
+    background: var(--blue-700);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}
+
+.ft-car-arrow:disabled {
+    opacity: .3;
+    pointer-events: none;
+}
+
+.ft-car-arrow--prev { right: 16px; }
+.ft-car-arrow--next { left: 16px; }
+
+.ft-car-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.ft-car-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--blue-200);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background var(--tr), width var(--tr);
+}
+
+.ft-car-dot.active {
+    background: var(--blue-700);
+    width: 24px;
+}
+
+/* ── Lightbox ──────────────────────────────────── */
+
+.ft-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(0, 0, 0, .92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.ft-lightbox.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.ft-lb-img-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: min(90vw, 1100px);
+    max-height: 85vh;
+}
+
+.ft-lb-img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, .6);
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.ft-lb-close {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--tr);
+    backdrop-filter: blur(4px);
+}
+
+.ft-lb-close:hover { background: rgba(255, 255, 255, .3); }
+
+.ft-lb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--tr);
+    backdrop-filter: blur(4px);
+}
+
+.ft-lb-arrow:hover { background: rgba(255, 255, 255, .3); }
+
+.ft-lb-prev { right: 20px; }
+.ft-lb-next { left: 20px; }
+
+.ft-lb-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, .65);
+    font-size: 14px;
+    font-weight: 500;
+    direction: ltr;
+    white-space: nowrap;
+}
+
+/* ── Responsive ─────────────────────────────────── */
+
+
+@media (max-width: 900px) {
+    .ft-models-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ft-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ft-split {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .ft-split--reverse {
+        direction: rtl;
+    }
+
+    .ft-split--reverse .ft-split-media {
+        order: -1;
+    }
+
+    .ft-municipalities-section {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .ft-models-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ft-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ft-model-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ft-municipalities-section {
+        padding: 64px 0;
+    }
+}

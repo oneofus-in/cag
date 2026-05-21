@@ -1,0 +1,684 @@
+/* ═══════════════════════════════════════════
+   הדגמים שלנו (Local Models) — page-specific
+   Uses shared blue design system variables
+   ═══════════════════════════════════════════ */
+.lm-features{
+    display: none;
+}
+/* ═══ Eyebrow ═══ */
+.local-models .lm-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--blue-600);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding: 6px 14px;
+    background: var(--blue-50);
+    border-radius: 999px;
+}
+
+/* h2 / h3 / h4 colors */
+.local-models h2,
+.local-models h3,
+.local-models h4 {
+    color: var(--ink-900);
+}
+
+/* ═══ Section base padding ═══ */
+.local-models .lm-models-section,
+.local-models .lm-features,
+.local-models .lm-process,
+.local-models .lm-custom,
+.local-models .lm-faq {
+    padding: 100px 0;
+    position: relative;
+}
+
+.local-models .lm-features {
+    background: var(--blue-50);
+}
+
+.local-models .lm-faq {
+    background: var(--blue-50);
+}
+
+/* ═══ Image placeholders ═══ */
+.local-models .img-placeholder {
+    background: var(--blue-50);
+    border: 2px dashed var(--blue-200);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-500);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ═══ Buttons ═══ */
+.lm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 30px;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 15px;
+    transition: var(--tr);
+    white-space: nowrap;
+    line-height: 1;
+    font-family: var(--font);
+    cursor: pointer;
+    border: none;
+}
+.lm-btn i { transition: transform var(--tr); font-size: 13px; }
+.lm-btn:hover i { transform: translateX(-3px); }
+
+.lm-btn-primary {
+    background: var(--grad);
+    color: #fff;
+    box-shadow: var(--shadow-blue);
+}
+.lm-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0, 104, 245, 0.42);
+}
+
+.lm-btn-white {
+    background: #fff;
+    color: var(--blue-700);
+    box-shadow: var(--shadow-sm);
+}
+.lm-btn-white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.lm-btn-block {
+    width: 100%;
+    justify-content: center;
+    padding-block: 18px;
+    font-size: 15.5px;
+}
+
+/* ═══════════════════════════════════════════
+   1) Model rows
+   ═══════════════════════════════════════════ */
+.lm-models-list {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+.lm-model {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.lm-model.is-reverse {
+    direction: ltr;
+}
+.lm-model.is-reverse > * {
+    direction: rtl;
+}
+
+.lm-model-media {
+    display: flex;
+}
+
+.lm-model-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    display: block;
+}
+
+.lm-model-card {
+    background: #fff;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.lm-model-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 4px;
+}
+
+.lm-model-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--grad);
+    color: #fff;
+    font-weight: 800;
+    font-size: 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 6px 14px rgba(0, 104, 245, 0.32);
+}
+
+.lm-model-tag {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue-700);
+    background: var(--blue-100);
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.lm-model-card h3 {
+    font-size: clamp(24px, 2.6vw, 30px);
+    font-weight: 800;
+    color: var(--ink-900);
+    margin: 0;
+    line-height: 1.15;
+}
+
+.lm-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--blue-600);
+    margin: 0;
+    line-height: 1;
+}
+
+.lm-price small {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-500);
+    margin-inline-start: 4px;
+}
+
+.lm-desc {
+    color: var(--ink-700);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ─── Spec icons row ─── */
+.lm-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 6px 0 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.lm-specs li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 8px;
+    background: var(--blue-50);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: background var(--tr), transform var(--tr);
+}
+
+.lm-specs li:hover {
+    background: var(--blue-100);
+    transform: translateY(-2px);
+}
+
+.lm-specs li i {
+    font-size: 20px;
+    color: var(--blue-500);
+}
+
+.lm-specs li span {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-700);
+    line-height: 1.2;
+}
+
+/* ═══════════════════════════════════════════
+   2) Common features grid
+   ═══════════════════════════════════════════ */
+.lm-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.lm-feature {
+    background: #fff;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+}
+
+.lm-feature:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--blue-200);
+}
+
+.lm-feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius);
+    background: var(--grad);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 8px 18px rgba(0, 104, 245, 0.28);
+}
+
+.lm-feature h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--blue-700);
+    margin: 0;
+}
+
+.lm-feature p {
+    font-size: 14.5px;
+    color: var(--ink-700);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ═══════════════════════════════════════════
+   3) Custom Made section
+   ═══════════════════════════════════════════ */
+.local-models .lm-custom {
+    background: linear-gradient(180deg, #fff 0%, var(--blue-50) 100%);
+    overflow: hidden;
+}
+
+.lm-custom-pattern {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    width: 520px;
+    height: 520px;
+    pointer-events: none;
+    opacity: .55;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(0,104,245,.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,104,245,.18) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(225deg, #000 0%, transparent 75%);
+    -webkit-mask-image: linear-gradient(225deg, #000 0%, transparent 75%);
+}
+
+.lm-custom-frame {
+    position: relative;
+    z-index: 1;
+    padding: 64px 56px 56px;
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(0,104,245,0.10);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 30px 80px rgba(12,48,88,0.06);
+}
+
+/* Architectural corner brackets */
+.lm-custom-corner {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-color: var(--blue-500);
+    border-style: solid;
+    pointer-events: none;
+    z-index: 2;
+}
+.lm-cc-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.lm-cc-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.lm-cc-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.lm-cc-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+/* Blueprint stamp */
+.lm-custom-stamp {
+    position: absolute;
+    top: 22px;
+    inset-inline-start: 28px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--blue-400);
+    padding: 5px 10px;
+    border: 1px dashed var(--blue-300);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.6);
+    z-index: 2;
+}
+
+/* Heading block */
+.lm-custom-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+}
+
+.lm-custom-head .lm-eyebrow {
+    margin-bottom: 18px;
+}
+
+.lm-custom-head h2 {
+    font-size: clamp(32px, 4.4vw, 52px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+}
+
+.lm-custom-head h2 em {
+    font-style: normal;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.lm-custom-head p {
+    color: var(--ink-700);
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Specs grid */
+.lm-custom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.lm-spec {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    padding: 32px 26px 26px;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+    overflow: hidden;
+}
+
+.lm-spec::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--grad);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .45s ease;
+}
+
+.lm-spec:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(0,104,245,0.14);
+    border-color: transparent;
+}
+
+.lm-spec:hover::before {
+    transform: scaleX(1);
+}
+
+.lm-spec-num {
+    position: absolute;
+    top: 18px;
+    inset-inline-end: 20px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--blue-300);
+}
+
+.lm-spec-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    border-radius: var(--radius);
+    font-size: 22px;
+    margin-bottom: 18px;
+    transition: background var(--tr), color var(--tr), transform var(--tr);
+}
+
+.lm-spec:hover .lm-spec-icon {
+    background: var(--grad);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.lm-spec h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink-900);
+    margin: 0 0 8px;
+}
+
+.lm-spec p {
+    font-size: 14.5px;
+    color: var(--ink-600);
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+.lm-spec-range {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue-700);
+    background: var(--blue-50);
+    padding: 6px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+}
+
+/* Bottom CTA */
+.lm-custom-cta {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.lm-custom-cta .lm-btn {
+    padding: 20px 36px;
+    font-size: 16px;
+}
+
+.lm-custom-cta .lm-btn i:first-child {
+    transition: none;
+    transform: none;
+}
+
+.lm-custom-cta .lm-btn:hover i:first-child {
+    transform: rotate(-12deg);
+}
+
+.lm-custom-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-500);
+    font-weight: 500;
+}
+
+.lm-custom-meta i {
+    color: var(--blue-500);
+}
+
+/* ═══════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+    .lm-model {
+        gap: 28px;
+    }
+    .lm-model-card {
+        padding: 26px;
+    }
+    .lm-custom-frame {
+        padding: 56px 36px 44px;
+    }
+    .lm-custom-grid {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 900px) {
+    .local-models .lm-models-section,
+    .local-models .lm-features,
+    .local-models .lm-process,
+    .local-models .lm-custom,
+    .local-models .lm-faq {
+        padding: 72px 0;
+    }
+
+    .lm-model,
+    .lm-model.is-reverse {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        direction: rtl;
+    }
+    .lm-model.is-reverse > * {
+        direction: rtl;
+    }
+    .lm-model-media { order: -1; }
+
+    .lm-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lm-custom-frame {
+        padding: 48px 24px 36px;
+    }
+    .lm-custom-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .lm-custom-pattern {
+        width: 320px;
+        height: 320px;
+    }
+    .lm-custom-stamp {
+        font-size: 9.5px;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 640px) {
+    .local-models .lm-models-section,
+    .local-models .lm-features,
+    .local-models .lm-process,
+    .local-models .lm-custom,
+    .local-models .lm-faq {
+        padding: 56px 0;
+    }
+
+    .lm-custom-frame {
+        padding: 40px 18px 32px;
+    }
+    .lm-custom-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .lm-custom-corner {
+        width: 24px;
+        height: 24px;
+    }
+    .lm-custom-stamp {
+        position: static;
+        display: inline-block;
+        margin-bottom: 18px;
+    }
+    .lm-custom-head {
+        margin-bottom: 36px;
+    }
+    .lm-spec {
+        padding: 26px 22px 22px;
+    }
+    .lm-custom-cta .lm-btn {
+        padding: 18px 24px;
+        font-size: 14.5px;
+    }
+
+    .lm-models-list {
+        gap: 40px;
+    }
+
+    .lm-model-card {
+        padding: 22px;
+    }
+
+    .lm-model-card h3 {
+        font-size: 22px;
+    }
+
+    .lm-price {
+        font-size: 20px;
+    }
+
+    .lm-specs {
+        gap: 8px;
+    }
+    .lm-specs li {
+        padding: 12px 4px;
+    }
+    .lm-specs li i {
+        font-size: 18px;
+    }
+    .lm-specs li span {
+        font-size: 12px;
+    }
+
+    .lm-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lm-feature {
+        padding: 22px 20px;
+    }
+
+    .lm-collage-bottom {
+        margin-inline-start: 0;
+    }
+
+    .lm-btn {
+        padding: 16px 22px;
+        font-size: 14.5px;
+    }
+}

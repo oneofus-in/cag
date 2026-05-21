@@ -1,0 +1,424 @@
+/* ═══════════════════════════════════════════
+   חניוני קרוואנים (Caravan Camparks) — page-specific
+   Uses shared blue design system variables
+   ═══════════════════════════════════════════ */
+
+.caravan-camparks .cc-intro,
+.caravan-camparks .cc-list-section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.caravan-camparks .cc-list-section {
+    background: var(--ink-50);
+}
+
+.caravan-camparks h2,
+.caravan-camparks h3,
+.caravan-camparks h4 {
+    color: var(--ink-900);
+}
+
+/* ═══════════════════════════════════════════
+   1) Intro block
+   ═══════════════════════════════════════════ */
+.cc-intro-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.cc-intro-badge {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 6px solid #fff;
+}
+
+.cc-intro-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cc-intro-stamp {
+    position: absolute;
+    bottom: 12px;
+    inset-inline-start: 50%;
+    transform: translateX(50%);
+    background: var(--blue-600);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.25;
+    padding: 10px 18px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 6px 18px rgba(0, 104, 245, 0.32);
+}
+
+.cc-intro-text h2 {
+    margin: 0 0 18px;
+}
+
+.cc-intro-text p {
+    color: var(--ink-700);
+    font-size: 16px;
+    line-height: 1.75;
+    margin: 0 0 14px;
+}
+
+.cc-intro-note {
+    border-inline-start: 4px solid var(--blue-500);
+    padding: 14px 18px;
+    background: var(--blue-50);
+    border-radius: var(--radius);
+    margin-top: 22px !important;
+    color: var(--ink-800) !important;
+}
+
+/* ═══════════════════════════════════════════
+   2) Campark rows
+   ═══════════════════════════════════════════ */
+.cc-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: stretch;
+    background: #fff;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 28px;
+    margin-bottom: 36px;
+    transition: box-shadow var(--tr), transform var(--tr);
+}
+
+.cc-row:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.cc-row.is-reverse {
+    direction: ltr;
+}
+
+.cc-row.is-reverse > * {
+    direction: rtl;
+}
+
+/* Media side — bulletproof responsive embed (padding-bottom hack) */
+.cc-row-media {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; /* 4:3 ratio */
+    height: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--ink-100);
+}
+
+.cc-row-media iframe,
+.cc-row-media img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text side */
+.cc-row-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px 4px;
+}
+
+.cc-row-text h3 {
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 800;
+    color: var(--blue-700);
+    line-height: 1.2;
+    margin: 0 0 4px;
+}
+
+.cc-row-text p {
+    color: var(--ink-700);
+    font-size: 15.5px;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.cc-subtitle {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--ink-900);
+    margin: 12px 0 4px;
+}
+
+/* Bullet lists */
+.cc-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cc-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--ink-700);
+    font-size: 14.5px;
+    line-height: 1.55;
+}
+
+.cc-bullets li i {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.cc-bullets-inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+.cc-bullets-inline li {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-800);
+}
+
+/* Meta block (contact info, prices) */
+.cc-meta {
+    color: var(--ink-500);
+    font-size: 14px;
+    margin-top: 6px !important;
+}
+
+.cc-meta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 18px;
+    background: var(--blue-50);
+    border-radius: var(--radius);
+    margin-top: 6px !important;
+    font-size: 14.5px !important;
+    color: var(--ink-800) !important;
+}
+
+.cc-meta-block span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cc-meta-block i {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--blue-600);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 2px 6px rgba(0, 104, 245, 0.15);
+    flex-shrink: 0;
+}
+
+/* CTA */
+.cc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: var(--grad);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14.5px;
+    box-shadow: var(--shadow-blue);
+    transition: var(--tr);
+}
+
+.cc-cta i {
+    font-size: 12px;
+    transition: transform var(--tr);
+}
+
+.cc-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(0, 104, 245, 0.42);
+}
+
+.cc-cta:hover i {
+    transform: translateX(-3px);
+}
+
+/* ═══════════════════════════════════════════
+   3) Closing block
+   ═══════════════════════════════════════════ */
+.cc-closing {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+    padding: 32px;
+    background: #fff;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.cc-closing-badge {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fff;
+    box-shadow: var(--shadow-md);
+}
+
+.cc-closing-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cc-closing-text p {
+    color: var(--ink-700);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin: 0 0 12px;
+}
+
+/* ═══════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+    .cc-row {
+        gap: 32px;
+        padding: 22px;
+    }
+    .cc-intro-grid {
+        gap: 40px;
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .caravan-camparks .cc-intro,
+    .caravan-camparks .cc-list-section {
+        padding: 72px 0;
+    }
+
+    .cc-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+        justify-items: center;
+    }
+    .cc-intro-badge {
+        width: 220px;
+        max-width: 100%;
+    }
+    .cc-intro-text {
+        text-align: right;
+    }
+
+    .cc-row,
+    .cc-row.is-reverse {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        direction: rtl;
+    }
+    .cc-row.is-reverse > * {
+        direction: rtl;
+    }
+    .cc-row-media {
+        order: -1;
+        padding-bottom: 62.5%; /* 16:10 on mobile */
+    }
+
+    .cc-closing {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 24px;
+        justify-items: center;
+    }
+    .cc-closing-badge {
+        width: 180px;
+    }
+    .cc-closing-text {
+        text-align: right;
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .caravan-camparks .cc-intro,
+    .caravan-camparks .cc-list-section {
+        padding: 56px 0;
+    }
+
+    .cc-row {
+        padding: 18px;
+        margin-bottom: 24px;
+    }
+
+    .cc-row-media {
+        padding-bottom: 66%;
+    }
+
+    .cc-row-text h3 {
+        font-size: 20px;
+    }
+
+    .cc-row-text p {
+        font-size: 14.5px;
+    }
+
+    .cc-intro-text p {
+        font-size: 15px;
+    }
+
+    .cc-meta-block {
+        padding: 14px 14px;
+        font-size: 13.5px !important;
+    }
+
+    .cc-cta {
+        padding: 12px 18px;
+        font-size: 13.5px;
+    }
+
+    .cc-closing {
+        padding: 22px;
+    }
+}
