@@ -415,6 +415,30 @@
     border-radius: var(--radius-sm);
     border-right: 3px solid var(--blue-500);
 }
+a.model-price {
+    text-decoration: none;
+    color: var(--blue-700);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--tr), border-color var(--tr), color var(--tr), transform var(--tr), box-shadow var(--tr);
+}
+a.model-price:hover {
+    background: var(--blue-100);
+    border-color: var(--blue-700);
+    color: var(--blue-900);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 80, 204, 0.12);
+}
+.model-details-link {
+    display: inline-block;
+    margin-top: auto;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue-600);
+    text-decoration: none;
+    transition: color var(--tr);
+}
+.model-details-link:hover { color: var(--blue-800); text-decoration: underline; }
 .price-from {
     font-size: 12px;
     color: var(--ink-400);
@@ -675,6 +699,20 @@
     line-height: 1.8;
     margin-bottom: 20px;
 }
+/* The panel's secondary button uses .btn-ghost (white text/border, built for
+   dark backgrounds) but the panel body is light, so it's invisible. Restyle it
+   here to match .btn-outline. Scoped to the panel — the hero/authorities ghost
+   buttons (on dark backgrounds) are untouched. */
+.security-panel-body .btn-ghost {
+    background: transparent;
+    color: var(--blue-600);
+    border-color: var(--blue-200);
+    backdrop-filter: none;
+}
+.security-panel-body .btn-ghost:hover {
+    background: var(--blue-50);
+    border-color: var(--blue-400);
+}
 .security-features {
     display: flex;
     flex-direction: column;
@@ -751,13 +789,15 @@
     background: var(--ink-50);
     border: 1px solid var(--ink-100);
     transition: var(--tr);
+    display: flex;
+    flex-direction: column;
 }
 .w-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
     border-color: var(--blue-100);
 }
-.w-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.w-card img { width: 100%; height: 180px; object-fit: cover; display: block; object-position: center; }
 .w-card span {
     display: block;
     padding: 12px 14px 4px;
@@ -771,6 +811,8 @@
     font-weight: 800;
     color: var(--blue-500);
     letter-spacing: -0.01em;
+    margin-top: auto;
+    display: block;
 }
 
 /* =========================================

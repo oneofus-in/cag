@@ -32,6 +32,7 @@
 - ✅ **Dynamic forms:** footer + mini-contact forms swapped to Contact Form 7 (Make webhook integration deferred — Itamar, later in project)
 - ✅ **Dynamic template parts:** FAQ + mini-contact text from ACF options page; inner hero centralized into one part (Yoast breadcrumb + page title + page excerpt, badge removed) and wired into all 12 page templates
 - ✅ **Dynamic page content — about-us:** per-page ACF (`inc/acf-about-us.php`, `au_rows` repeater, auto-zigzag layout, fallback to original rows). First per-page template — the pattern for the rest.
+- ✅ **Model CPT** (`model` post type, `/listings/<slug>`): `single-model.php` fully built — gallery+lightbox, brand logo, price/quote box, editable spec accordion repeater (`m_spec_groups`, WYSIWYG content), YouTube embed, docs link, related models, mini-contact, FAQ. ACF fields in `acf-json/group_cag_models.json`. Mobile spec rows: column layout with centered text + `#0050cc` divider between label and value.
 
 **Remaining inner pages to port** (0 of 13 left — all inner pages done. about-us + Batches 1–5. `blog` shipped as native WP posts, not a static port):
 
@@ -48,30 +49,38 @@
 - [x] `tourist-complexes`  — ported (Tier 1, Batch 2)
 - [x] `videos`             — ported (Batch 4; template basename `videos-page` — see log)
 
-All static pages are ported. The active phase is now **making page content editable via per-page ACF** (the about-us pattern).
+All static pages are ported. **All 13 inner pages + the homepage are now ACF-dynamic. Per-page ACF phase: COMPLETE (2026-05-24).**
 
-**Remaining — make page content editable (per-page ACF field groups; canonical example = `inc/acf-about-us.php`):**
+**Remaining — make page content editable (per-page ACF field groups).** ⚠️ **Workflow changed 2026-05-24 — field groups are now UI-managed via ACF Local JSON, not PHP.** Create/edit each page's group in the ACF admin UI; ACF auto-saves it to `wp-theme/cag-theme/acf-json/group_*.json` (version-controlled, deploys with the theme). Do **not** create new `inc/acf-{template}.php` files. Canonical JSON example = `acf-json/group_cag_kachol_lavan.json`. See the 2026-05-24 log entry for the rationale + the one-time Sync step.
 
 - [x] `about-us`          — done (the pattern: per-template field group + repeater, auto-zigzag, fallback)
-- [ ] `kachol-lavan`
-- [ ] `foodtrucks`
-- [ ] `security-living`
-- [ ] `security-trailers`
-- [ ] `caravan-camparks`
-- [ ] `tourist-complexes`
-- [ ] `accessories`
-- [ ] `caravans`
-- [ ] `local-models`
-- [ ] `contact-us`        — mostly contact-method cards + hours/map; much may already live on the options page (reuse `cag_opt()` rather than new fields)
-- [ ] `videos-page`       — YouTube carousels → likely a repeater of video IDs; real IDs still needed (all currently point to placeholder `OkAlWJ4C_Fs`)
-- [ ] `front-page.php`    — homepage, the biggest: models, about, foodtrack, authorities, security, catalog tabs, articles tabs, social marquee
+- [x] `kachol-lavan`      — done (2 repeaters: model cards + auto-zigzag split sections w/ nested FA-icon repeater; 2 hidden sections removed)
+- [x] `foodtrucks`        — done (2026-05-24; ACF JSON `group_cag_foodtrucks.json`)
+- [x] `security-living`   — done (gallery repeater + carousel; use-case cards repeater; intro split + bullets repeater + CTA; ACF JSON `group_cag_security_living.json`)
+- [x] `security-trailers` — done (same structure as security-living; gallery repeater + carousel; use-case cards repeater; intro split + bullets repeater + CTA; ACF JSON `group_cag_security_trailers.json`)
+- [x] `caravan-camparks`  — done (2-tab JSON: intro section with badge+stamp+split heading+wysiwyg; `cc_campsites` repeater with radio media_type, map_query/image conditional, wysiwyg body, nested meta repeater, CTA link; auto-zigzag by index; closing stays hardcoded)
+- [x] `tourist-complexes` — done (5 sections: intro, projects slider, solutions, models w/ nested specs, why-us checklist; new `cag_field()` helper)
+- [x] `accessories`       — done (2026-05-24; ACF JSON `group_cag_accessories.json` — relationship field pulling from `model` CPT)
+- [x] `caravans`           — done (2026-05-24; ACF JSON `group_cag_caravans.json`)
+- [x] `local-models`      — done (2026-05-24; ACF JSON `group_cag_local_models.json` — 3-tab JSON: models page-repeater, features repeater, Custom Made specs repeater + all headings/CTAs editable)
+- [x] `contact-us`        — done (no new ACF group; all values wired from הגדרות אתר options via `cag_opt()`: phone, WhatsApp, email, address, hours repeater, map embed URL built from address)
+- [x] `videos-page`       — done (3-tab JSON: each tab has heading+highlight+intro+videos repeater; thumbnail URL auto-built from video_id; real IDs still placeholder — Itamar must enter them)
+- [x] `front-page.php`    — done (homepage: models, about, foodtrack, authorities, security, catalog tabs, articles tabs, social marquee)
 
 One page at a time, with verification between (Itamar's cadence). Ask which page is next.
 
 **Also outstanding (not the per-page ACF phase):**
 
+- ✅ **RESOLVED — Model CPT built + model card migration done (2026-05-24).** The `model` CPT is live at `/listings/<slug>`. Single template `single-model.php` complete. All pages that hardcoded model cards (`caravans.php`, `local-models.php`, front-page repeaters, kachol-lavan `kl_models`, tourist-complexes `tc_models`) now query the CPT. `.cv-model-card` markup reused across all.
 - Make webhook for the CF7 forms — deferred (Itamar, later in project).
-- Real content still placeholder: video IDs, social links, blog/article content, some reused photos.
+- Real content: video IDs ✅ done · photos ✅ done · social links ✅ done · blog/article content 🔄 in progress.
+- ⬜ **SEO — match WP page slugs to the OLD live site's URLs (don't lose rankings).** The WP pages were created with Hebrew titles, so WordPress auto-generated **URL-encoded Hebrew slugs** that almost certainly **don't match** the URLs Google has indexed for cag.co.il. Before/at launch:
+  1. **Pull the real indexed URLs** of the current live site — Google Search Console (Pages/Coverage), the live `sitemap.xml`, or a `site:cag.co.il` search. Don't trust the prototype's `/cag/pages/{slug}/` dev paths; confirm the actual production structure (flat `/foodtrucks/` vs `/pages/foodtrucks/` vs Hebrew slugs).
+  2. **Set each WP page slug to match** its old URL exactly (wp-admin → Pages → Edit → Permalink). The template stays attached regardless of slug (Template Name approach), so changing slugs is safe.
+  3. **301-redirect anything that can't match 1:1** — old `/pages/{slug}/` → new `/{slug}/`, the blog post URLs (now native WP posts), and the model pages (CPT base is `/listings/<slug>` — check whether the old site used a different path for individual models). Use a redirects plugin (e.g. Redirection) or `.htaccess`.
+  4. **Re-submit the new sitemap** in Search Console after go-live and watch Coverage for 404s.
+
+  Slug checklist (one per ported page — confirm each against the live URL): `accessories` · `blog` · `caravan-camparks` · `caravans` · `contact-us` · `foodtrucks` · `kachol-lavan` · `local-models` · `security-living` · `security-trailers` · `tourist-complexes` · `videos` · `about-us`. ⚠️ Itamar to confirm the old site's exact URL structure first, then set slugs + redirects.
 - End-state skill (write at the very end — see bottom of this doc).
 
 ---
@@ -199,6 +208,7 @@ Tell him:
 - **Static URLs `/cag/pages/X.html` are sometimes broken** in the static site (file doesn't exist). Map to the closest WP equivalent or leave as `#`.
 - **Some `uploads/Images/{subfolder}/` images aren't yet in the theme.** Copy as needed when porting a page that references them.
 - **The static site's `<div id="site-faq"></div>` etc.** were client-side injected by `shared/components.js`. In WP, **always** replace with `get_template_part( 'template-parts/{x}/{x}' )` — never load `components.js`, it's obsolete in WP.
+- **`wp_get_attachment_image()` adds `width`/`height` HTML attributes that break CSS `aspect-ratio` on the `<img>` itself.** WordPress always injects the attachment's actual pixel dimensions as `width="…" height="…"` on the `<img>` tag. This gives the image an intrinsic ratio that overrides any `aspect-ratio` rule written on the `<img>`. **Fix:** put `aspect-ratio` on the *container* element (e.g. `.lm-model-media { aspect-ratio: 4/3; overflow: hidden; border-radius: … }`), and set the `<img>` to `width:100%; height:100%; object-fit:cover`. The container's CSS-defined shape holds regardless of the uploaded image's natural dimensions. Applied to `local-models.css` on 2026-05-24.
 - **`script.js` is enqueued globally** and contains both global behaviors (drawer toggle, header scroll) and homepage-specific behaviors (GSAP pin). The defensive null-checks (`if (heroVideo) { ... }`) prevent errors on inner pages — don't refactor it without testing.
 - **CSS selectors like `.about-us .au-row-section`** (page-name-prefixed) keep working because of the `cag_body_class_from_template` filter. The body class is derived from the template basename, not the page slug — so the CSS still matches even when the page slug is Hebrew.
 - **ACF field type for links — project convention (Itamar's rule, applies to future projects too):** use the **`url`** field *only* for links that always point **outside the site** (external — e.g. the Make webhook endpoint, social profiles). For **every other link** — internal pages, or links the editor might point either way — use the **`link`** field (the client picks a page or pastes a URL and sets the target). Read link fields through the `cag_link_url()` / `cag_link_target()` helpers (handle return_format array/url + ACF-inactive). Applied here: the footer's accessibility / privacy / address(Waze) links were switched from `url` → `link`; the Make webhook stays a `url` field (external). Don't default to `url` fields for convenience — that's the trap this rule prevents.
@@ -209,6 +219,102 @@ Tell him:
 
 > Append entries here as we work. Newest at the top. Date format: YYYY-MM-DD.
 
+### 2026-05-24 — Content + CPT migration wrap-up
+
+- **Video IDs** ✅ — real YouTube IDs entered in the videos-page repeaters.
+- **Photos** ✅ — placeholder/reused photos replaced.
+- **Blog/article content** 🔄 — in progress.
+- **CPT model card migration** ✅ — all pages that hardcoded model cards (`local-models`, front-page, kachol-lavan, tourist-complexes`) now query the `model` CPT. `.cv-model-card` markup reused.
+- **Social links** ✅ — `social_links` repeater (platform icons + URLs) and `social_posts` repeater (marquee images) populated on the front-page ACF tab "רשתות חברתיות".
+
+---
+
+### 2026-05-24 — Per-page ACF, page 13: caravans. All 13 inner pages + homepage now ACF-dynamic. Phase complete.
+
+**caravans** — ACF JSON `group_cag_caravans.json`. Per-page ACF phase is now fully complete across all pages.
+
+---
+
+### 2026-05-24 — Per-page ACF, pages 11–12: accessories + local-models. 12 of 13 inner pages now ACF-dynamic.
+
+**accessories** — field group `group_cag_accessories.json` (already existed as a single `acc_items` relationship field pulling from the `model` CPT; no new content added this session — the group was already in place from the CPT phase). Marked complete.
+
+**local-models** — 3-tab ACF JSON (`group_cag_local_models.json`). Tab 1 "דגמים": `lm_models` page-level repeater (image, tag, name, price + note, desc, nested `specs` repeater of FA-icon + value, CTA link). Tab 2 "מאפיינים משותפים": `lm_feat_heading` + `lm_feat_subtitle` + `lm_features` repeater (icon/title/desc). Tab 3 "Custom Made": eyebrow, split heading (`lm_custom_heading` + `lm_custom_heading_em`), subtitle, stamp, `lm_custom_specs` repeater (icon/title/desc/range), CTA link, meta text. All section headings and CTAs fully editable. `is-reverse` alternation, model numbers, spec numbers (01/02…), and animation delays are all auto-derived in the template — the editor never manages layout.
+
+**Gotcha found (logged in Common Gotchas below):** `wp_get_attachment_image()` adds explicit `width` and `height` HTML attributes to `<img>` elements. These intrinsic dimensions override CSS `aspect-ratio` on the image itself. **Fix pattern:** move `aspect-ratio` to the *container* (`overflow: hidden`; `border-radius` there too), and let the image do only `width:100%; height:100%; object-fit:cover`. This ensures the CSS controls the shape regardless of the uploaded image's natural dimensions.
+
+---
+
+### 2026-05-24 — Foodtrucks ACF complete + Model CPT single-listing page fully built.
+
+**foodtrucks** — per-page ACF content is now fully dynamic (`acf-json/group_cag_foodtrucks.json`). All sections editable via ACF repeaters; fallback to original hardcoded markup when fields are empty. Confirmed working in browser. This completes 9 of 13 inner pages in the ACF phase.
+
+**Model CPT + `single-model.php`** — the `model` post type (`/listings/<slug>`) is fully built end-to-end:
+- **Gallery + lightbox:** ACF `m_gallery` (normalizes raw IDs or ACF image objects), main image + thumbnail strip, JS-driven lightbox with prev/next/counter (`assets/js/single-model.js`).
+- **Brand:** יצרן taxonomy (`brand`), term logo from `acf-json/group_cag_brand.json`, brand name displayed in the aside.
+- **Price / quote box:** `m_price` (optional, formatted with commas + ₪ symbol), `m_price_label` (fallback CTA headline), `m_cta_override` (link field) → button always targets `#contact`.
+- **Spec accordion:** `m_spec_groups` repeater (editable title + WYSIWYG content per group); first group open by default. CSS styles plain `ul/li` and `.content-wrap/.label/.value` markup from the WYSIWYG.
+- **Mobile spec rows:** column layout (not row), label + value centered, small `#0050cc` 40px divider (`::after` on `.label`) between them. Defined in the `@media (max-width:640px)` block in `assets/css/single-model.css`.
+- **YouTube embed:** `m_youtube` — supports watch?v=, youtu.be/, embed/, shorts/ URLs; auto-extracted video ID → embed URL.
+- **Docs link:** `m_docs` (ACF link field); hidden when empty.
+- **Related models:** 3 posts — same brand/series first, topped up with most-recent others. Uses `.cv-model-card` markup (same as kachol-lavan model cards).
+- **Template parts:** inner-hero, mini-contact, FAQ (all shared, fully dynamic).
+- **ACF fields:** `acf-json/group_cag_models.json` (UI-managed Local JSON, synced via wp-admin → Custom Fields → Sync available).
+
+**Remaining (CPT migration — not blocking launch):** `caravans.php`, `local-models.php`, front-page, kachol-lavan, and tourist-complexes still hardcode model cards as repeaters. Future work: query the `model` CPT instead. Reuse `.cv-model-card` markup already in place.
+
+---
+
+### 2026-05-24 — Per-page ACF, pages 4–6: caravan-camparks, videos-page, contact-us.
+
+**caravan-camparks** — 2-tab ACF JSON (`group_cag_caravan_camparks.json`). Tab 1 "מבוא": badge image (`id`), stamp text (textarea → `nl2br` so newlines become `<br>` in the badge span), split heading (`cc_intro_heading` + `cc_intro_highlight`), wysiwyg body — with full original 3-paragraph fallback. Tab 2 "רשימת חניונים": `cc_campsites` repeater (layout: block). Each campsite: `media_type` radio (maps | image) with **conditional logic** on `map_query` (shown when maps) and `image` (shown when image); `heading`; `body` wysiwyg (handles h3/h4/p/ul/li — editor puts rich content here, not in the meta repeater); `meta` nested repeater (FA icon class + label — for phone/email/address rows); `cta` link (hidden when empty). **Auto-zigzag:** `is-reverse` on odd rows (`$cc_i % 2 !== 0`), same pattern as about-us/kachol-lavan. **Fallback:** all 9 original hardcoded campsites in the `else` branch — including the one row (#9) that uses a local image (`desert-caravan.jpg`) rather than a map embed. Closing section stays hardcoded (static summary). PHP lint clean.
+- **Itamar:** wp-admin → **Custom Fields → Sync available** → Sync **תוכן עמוד חניוני קרוואנים**, then populate on the caravan-camparks page. Workflow per campsite: choose Maps/Image → fill map query or upload image → heading → body wysiwyg (rich text) → meta rows for contact info → CTA link if needed.
+- **Gotcha to watch:** if you paste contact-info rows into the wysiwyg body field, they'll render twice (once from wysiwyg, once from the meta repeater). Keep plain `<p>` / `<ul>` content in the body; use the meta repeater for icon+text contact rows.
+
+**videos-page** — 3-tab ACF JSON (`group_cag_videos_page.json`), one tab per section: "פוד טראקים", "קרוואנים ומבני לינה", "מגזר ביטחוני". Each tab: `heading` + `highlight` (gradient word) + `intro` (textarea) + a `videos` repeater (`video_id` / `title` / `description`). Thumbnail URL is **auto-built** in PHP: `https://i.ytimg.com/vi/{video_id}/hqdefault.jpg` — no separate thumbnail field. The YouTube play-button SVG is captured once in `$vg_play_svg` and echoed per card (avoids repeating 5-line SVG in every article). Section IDs (`#food-trucks`, `#caravans`, `#security`) and the lightbox div stay hardcoded. **Fallback:** all original placeholder cards (`OkAlWJ4C_Fs`) in each `else` branch — renders identically until real IDs are entered. PHP lint clean.
+- **Itamar:** Sync **תוכן עמוד סרטונים**, then enter the real YouTube video IDs in each section's repeater. The video_id is the code after `?v=` in a YouTube URL (e.g. `dQw4w9WgXcQ`). Until populated, placeholder thumbnail still shows.
+
+**contact-us** — **No new ACF group.** All 4 contact method cards (phone, WhatsApp, email, address) now read from the existing הגדרות אתר options fields via `cag_opt()` / `cag_link_url()` — same pattern as the footer. The hours `<ul class="cu-hours">` uses the global `hours` repeater (same data as the footer's שעות פתיחה), with a `cu-closed` class auto-applied when the time value is "סגור" or empty. The map iframe `src` is built from `contact_address`: `rawurlencode($cu_addr).'&output=embed'` — so changing the address in הגדרות אתר updates both the method card link and the embed. The navigation button uses `cag_link_url('contact_address_link')`. Section headings and intro text stay hardcoded. PHP lint clean.
+- **Nothing for Itamar to do** — all values already populated in הגדרות אתר. Verify the contact-us page in the browser to confirm phone/email/address/hours/map all reflect the live option values.
+
+### 2026-05-24 — Per-page ACF, page 3: tourist-complexes (5 sections editable). First page built on the Local JSON workflow + new `cag_field()` helper.
+
+- Biggest per-page conversion yet — 5 content sections, 4 repeaters (one with a nested repeater). Built as **Local JSON from the start** (`acf-json/group_cag_tourist_complexes.json`, 5 tabs), no PHP field-group file. JSON validated, template + functions PHP-lint clean.
+- **New helper `cag_field( $name, $fallback )`** in functions.php — the per-post analog of `cag_opt()` (guards `function_exists('get_field')`, returns fallback when empty/ACF-off). Cleans up the singular-field-with-fallback pattern that about-us/kachol-lavan did inline. Use it for all future per-page templates.
+- **Sections:** (1) **tc-intro** — split heading + intro text. (2) **tc-projects** (slider) — heading/subhead + `tc_projects` repeater of slides; kept `#tcTrack`/`#tcPrev`/`#tcNext`/`#tcDots` intact so the existing slider JS rebuilds dots for any slide count. (3) **tc-solutions** — `tc_solutions_items` repeater (FA icon + title + desc), `data-delay` auto (`i*0.06`). (4) **tc-models** — `tc_models` repeater with **nested `specs` repeater**; **model number auto** (`$i+1`) and **zigzag `is-reverse` auto** (`$i%2`), price + price_note, CTA link (hidden when empty). (5) **tc-chars** — image (+ tag), split heading with `<br>`, `tc_chars_items` checklist repeater (icon **fixed** `fa-check` — they're all checkmarks, so not editable), CTA link (always shown, falls back to `#contact`).
+- **Split-heading variants handled:** most headings highlight the *end* word (`{heading} <span>{highlight}</span>`), but **intro** and **models** highlight a *middle* word — those got a 3-field **before / highlight / after** split so the colored span lands mid-sentence. Pattern worth reusing: when the gradient word isn't at the end, give the editor before+after text fields around the highlight.
+- Every section wrapped `have_rows(...) … else [original markup] … endif`; singular fields via `cag_field()` with the original copy as fallback — so until Itamar populates + syncs, the page renders identically. **Browser-verified ✅ (2026-05-24):** Itamar confirmed the template renders correctly after Sync.
+- **Itamar:** wp-admin → **Custom Fields → Sync available** → Sync the new **תוכן עמוד מתחמי תיירות** group (alongside the others), then populate on the tourist-complexes page. **Heads-up (same gotcha as kachol-lavan):** don't paste icon/structural HTML into the textarea/wysiwyg fields — the repeaters render those.
+- **Same-day fix — tc-projects heading de-split.** The projects heading was a 2-field split (`{heading} <span class="gradient-text-light">{highlight}</span>`), but **`.gradient-text-light` is `background:white` clipped to text — not a gradient**, and `.tc-projects-head h2` is *already* `color:#fff` on the `--blue-950` band, so the span did nothing visible. With the highlight word also entered separately it rendered the word twice ("פרויקטים אחרונים אחרונים"). Removed `tc_projects_highlight` from the JSON and render the heading as one plain `<h2>` (modified bumped → re-sync). **Lesson:** before splitting a heading for a highlight, confirm the highlight class actually styles differently *in that section* — `gradient-text-light` only matters on light backgrounds where the base text isn't already white; on a dark band with white headings it's a no-op, so don't split there.
+
+### 2026-05-24 — ACF field groups moved from PHP registration → UI-managed (Local JSON). Reverses the earlier convention.
+
+- **Why:** Itamar wants to see and edit field groups in the ACF admin UI (add/remove fields by clicking), not by editing PHP files. PHP-registered groups (`acf_add_local_field_group`) are **read-only in the UI** by design — that's the trade-off the earlier convention accepted for version-control. **ACF Local JSON gives both:** edit in the UI, and ACF auto-mirrors every save to `acf-json/*.json` in the theme, so the definitions still version-control and deploy with the theme.
+- **What changed:**
+  - New folder `wp-theme/cag-theme/acf-json/` with `group_cag_about_us.json`, `group_cag_kachol_lavan.json`, `group_cag_site_settings.json`. ACF auto-registers the active theme's `acf-json/` as a load+save point (no config needed), so these load as local field groups exactly like the PHP did — **field keys preserved verbatim**, so all existing entered content (e.g. about-us rows, Site Settings values) stays linked. JSON validated (parses clean, no BOM).
+  - **Removed PHP registration:** deleted `inc/acf-about-us.php` and `inc/acf-kachol-lavan.php`; removed their `require_once` from functions.php. `inc/acf-options.php` now registers **only the options *page*** (`acf_add_options_page` — the הגדרות אתר admin menu, kept in PHP so the menu always exists); its field group moved to JSON. PHP lint clean.
+- **One-time step for Itamar (promotes JSON → editable DB groups):** wp-admin → **Custom Fields → Field Groups → Sync available** → the 3 groups appear → **Sync** them. After syncing they're fully UI-editable, and ACF writes future edits back to the JSON automatically. (Before syncing, fields still render on pages — JSON loads as a local group — they're just not yet UI-editable. So nothing is broken in the meantime.)
+- **Verify after sync:** open about-us / kachol-lavan page editors + הגדרות אתר and confirm all fields show with their existing values intact (keys were preserved). If a group's fields *don't* appear on a page after this change, the JSON failed to load — tell Claude (non-destructive; data stays in the DB by key).
+- **Convention going forward (replaces the old "one `inc/acf-{template}.php` per template" rule):** create each new page's field group **in the ACF UI**; ACF saves it to `acf-json/`. Commit the JSON. No more PHP field-group files. The options *page* stays PHP.
+- **Lesson for the skill:** PHP-registered ACF groups vs UI/Local-JSON is a real fork — PHP = code-authored, locked in UI; Local JSON = UI-authored, auto-exported to repo. If the client wants to self-manage fields, **Local JSON is the answer** (UI editing + version control). Migrating PHP→JSON safely: replicate the exact group/field **keys** (ACF links saved data by key), drop the JSON in `acf-json/`, remove the PHP registration, and have the client hit **Sync** once. Loss-free because JSON-as-local keeps fields rendering during the switch.
+
+### 2026-05-24 — Per-page ACF, page 2: kachol-lavan content is now editable (2 repeaters + nested icon repeater). Hidden sections removed.
+
+- Second per-page conversion, applying the about-us pattern to a richer page. New field group `inc/acf-kachol-lavan.php` (required in functions.php after acf-about-us), location-ruled to `page_template == page-templates/kachol-lavan.php`. Two ACF tabs in the editor:
+  - **Models section** — `kl_models_heading` (text), `kl_models_intro` (wysiwyg), `kl_models_cta` (**link** field → internal, per Itamar's url-vs-link rule), and `kl_models` repeater (image `id` / tag / title). Heading/intro/CTA are **singular fields with per-field fallback** to the original copy (so they always render even if untouched); the card grid uses the `have_rows … else [original 4 cards] … endif` wrap. `data-delay` auto-derived (`number_format($i*0.08,2)`) so the zoom-in stagger holds for any card count.
+  - **Split sections** — ONE `kl_splits` repeater replaces the two hardcoded `resort-split` blocks (מתחמי נופש + פודטראקים). **Auto-zigzag like about-us, but the flip here is DOM-order + anim-direction, not a background class:** even row = content(`fade-right`) then image-grid(`fade-left`); odd row = image-grid(`fade-right`) then content(`fade-left`) — reproduces resort (row 0) and foodtrucks (row 1) exactly. Each row: heading, body (wysiwyg), `image_top` + `image_bot` (bot falls back to top), a **nested `features` repeater** (table layout) of icon+label, and a `cta` link field (button hidden when empty). *(An optional `anchor_id` subfield was dropped same-day — the section CTAs link to other pages, not in-page anchors, so per-section `id`s weren't needed; sections now render plain `<section class="section">`.)* Whole thing wrapped `have_rows('kl_splits') … else [original resort + foodtrucks verbatim] … endif`.
+- **Feature icons — Itamar's call: a repeater with a free-text icon-class field + label**, not a curated dropdown. Icon library is the theme's **Font Awesome 6.5.1** (functions.php:156), so the client types the FA class (e.g. `fa-solid fa-utensils`); `placeholder`/instructions show the format. Rendered `<i class="{icon}"></i>` (esc_attr), label esc_html.
+- **Two hidden sections removed (Itamar's call):** the `display:none` "ידע, ניסיון וביצוע" about block and the "פרויקטים" projects grid (the one with "להשלים תמונות נוספות" placeholders) were deleted from the template entirely — dead markup, not made editable.
+- **No functions.php enqueue change** — the existing `is_page_template('page-templates/kachol-lavan.php')` block already loads inner-hero + mini-contact + faq, and no new assets/parts were added. **No CSS/JS touched** — output reuses the exact prototype classes (`.models-grid/.model-card`, `.resort-split/.resort-content/.resort-img-grid/.feature-icons`), so existing styles apply as-is. `#contact` CTAs resolve to this page's mini-contact (`id="contact"`), unlike the dead anchor on caravans.
+- **Lint:** acf-kachol-lavan / kachol-lavan / functions all clean (`php -l`, Local's bundled PHP 7.4). **Browser-verified ✅ (2026-05-24):** Itamar populated a split row and confirmed the template renders correctly — zigzag, nested icons, images, CTA, RTL all good.
+- **Gotcha found during verification (reusable):** the section showed **two `.feature-icons` rows**. Not a template bug — the icon markup had been **pasted into the תוכן (body) wysiwyg field** in addition to living in the `features` repeater, so it rendered twice (the template echoes the wysiwyg HTML raw, then renders the repeater). Fix = strip the `<div class="feature-icons">` out of the body field (Text/HTML tab), leaving only `<p>`s; the repeater is the sole icon source. **Lesson:** on any page where a wysiwyg body sits next to a repeater that renders structural markup, warn the editor not to paste that same markup into the wysiwyg — copying rendered content into TinyMCE drags the HTML along and double-renders.
+- **CSS follow-up (same day):** `<strong>` inside `.resort-content` is now brand-blue via `.resort-content strong { color: var(--blue-700); font-weight:700 }` in `kachol-lavan.css` — the static markup set this inline, but wysiwyg-authored bold needs the rule. Also **removed the `anchor_id` subfield** (the section CTAs link to other pages, not in-page anchors), so split sections render plain `<section class="section">`.
+- **Lesson for the skill:** the about-us repeater pattern extends to pages with **mixed content** — use singular fields (with per-field fallback) for one-off heading/intro/CTA and repeaters only for the genuinely-repeating parts; you don't have to force the whole section under one `have_rows`. **Nested repeaters** handle "a list of blocks, each containing its own list" (split section → its feature icons). When the zigzag is **DOM-order based** (not a background class), branch the markup with `if ($reverse)` before/after the content `<div>` rather than just swapping CSS classes. Add an optional **anchor-id field** when the original sections had `id="…"` deep-link targets, so dynamic sections keep them. For icon pickers, a free-text class field tied to the loaded icon library is the low-effort path (client must know/copy class names) vs. a curated dropdown — Itamar chose free-text.
+
+### 2026-05-24 — Verified live: about-us per-page ACF is good.
+
+- Itamar populated the `au_rows` repeater and confirmed the about-us page renders correctly on the Local site. The per-page ACF pattern (repeater + auto-zigzag + fallback) is now end-to-end verified, not just lint-clean — it's the trusted template for the remaining inner pages and the homepage.
+
 ### 2026-05-21 — Per-page ACF, page 1: about-us content is now editable (repeater + auto-zigzag). Pattern for the rest.
 
 - First page-content conversion (chrome/parts were already dynamic; this is the page *body*). The about-us page was 5 structurally-identical text+image rows hardcoded in the template — now driven by a per-page ACF repeater. **This establishes the per-page pattern** the other inner pages + homepage will follow.
@@ -218,7 +324,7 @@ Tell him:
 - **Image →** `wp_get_attachment_image( $id, 'large', false, ['loading'=>'lazy'] )` (responsive srcset + alt from the media library), an upgrade over the static raw `<img src>`. **Body →** echoed raw (ACF wysiwyg returns already-formatted, trusted admin HTML — `esc_html` would break it); all other fields are `esc_html`/`esc_attr`.
 - **Template edit was non-destructive:** wrapped the existing 5 rows in `<?php if ( have_rows('au_rows') ) : ?>` … `<?php else : ?>` [original rows] `<?php endif; ?>` — two small edits, fallback markup untouched. `have_rows('au_rows')` (no post-id) resolves to the current page via ACF's singular default. PHP-linted acf-about-us / functions / about-us — clean.
 - **The fallback "cliff" (inherent to the chosen approach):** with the repeater empty the page renders identically to before; the instant the first repeater row is added, the hardcoded fallback is replaced — so all 5 rows must be entered in one sitting (or the page shows just the one). Documented for Itamar; gave him the per-row heading/highlight split to paste in.
-- **Not browser-verified** — needs a visual pass once populated: the split gradient heading, the zigzag alternation, responsive image sizes, RTL.
+- **Browser-verified ✅ (2026-05-24):** Itamar populated the repeater and confirmed the about-us page renders correctly — split gradient heading, zigzag alternation, responsive image sizes, and RTL all good.
 - **Lesson for the skill:** for a static→WP page that's a series of same-shape blocks, model it as **one repeater**, not N fixed fields — gives reorder/add/remove for free and one render loop. **Auto-derive layout** (sides/backgrounds/anim) from row index instead of asking the editor. **Split, don't HTML:** a two-tone heading becomes two text fields the template recombines. **Wrap, don't rewrite:** make the dynamic loop the `if` branch and keep the original markup as the `else` fallback (non-destructive, page never blanks) — but note the empty-→-first-row cliff with repeater fallbacks. One `inc/acf-{template}.php` per template keeps groups isolated and portable.
 
 ### 2026-05-21 — Verified live: dynamic template parts working on the site

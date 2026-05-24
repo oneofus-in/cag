@@ -39,7 +39,7 @@
 
     function goTo(idx) {
         current = Math.max(0, Math.min(idx, maxIdx()));
-        track.style.transform = `translateX(-${current * stepWidth()}px)`;
+        track.style.transform = `translateX(-${(maxIdx() - current) * stepWidth()}px)`;
         if (prevBtn) prevBtn.disabled = current === 0;
         if (nextBtn) nextBtn.disabled = current >= maxIdx();
         renderDots();
@@ -80,8 +80,8 @@
     function onPointerUp() {
         if (dragStartX === null) return;
         track.classList.remove('is-dragging');
-        if (dragDelta < -50) goTo(current + 1);
-        else if (dragDelta > 50) goTo(current - 1);
+        if (dragDelta > 50) goTo(current + 1);
+        else if (dragDelta < -50) goTo(current - 1);
         dragStartX = null;
         if (didDrag) {
             track.addEventListener('click', e => e.stopPropagation(), { capture: true, once: true });

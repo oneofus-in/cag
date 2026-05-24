@@ -12,193 +12,114 @@ get_header();
 	<?php get_template_part( 'template-parts/inner-hero/inner-hero' ); ?>
 
 	<!-- ══ Model rows ══ -->
+	<?php $lm_models = get_field( 'lm_models' ); if ( $lm_models ) : ?>
 	<section class="lm-models-section">
 		<div class="container">
 			<div class="lm-models-list">
 
-				<!-- Model 1 — דגם לופט -->
-				<article class="lm-model" data-anim="fade-up">
+				<?php foreach ( $lm_models as $i => $model ) :
+					$reverse_class = ( $i % 2 !== 0 ) ? ' is-reverse' : '';
+					$img_id        = $model['image'];
+					$img_alt       = esc_attr( $model['name'] );
+					$cta           = $model['cta'];
+					$cta_url       = $cta ? esc_url( $cta['url'] ) : '#contact';
+					$cta_text      = ( $cta && $cta['title'] ) ? esc_html( $cta['title'] ) : 'צרו קשר למידע נוסף';
+					$cta_target    = ( $cta && $cta['target'] ) ? ' target="' . esc_attr( $cta['target'] ) . '"' : '';
+				?>
+				<article class="lm-model<?php echo $reverse_class; ?>" data-anim="fade-up">
 					<div class="lm-model-media">
-						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/Screenshot 2026-05-05 at 13.51.43.png' ) ); ?>" alt="דגם לופט" class="lm-model-img">
+						<?php if ( $img_id ) : ?>
+							<?php echo wp_get_attachment_image( $img_id, 'large', false, [ 'class' => 'lm-model-img', 'alt' => $img_alt ] ); ?>
+						<?php endif; ?>
 					</div>
 					<div class="lm-model-card">
 						<div class="lm-model-head">
-							<span class="lm-model-num">1</span>
-							<span class="lm-model-tag">קראוון שינה בודד</span>
+							<span class="lm-model-num"><?php echo $i + 1; ?></span>
+							<?php if ( $model['tag'] ) : ?>
+								<span class="lm-model-tag"><?php echo esc_html( $model['tag'] ); ?></span>
+							<?php endif; ?>
 						</div>
-						<h3>דגם לופט</h3>
-						<p class="lm-price">₪150,000 <small>(לא כולל מע״מ)</small></p>
-						<p class="lm-desc">קראוון לופט שינה בודד, קומפקטי ונוח, מתאים כפתרון לינה אישי/זוגי, זמין ויעיל בשטח.</p>
-						<ul class="lm-specs">
-							<li>
-								<i class="fa-solid fa-vector-square"></i>
-								<span>22 מ״ר</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-bed"></i>
-								<span>3 אנשים</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-layer-group"></i>
-								<span>לופט</span>
-							</li>
-						</ul>
-						<a href="#contact" class="lm-btn lm-btn-primary lm-btn-block">
-							צרו קשר למידע נוסף <i class="fa-solid fa-arrow-left"></i>
+						<h3><?php echo esc_html( $model['name'] ); ?></h3>
+						<?php if ( $model['price'] ) : ?>
+							<p class="lm-price">
+								<?php echo esc_html( $model['price'] ); ?>
+								<?php if ( $model['price_note'] ) : ?>
+									<small><?php echo esc_html( $model['price_note'] ); ?></small>
+								<?php endif; ?>
+							</p>
+						<?php endif; ?>
+						<?php if ( $model['desc'] ) : ?>
+							<p class="lm-desc"><?php echo esc_html( $model['desc'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( $model['specs'] ) : ?>
+							<ul class="lm-specs">
+								<?php foreach ( $model['specs'] as $spec ) : ?>
+									<li>
+										<i class="<?php echo esc_attr( $spec['icon'] ); ?>"></i>
+										<span><?php echo esc_html( $spec['value'] ); ?></span>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+						<a href="<?php echo $cta_url; ?>"<?php echo $cta_target; ?> class="lm-btn lm-btn-primary lm-btn-block">
+							<?php echo $cta_text; ?> <i class="fa-solid fa-arrow-left"></i>
 						</a>
 					</div>
 				</article>
-
-				<!-- Model 2 — דגם בית ספר שדה (image left) -->
-				<article class="lm-model is-reverse" data-anim="fade-up">
-					<div class="lm-model-media">
-						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/Screenshot 2026-05-05 at 13.51.43.png' ) ); ?>" alt="דגם בית ספר שדה" class="lm-model-img">
-					</div>
-					<div class="lm-model-card">
-						<div class="lm-model-head">
-							<span class="lm-model-num">2</span>
-							<span class="lm-model-tag">מיטות דו-קומתיות</span>
-						</div>
-						<h3>דגם בית ספר שדה</h3>
-						<p class="lm-price">₪150,000 <small>(לא כולל מע״מ)</small></p>
-						<p class="lm-desc">מבנה לינה עם מיטות דו-קומתיות, המאפשר אירוח קבוצתי תוך ניצול חכם של החלל הפנימי, מתאים במיוחד למתחמי אירוח ותיירות.</p>
-						<ul class="lm-specs">
-							<li>
-								<i class="fa-solid fa-vector-square"></i>
-								<span>32 מ״ר</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-bed"></i>
-								<span>8 אנשים</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-layer-group"></i>
-								<span>קומה אחת</span>
-							</li>
-						</ul>
-						<a href="#contact" class="lm-btn lm-btn-primary lm-btn-block">
-							צרו קשר למידע נוסף <i class="fa-solid fa-arrow-left"></i>
-						</a>
-					</div>
-				</article>
-
-				<!-- Model 3 — דגם חדש -->
-				<article class="lm-model" data-anim="fade-up">
-					<div class="lm-model-media">
-						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/Screenshot 2026-05-05 at 13.51.43.png' ) ); ?>" alt="דגם חדש" class="lm-model-img">
-					</div>
-					<div class="lm-model-card">
-						<div class="lm-model-head">
-							<span class="lm-model-num">3</span>
-							<span class="lm-model-tag">קראוון חדר שינה בודד</span>
-						</div>
-						<h3>דגם חדש</h3>
-						<p class="lm-price">₪150,000 <small>(לא כולל מע״מ)</small></p>
-						<p class="lm-desc">קראוון חדר שינה בודד, קומפקטי ונוח, מתאים כפתרון לינה אישי/זוגי, זמין ויעיל בשטח.</p>
-						<ul class="lm-specs">
-							<li>
-								<i class="fa-solid fa-vector-square"></i>
-								<span>18 מ״ר</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-bed"></i>
-								<span>2 אנשים</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-layer-group"></i>
-								<span>קומה אחת</span>
-							</li>
-						</ul>
-						<a href="#contact" class="lm-btn lm-btn-primary lm-btn-block">
-							צרו קשר למידע נוסף <i class="fa-solid fa-arrow-left"></i>
-						</a>
-					</div>
-				</article>
-
-				<!-- Model 4 — דגם שחף (image left) -->
-				<article class="lm-model is-reverse" data-anim="fade-up">
-					<div class="lm-model-media">
-						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/Screenshot 2026-05-05 at 13.51.43.png' ) ); ?>" alt="דגם שחף" class="lm-model-img">
-					</div>
-					<div class="lm-model-card">
-						<div class="lm-model-head">
-							<span class="lm-model-num">4</span>
-							<span class="lm-model-tag">מבנה דו-קומתי מיוחד</span>
-						</div>
-						<h3>דגם שחף</h3>
-						<p class="lm-price">₪150,000 <small>(לא כולל מע״מ)</small></p>
-						<p class="lm-desc">מבנה לינה דו-קומתי לניצול מקסימלי של השטח, עם חלוקה פנימית נוחה לשימוש יומיומי ועמידות גבוהה לתנאי חוץ.</p>
-						<ul class="lm-specs">
-							<li>
-								<i class="fa-solid fa-vector-square"></i>
-								<span>40 מ״ר</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-bed"></i>
-								<span>6 אנשים</span>
-							</li>
-							<li>
-								<i class="fa-solid fa-layer-group"></i>
-								<span>2 קומות</span>
-							</li>
-						</ul>
-						<a href="#contact" class="lm-btn lm-btn-primary lm-btn-block">
-							צרו קשר למידע נוסף <i class="fa-solid fa-arrow-left"></i>
-						</a>
-					</div>
-				</article>
+				<?php endforeach; ?>
 
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<!-- ══ Mini contact form ══ -->
 	<?php get_template_part( 'template-parts/mini-contact/mini-contact' ); ?>
 
 	<!-- ══ Common features grid ══ -->
+	<?php
+	$feat_heading  = get_field( 'lm_feat_heading' );
+	$feat_subtitle = get_field( 'lm_feat_subtitle' );
+	$lm_features   = get_field( 'lm_features' );
+	if ( $feat_heading || $feat_subtitle || $lm_features ) :
+	?>
 	<section class="lm-features">
 		<div class="container">
-			<div class="section-head" data-anim="fade-up">
-				<h2>מאפיינים משותפים לכל הדגמים</h2>
-				<p>כל הדגמים שלנו מתוכננים על בסיס ניסיון בשטח ומשלבים תכנון מוקפד, איכות בנייה גבוהה ומענה מדויק למגוון צרכים</p>
-			</div>
+			<?php if ( $feat_heading || $feat_subtitle ) : ?>
+				<div class="section-head" data-anim="fade-up">
+					<?php if ( $feat_heading ) : ?><h2><?php echo esc_html( $feat_heading ); ?></h2><?php endif; ?>
+					<?php if ( $feat_subtitle ) : ?><p><?php echo esc_html( $feat_subtitle ); ?></p><?php endif; ?>
+				</div>
+			<?php endif; ?>
 
-			<div class="lm-features-grid">
-				<div class="lm-feature" data-anim="fade-up" data-delay="0">
-					<div class="lm-feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-					<h4>איכות ועמידות</h4>
-					<p>חומרי גלם איכותיים ועמידים ללא פשרות</p>
+			<?php if ( $lm_features ) : ?>
+				<div class="lm-features-grid">
+					<?php foreach ( $lm_features as $i => $feat ) :
+						$delay = number_format( $i * 0.06, 2 );
+					?>
+						<div class="lm-feature" data-anim="fade-up" data-delay="<?php echo $delay; ?>">
+							<div class="lm-feature-icon"><i class="<?php echo esc_attr( $feat['icon'] ); ?>"></i></div>
+							<h4><?php echo esc_html( $feat['title'] ); ?></h4>
+							<p><?php echo esc_html( $feat['desc'] ); ?></p>
+						</div>
+					<?php endforeach; ?>
 				</div>
-				<div class="lm-feature" data-anim="fade-up" data-delay="0.06">
-					<div class="lm-feature-icon"><i class="fa-solid fa-sliders"></i></div>
-					<h4>התאמה אישית</h4>
-					<p>גמישות בהתאמה לפי צורך, ייעוד ותקציב</p>
-				</div>
-				<div class="lm-feature" data-anim="fade-up" data-delay="0.12">
-					<div class="lm-feature-icon"><i class="fa-solid fa-industry"></i></div>
-					<h4>ייצור כחול לבן</h4>
-					<p>תכנון וייצור מקומי בסטנדרט גבוה</p>
-				</div>
-				<div class="lm-feature" data-anim="fade-up" data-delay="0.18">
-					<div class="lm-feature-icon"><i class="fa-solid fa-handshake"></i></div>
-					<h4>ליווי מקצועי</h4>
-					<p>ליווי מלא משלב התכנון ועד ההקמה</p>
-				</div>
-				<div class="lm-feature" data-anim="fade-up" data-delay="0.24">
-					<div class="lm-feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
-					<h4>אספקה מהירה</h4>
-					<p>פתרונות זמינים ליישום מהיר בשטח</p>
-				</div>
-				<div class="lm-feature" data-anim="fade-up" data-delay="0.30">
-					<div class="lm-feature-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-					<h4>עמידה בתקנים</h4>
-					<p>עבודה בהתאם לתקנים ולדרישות בחוק</p>
-				</div>
-			</div>
+			<?php endif; ?>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<!-- ══ Custom Made section ══ -->
+	<?php
+	$custom_eyebrow    = get_field( 'lm_custom_eyebrow' );
+	$custom_heading    = get_field( 'lm_custom_heading' );
+	$custom_heading_em = get_field( 'lm_custom_heading_em' );
+	$custom_subtitle   = get_field( 'lm_custom_subtitle' );
+	$custom_stamp      = get_field( 'lm_custom_stamp' );
+	$custom_specs      = get_field( 'lm_custom_specs' );
+	$custom_cta        = get_field( 'lm_custom_cta' );
+	$custom_meta       = get_field( 'lm_custom_meta' );
+	?>
 	<section class="lm-custom">
 		<div class="lm-custom-pattern" aria-hidden="true"></div>
 		<div class="container">
@@ -207,74 +128,55 @@ get_header();
 				<span class="lm-custom-corner lm-cc-tr" aria-hidden="true"></span>
 				<span class="lm-custom-corner lm-cc-bl" aria-hidden="true"></span>
 				<span class="lm-custom-corner lm-cc-br" aria-hidden="true"></span>
-				<span class="lm-custom-stamp" aria-hidden="true">REV.A.G — 2026</span>
+				<?php if ( $custom_stamp ) : ?>
+					<span class="lm-custom-stamp" aria-hidden="true"><?php echo esc_html( $custom_stamp ); ?></span>
+				<?php endif; ?>
 
 				<div class="lm-custom-head" data-anim="fade-up">
-					<span class="lm-eyebrow">Custom Made</span>
-					<h2>ייצור <em>בהתאמה אישית</em></h2>
-					<p>כל מבנה מתוכנן ומיוצר במיוחד עבורכם – משלב הסקיצה הראשונית ועד התקנה בשטח. הנה מה שניתן להתאים:</p>
+					<?php if ( $custom_eyebrow ) : ?>
+						<span class="lm-eyebrow"><?php echo esc_html( $custom_eyebrow ); ?></span>
+					<?php endif; ?>
+					<?php if ( $custom_heading || $custom_heading_em ) : ?>
+						<h2><?php echo esc_html( $custom_heading ); ?> <em><?php echo esc_html( $custom_heading_em ); ?></em></h2>
+					<?php endif; ?>
+					<?php if ( $custom_subtitle ) : ?>
+						<p><?php echo esc_html( $custom_subtitle ); ?></p>
+					<?php endif; ?>
 				</div>
 
-				<div class="lm-custom-grid">
-					<article class="lm-spec" data-anim="fade-up" data-delay="0">
-						<span class="lm-spec-num">01</span>
-						<div class="lm-spec-icon"><i class="fa-solid fa-vector-square"></i></div>
-						<h4>מידות ופריסה</h4>
-						<p>שטח, חלוקה פנימית ומספר חדרים – לפי דרישות הפרויקט</p>
-						<span class="lm-spec-range">18–80 מ״ר</span>
-					</article>
+				<?php if ( $custom_specs ) : ?>
+					<div class="lm-custom-grid">
+						<?php foreach ( $custom_specs as $i => $spec ) :
+							$delay = number_format( $i * 0.06, 2 );
+							$num   = str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
+						?>
+							<article class="lm-spec" data-anim="fade-up" data-delay="<?php echo $delay; ?>">
+								<span class="lm-spec-num"><?php echo $num; ?></span>
+								<div class="lm-spec-icon"><i class="<?php echo esc_attr( $spec['icon'] ); ?>"></i></div>
+								<h4><?php echo esc_html( $spec['title'] ); ?></h4>
+								<p><?php echo esc_html( $spec['desc'] ); ?></p>
+								<?php if ( $spec['range'] ) : ?>
+									<span class="lm-spec-range"><?php echo esc_html( $spec['range'] ); ?></span>
+								<?php endif; ?>
+							</article>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 
-					<article class="lm-spec" data-anim="fade-up" data-delay="0.06">
-						<span class="lm-spec-num">02</span>
-						<div class="lm-spec-icon"><i class="fa-solid fa-palette"></i></div>
-						<h4>חומרים וגימור</h4>
-						<p>חיפוי חיצוני, ריצוף, צבעים ועיצוב פנים בסטנדרט גבוה</p>
-						<span class="lm-spec-range">12+ אפשרויות</span>
-					</article>
-
-					<article class="lm-spec" data-anim="fade-up" data-delay="0.12">
-						<span class="lm-spec-num">03</span>
-						<div class="lm-spec-icon"><i class="fa-solid fa-bolt"></i></div>
-						<h4>תשתיות חכמות</h4>
-						<p>חשמל, מים, מיזוג ואוורור – מתוכננים מראש בתוך המבנה</p>
-						<span class="lm-spec-range">פתרון מלא</span>
-					</article>
-
-					<article class="lm-spec" data-anim="fade-up" data-delay="0.18">
-						<span class="lm-spec-num">04</span>
-						<div class="lm-spec-icon"><i class="fa-solid fa-couch"></i></div>
-						<h4>אבזור פנימי</h4>
-						<p>ריהוט, מטבח, אמבטיה ופתרונות אחסון בהתאמה אישית</p>
-						<span class="lm-spec-range">מודולרי</span>
-					</article>
-
-					<article class="lm-spec" data-anim="fade-up" data-delay="0.24">
-						<span class="lm-spec-num">05</span>
-						<div class="lm-spec-icon"><i class="fa-solid fa-mountain-sun"></i></div>
-						<h4>התאמה לשטח</h4>
-						<p>פתרונות לכל סוגי קרקע, אקלים ותנאי גישה</p>
-						<span class="lm-spec-range">כל מיקום</span>
-					</article>
-
-					<article class="lm-spec" data-anim="fade-up" data-delay="0.30">
-						<span class="lm-spec-num">06</span>
-						<div class="lm-spec-icon"><i class="fa-solid fa-shield-halved"></i></div>
-						<h4>בידוד ועמידות</h4>
-						<p>חומרים איכותיים העומדים בתנאי שטח קיצוניים לאורך זמן</p>
-						<span class="lm-spec-range">אחריות מלאה</span>
-					</article>
-				</div>
-
-				<div class="lm-custom-cta" data-anim="fade-up">
-					<a href="#contact" class="lm-btn lm-btn-primary">
-						<i class="fa-solid fa-pen-ruler"></i>
-						בואו נתכנן יחד את הפרויקט שלכם
-					</a>
-					<span class="lm-custom-meta">
-						<i class="fa-solid fa-clock"></i>
-						ייעוץ ראשוני ללא עלות וללא התחייבות
-					</span>
-				</div>
+				<?php if ( $custom_cta ) : ?>
+					<div class="lm-custom-cta" data-anim="fade-up">
+						<a href="<?php echo esc_url( $custom_cta['url'] ); ?>"<?php echo $custom_cta['target'] ? ' target="' . esc_attr( $custom_cta['target'] ) . '"' : ''; ?> class="lm-btn lm-btn-primary">
+							<i class="fa-solid fa-pen-ruler"></i>
+							<?php echo esc_html( $custom_cta['title'] ); ?>
+						</a>
+						<?php if ( $custom_meta ) : ?>
+							<span class="lm-custom-meta">
+								<i class="fa-solid fa-clock"></i>
+								<?php echo esc_html( $custom_meta ); ?>
+							</span>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>

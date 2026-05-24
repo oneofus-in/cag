@@ -1,0 +1,49 @@
+{
+	"key": "group_cag_models",
+	"title": "תוכן דגם",
+	"fields": [
+		{ "key": "field_cag_m_tab_main", "label": "ראשי", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_m_subtitle", "label": "תת-כותרת / סלוגן קצר", "name": "m_subtitle", "type": "text", "instructions": "מוצג מתחת לכותרת ליד הגלריה (אופציונלי)." },
+		{ "key": "field_cag_m_intro", "label": "פסקת פתיחה", "name": "m_intro", "type": "textarea", "rows": 4, "instructions": "תיאור קצר ליד הגלריה (אופציונלי)." },
+		{ "key": "field_cag_m_youtube", "label": "סרטון (YouTube URL)", "name": "m_youtube", "type": "url", "instructions": "קישור לסרטון יוטיוב. אם מולא, יוצג נגן וידאו בעמוד הדגם." },
+		{ "key": "field_cag_m_docs", "label": "קישור להיסטוריה / מסמכים", "name": "m_docs", "type": "link", "return_format": "array", "instructions": "קישור לעמוד היסטוריה, ברושור או מסמכים (פנימי או חיצוני)." },
+
+		{ "key": "field_cag_m_tab_gallery", "label": "גלריה", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_m_gallery", "label": "תמונות הדגם", "name": "m_gallery", "type": "gallery", "return_format": "array", "library": "all", "insert": "append", "preview_size": "medium", "instructions": "התמונה הראשונה מוצגת כתמונה ראשית; כל התמונות נפתחות בלייטבוקס. טקסט חלופי (alt) נלקח מספריית המדיה." },
+
+		{ "key": "field_cag_m_tab_specs", "label": "מפרט", "name": "", "type": "tab", "placement": "top" },
+		{
+			"key": "field_cag_m_spec_groups",
+			"label": "קטעי מפרט (אקורדיון)",
+			"name": "m_spec_groups",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת קטע",
+			"instructions": "כל קטע הוא פריט אקורדיון: כותרת + תוכן חופשי בעורך הטקסט. קטע ללא כותרת לא יוצג.",
+			"sub_fields": [
+				{ "key": "field_cag_m_spec_title", "label": "כותרת טאב", "name": "title", "type": "text", "required": 1 },
+				{ "key": "field_cag_m_spec_content", "label": "תוכן טאב", "name": "content", "type": "wysiwyg", "tabs": "all", "toolbar": "full", "media_upload": 1, "delay": 0 }
+			]
+		},
+
+		{ "key": "field_cag_m_tab_cta", "label": "מחיר", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_m_price", "label": "מחיר", "name": "m_price", "type": "text", "instructions": "מחיר בשקלים (ללא פסיקים). אם נשאר ריק — תוצג תווית המחיר בלבד כקריאה לפעולה." },
+		{ "key": "field_cag_m_price_label", "label": "תווית מחיר", "name": "m_price_label", "type": "text", "instructions": "לדוגמה: \"החל מ-\" או \"מחיר מבצע\". כשאין מחיר משמשת כטקסט הקריאה לפעולה. ברירת מחדל: \"להצעת מחיר השאירו פרטים\"." },
+		{ "key": "field_cag_m_cta_override", "label": "קישור כפתור מותאם (אופציונלי)", "name": "m_cta_override", "type": "link", "return_format": "array", "instructions": "יעד כפתור \"השאירו פרטים\". השאירו ריק כדי לגלול לטופס יצירת הקשר בעמוד (#contact)." }
+	],
+	"location": [
+		[
+			{ "param": "post_type", "operator": "==", "value": "model" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779843600
+}

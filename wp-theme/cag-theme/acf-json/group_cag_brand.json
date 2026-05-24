@@ -1,0 +1,23 @@
+{
+	"key": "group_cag_brand",
+	"title": "פרטי יצרן",
+	"fields": [
+		{ "key": "field_cag_brand_logo", "label": "לוגו המותג", "name": "brand_logo", "type": "image", "return_format": "id", "preview_size": "medium", "library": "all", "instructions": "לוגו שמוצג בכרטיסי דגם ובמקטעי מותג." },
+		{ "key": "field_cag_brand_tagline", "label": "תיאור קצר (אופציונלי)", "name": "brand_tagline", "type": "text" }
+	],
+	"location": [
+		[
+			{ "param": "taxonomy", "operator": "==", "value": "brand" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779843600
+}

@@ -67,7 +67,7 @@ while ( have_posts() ) :
 					<p class="hero-text" aria-hidden="true"></p>
 
 					<ul class="post-meta">
-						<li><i class="fa-regular fa-user"></i> מאת <strong><?php the_author(); ?></strong></li>
+						<li><i class="fa-regular fa-user"></i> מאת <strong>Cag Team</strong></li>
 						<li><i class="fa-regular fa-calendar"></i> <?php echo esc_html( get_the_date() ); ?></li>
 						<li><i class="fa-regular fa-clock"></i> <?php echo esc_html( cag_reading_time() ); ?> דק׳ קריאה</li>
 					</ul>
@@ -107,15 +107,19 @@ while ( have_posts() ) :
 						</div>
 					<?php endif; ?>
 
+					<?php
+					$cag_share_url   = rawurlencode( get_permalink() );
+					$cag_share_title = rawurlencode( get_the_title() );
+					?>
 					<div class="post-share">
 						<span class="post-share-label">שיתוף:</span>
-						<a href="#" class="post-share-btn" aria-label="שיתוף בפייסבוק">
+						<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $cag_share_url; ?>" class="post-share-btn" aria-label="שיתוף בפייסבוק" target="_blank" rel="noopener">
 							<i class="fa-brands fa-facebook-f"></i>
 						</a>
-						<a href="#" class="post-share-btn" aria-label="שיתוף בוואטסאפ">
+						<a href="https://wa.me/?text=<?php echo $cag_share_title; ?>%20<?php echo $cag_share_url; ?>" class="post-share-btn" aria-label="שיתוף בוואטסאפ" target="_blank" rel="noopener">
 							<i class="fa-brands fa-whatsapp"></i>
 						</a>
-						<a href="#" class="post-share-btn" aria-label="שיתוף בלינקדאין">
+						<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo $cag_share_url; ?>" class="post-share-btn" aria-label="שיתוף בלינקדאין" target="_blank" rel="noopener">
 							<i class="fa-brands fa-linkedin-in"></i>
 						</a>
 						<a href="#" class="post-share-btn" aria-label="העתקת קישור">

@@ -1,0 +1,558 @@
+/* ===================================================================
+   Single Model (דגם) — /listings/<slug>
+   Blue design system. All classes prefixed .sm-. Reuses the global
+   design tokens from style.css (--grad, --blue-*, --radius*, --shadow*,
+   --tr, --container). Related cards reuse the .cv-model-* markup, whose
+   styles are duplicated here because caravans.css isn't loaded on this
+   template.
+   =================================================================== */
+
+/* ── Overview: gallery + aside ──────────────────────────────────── */
+
+.sm-overview-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Gallery ---------------------------------------------------------- */
+
+.sm-gallery-main {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--ink-100);
+}
+
+.sm-gallery-main-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: zoom-in;
+}
+
+.sm-gallery-main-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.sm-gallery-zoom {
+    position: absolute;
+    inset-block-end: 14px;
+    inset-inline-end: 14px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(12, 48, 88, .55);
+    color: #fff;
+    font-size: 16px;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity var(--tr), transform var(--tr);
+}
+
+.sm-gallery-main-btn:hover .sm-gallery-zoom {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sm-gallery-thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.sm-thumb {
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    background: none;
+    line-height: 0;
+    transition: border-color var(--tr), transform var(--tr);
+}
+
+.sm-thumb img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.sm-thumb:hover { transform: translateY(-2px); }
+.sm-thumb.is-active { border-color: var(--blue-500); }
+
+/* Aside ------------------------------------------------------------ */
+
+.sm-aside {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sm-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sm-brand-logo {
+    height: 34px;
+    width: auto;
+    object-fit: contain;
+}
+
+.sm-brand-name {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: var(--ink-500);
+    text-transform: uppercase;
+}
+
+.sm-subtitle {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--blue-700);
+    margin: 0;
+}
+
+.sm-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sm-intro {
+    font-size: 15px;
+    color: var(--ink-600);
+    line-height: 1.8;
+}
+
+.sm-intro p { margin: 0 0 10px; }
+.sm-intro p:last-child { margin-bottom: 0; }
+
+/* Quote CTA box (replaces the reference price box) ----------------- */
+
+.sm-quote-box {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px;
+    background: var(--blue-50);
+    border-radius: var(--radius-lg);
+    border-inline-start: 4px solid var(--blue-500);
+    box-shadow: var(--shadow-sm);
+}
+
+.sm-quote-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+}
+
+/* No price: the label is the CTA headline. With a price: small prefix + big amount. */
+.sm-price-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue-900);
+}
+
+.sm-quote-box.has-price .sm-price-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-500);
+}
+
+.sm-price-amount {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--blue-700);
+    letter-spacing: -.02em;
+    direction: ltr;
+}
+
+.sm-quote-btn { justify-content: center; }
+
+.sm-doc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue-600);
+    text-decoration: none;
+}
+
+.sm-doc-link:hover { color: var(--blue-700); text-decoration: underline; }
+
+/* Hardcoded legal/price disclaimers under the price box. */
+.listing-aside-disclaimer {
+    padding-top: 16px;
+    border-top: 1px solid var(--ink-100);
+}
+
+.listing-aside-disclaimer ul {
+    list-style: disc;
+    margin: 0;
+    padding-inline-start: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.listing-aside-disclaimer li {
+    font-size: 12.5px;
+    color: var(--ink-500);
+    line-height: 1.55;
+}
+
+/* ── Video ──────────────────────────────────────────────────────── */
+
+.sm-video {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: #000;
+}
+
+.sm-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ── Spec accordion ─────────────────────────────────────────────── */
+
+.sm-specs-section { background: var(--blue-50); }
+
+.sm-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.sm-acc-item {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow var(--tr);
+}
+
+.sm-acc-item[open] { box-shadow: var(--shadow-md); }
+
+.sm-acc-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    background: var(--grad);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    list-style: none;
+}
+
+.sm-acc-head::-webkit-details-marker { display: none; }
+
+.sm-acc-title { flex: 1; }
+
+.sm-acc-chevron {
+    font-size: 14px;
+    transition: transform var(--tr);
+}
+
+.sm-acc-item[open] .sm-acc-chevron { transform: rotate(180deg); }
+
+.sm-acc-body { padding: 6px 22px 18px; }
+
+/* WYSIWYG content inside an accordion section. Styles both free rich text
+   (p / ul / li) and the label→value row markup
+   (<li><div class="content-wrap"><div class="label">/<div class="value">). */
+.sm-acc-rte { font-size: 15px; color: var(--ink-600); line-height: 1.8; }
+
+.sm-acc-rte > *:first-child { margin-top: 0; }
+.sm-acc-rte > *:last-child { margin-bottom: 0; }
+
+.sm-acc-rte p { margin: 0 0 10px; }
+
+.sm-acc-rte ul,
+.sm-acc-rte ol { margin: 0; padding: 0; list-style: none; }
+
+.sm-acc-rte li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-100);
+}
+
+.sm-acc-rte li:last-child { border-bottom: none; }
+
+.sm-acc-rte .content-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.sm-acc-rte .label {
+    font-weight: 700;
+    color: var(--blue-900);
+}
+
+.sm-acc-rte .value {
+    color: var(--ink-600);
+    text-align: start;
+    direction: ltr;
+}
+
+.sm-acc-rte a { color: var(--blue-600); }
+
+/* ── Related models (reused .cv-model-* markup) ─────────────────── */
+
+.single-model .cv-models-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.single-model .cv-model-card {
+    position: relative;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid var(--ink-100);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+}
+
+.single-model .cv-model-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--blue-200);
+}
+
+.single-model .cv-model-img-wrap { position: relative; flex-shrink: 0; }
+
+.single-model .cv-model-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.single-model .cv-model-badges {
+    position: absolute;
+    top: 14px;
+    inset-inline-start: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.single-model .cv-model-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 22px 24px;
+    flex: 1;
+}
+
+.single-model .cv-model-card h4 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue-900);
+    margin: 0;
+}
+
+.single-model .cv-model-desc {
+    font-size: 14.5px;
+    color: var(--ink-600);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.single-model .cv-model-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-100);
+}
+
+/* Shared pill/badge styles for tags (markup uses .cv-model-tag) */
+.cv-model-tag {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--blue-500);
+    background: var(--blue-50);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+/* ── Lightbox (ported from foodtrucks.css, sm- prefixed) ────────── */
+
+.sm-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(0, 0, 0, .92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.sm-lightbox.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.sm-lb-img-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: min(90vw, 1100px);
+    max-height: 85vh;
+}
+
+.sm-lb-img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, .6);
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.sm-lb-close {
+    position: absolute;
+    top: 16px;
+    inset-inline-end: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--tr);
+    backdrop-filter: blur(4px);
+}
+
+.sm-lb-close:hover { background: rgba(255, 255, 255, .3); }
+
+.sm-lb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--tr);
+    backdrop-filter: blur(4px);
+}
+
+.sm-lb-arrow:hover { background: rgba(255, 255, 255, .3); }
+
+/* Physical positions so the chevron icons point outward correctly in RTL:
+   prev (chevron-right ›) on the right, next (chevron-left ‹) on the left. */
+.sm-lb-prev { right: 20px; }
+.sm-lb-next { left: 20px; }
+
+.sm-lb-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, .65);
+    font-size: 14px;
+    font-weight: 500;
+    direction: ltr;
+    white-space: nowrap;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+
+@media (max-width: 980px) {
+    .sm-overview-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .sm-aside { position: static; }
+}
+
+@media (max-width: 900px) {
+    .single-model .cv-models-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .single-model .cv-models-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sm-gallery-thumbs {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .sm-acc-head { font-size: 15.5px; padding: 16px 18px; }
+    .sm-acc-rte .content-wrap { flex-direction: column; align-items: center; gap: 0; text-align: center; }
+    .sm-acc-rte .content-wrap .value { text-align: center; direction: ltr; }
+    .sm-acc-rte .content-wrap .label::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 2px;
+        background: #0050cc;
+        border-radius: 2px;
+        margin: 6px auto 6px;
+    }
+}

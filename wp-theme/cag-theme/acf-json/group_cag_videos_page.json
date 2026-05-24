@@ -1,0 +1,74 @@
+{
+	"key": "group_cag_videos_page",
+	"title": "תוכן עמוד סרטונים",
+	"fields": [
+		{ "key": "field_cag_vg_tab1", "label": "פוד טראקים", "name": "", "type": "tab" },
+		{ "key": "field_cag_vg_ft_heading",   "label": "כותרת",                  "name": "ft_heading",   "type": "text",     "default_value": "פוד טראקים" },
+		{ "key": "field_cag_vg_ft_highlight",  "label": "מילת הדגשה (gradient)", "name": "ft_highlight", "type": "text",     "default_value": "לרשויות ועסקים" },
+		{ "key": "field_cag_vg_ft_intro",      "label": "תיאור",                 "name": "ft_intro",     "type": "textarea", "rows": 3, "default_value": "סרטונים של פוד טראקים שבנינו לעיריות, בתי ספר, גופים עסקיים ויחידים — כל פוד טראק מותאם אישית מקצה לקצה, מהתכנון ועד אספקת הפתרון המוכן לפעילות" },
+		{
+			"key": "field_cag_vg_ft_videos",
+			"label": "סרטונים — פוד טראקים",
+			"name": "ft_videos",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת סרטון",
+			"sub_fields": [
+				{ "key": "field_cag_vg_ft_vid_id", "label": "מזהה YouTube (video ID)", "name": "video_id",    "type": "text",     "instructions": "הקוד שאחרי ?v= ביוטיוב. לדוגמה: OkAlWJ4C_Fs", "placeholder": "OkAlWJ4C_Fs" },
+				{ "key": "field_cag_vg_ft_title",  "label": "כותרת כרטיס",           "name": "title",       "type": "text" },
+				{ "key": "field_cag_vg_ft_desc",   "label": "תיאור",                  "name": "description", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_vg_tab2", "label": "קרוואנים ומבני לינה", "name": "", "type": "tab" },
+		{ "key": "field_cag_vg_cv_heading",   "label": "כותרת",                  "name": "cv_heading",   "type": "text",     "default_value": "קרוואנים" },
+		{ "key": "field_cag_vg_cv_highlight",  "label": "מילת הדגשה (gradient)", "name": "cv_highlight", "type": "text",     "default_value": "ומבני לינה" },
+		{ "key": "field_cag_vg_cv_intro",      "label": "תיאור",                 "name": "cv_intro",     "type": "textarea", "rows": 3, "default_value": "מגוון פרויקטים של קרוואנים מגורים, מבני משרד ניידים ומתחמי לינה — פתרונות שנבנים לפי צרכי הלקוח לשימוש קבוע או זמני" },
+		{
+			"key": "field_cag_vg_cv_videos",
+			"label": "סרטונים — קרוואנים",
+			"name": "cv_videos",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת סרטון",
+			"sub_fields": [
+				{ "key": "field_cag_vg_cv_vid_id", "label": "מזהה YouTube (video ID)", "name": "video_id",    "type": "text",     "instructions": "הקוד שאחרי ?v= ביוטיוב. לדוגמה: OkAlWJ4C_Fs", "placeholder": "OkAlWJ4C_Fs" },
+				{ "key": "field_cag_vg_cv_title",  "label": "כותרת כרטיס",           "name": "title",       "type": "text" },
+				{ "key": "field_cag_vg_cv_desc",   "label": "תיאור",                  "name": "description", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_vg_tab3", "label": "מגזר ביטחוני", "name": "", "type": "tab" },
+		{ "key": "field_cag_vg_sc_heading",   "label": "כותרת",                  "name": "sc_heading",   "type": "text",     "default_value": "מגזר" },
+		{ "key": "field_cag_vg_sc_highlight",  "label": "מילת הדגשה (gradient)", "name": "sc_highlight", "type": "text",     "default_value": "ביטחוני" },
+		{ "key": "field_cag_vg_sc_intro",      "label": "תיאור",                 "name": "sc_intro",     "type": "textarea", "rows": 3, "default_value": "פרויקטים שביצענו עבור גופי ביטחון, צבא ומשטרה — נגררים ביטחוניים, מבני לינה לשטח ופתרונות מגורים ייעודיים לדרישות ביטחוניות קפדניות" },
+		{
+			"key": "field_cag_vg_sc_videos",
+			"label": "סרטונים — ביטחוני",
+			"name": "sc_videos",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת סרטון",
+			"sub_fields": [
+				{ "key": "field_cag_vg_sc_vid_id", "label": "מזהה YouTube (video ID)", "name": "video_id",    "type": "text",     "instructions": "הקוד שאחרי ?v= ביוטיוב. לדוגמה: OkAlWJ4C_Fs", "placeholder": "OkAlWJ4C_Fs" },
+				{ "key": "field_cag_vg_sc_title",  "label": "כותרת כרטיס",           "name": "title",       "type": "text" },
+				{ "key": "field_cag_vg_sc_desc",   "label": "תיאור",                  "name": "description", "type": "textarea", "rows": 2 }
+			]
+		}
+	],
+	"location": [
+		[
+			{ "param": "page_template", "operator": "==", "value": "page-templates/videos-page.php" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779580800
+}

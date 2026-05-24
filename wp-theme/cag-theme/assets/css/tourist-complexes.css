@@ -294,7 +294,7 @@
 
 .tc-projects-track {
     display: flex;
-    direction: ltr;
+    direction: rtl;
     transition: transform 0.55s cubic-bezier(.4,0,.2,1);
     will-change: transform;
 }

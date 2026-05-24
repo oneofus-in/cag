@@ -1,0 +1,64 @@
+{
+	"key": "group_cag_security_living",
+	"title": "תוכן עמוד מגורים ביטחוניים",
+	"fields": [
+		{ "key": "field_cag_sl_tab_gallery", "label": "גלריה", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_sl_gallery_heading", "label": "כותרת (לפני הצבע)", "name": "sl_gallery_heading", "type": "text" },
+		{ "key": "field_cag_sl_gallery_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "sl_gallery_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_sl_gallery_text", "label": "פסקת פתיחה", "name": "sl_gallery_text", "type": "textarea", "rows": 3 },
+		{ "key": "field_cag_sl_gallery", "label": "תמונות גלריה (קרוסלה)", "name": "sl_gallery", "type": "gallery", "return_format": "array", "library": "all", "insert": "append", "preview_size": "medium", "instructions": "התמונות מוצגות בקרוסלה ובתצוגת לייטבוקס. טקסט חלופי (alt) נלקח מספריית המדיה." },
+
+		{ "key": "field_cag_sl_tab_use", "label": "שימושים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_sl_use_heading", "label": "כותרת (לפני הצבע)", "name": "sl_use_heading", "type": "text" },
+		{ "key": "field_cag_sl_use_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "sl_use_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_sl_use_intro", "label": "תת-כותרת", "name": "sl_use_intro", "type": "text" },
+		{
+			"key": "field_cag_sl_use_items",
+			"label": "כרטיסי שימוש",
+			"name": "sl_use_items",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת שימוש",
+			"instructions": "השהיית האנימציה נקבעת אוטומטית לפי הסדר.",
+			"sub_fields": [
+				{ "key": "field_cag_sl_use_icon", "label": "אייקון (Font Awesome)", "name": "icon", "type": "text", "instructions": "מחלקת Font Awesome, למשל: fa-solid fa-bed", "placeholder": "fa-solid fa-bed" },
+				{ "key": "field_cag_sl_use_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_sl_use_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_sl_tab_intro", "label": "מגורים בהתאמה", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_sl_intro_heading", "label": "כותרת (לפני הצבע)", "name": "sl_intro_heading", "type": "text" },
+		{ "key": "field_cag_sl_intro_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "sl_intro_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_sl_intro_lead", "label": "פסקת פתיחה (מודגשת)", "name": "sl_intro_lead", "type": "textarea", "rows": 4 },
+		{ "key": "field_cag_sl_intro_body", "label": "פסקת גוף", "name": "sl_intro_body", "type": "textarea", "rows": 4 },
+		{
+			"key": "field_cag_sl_intro_bullets",
+			"label": "רשימת יתרונות (✓)",
+			"name": "sl_intro_bullets",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת שורה",
+			"sub_fields": [
+				{ "key": "field_cag_sl_intro_bullet_text", "label": "טקסט", "name": "text", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_sl_intro_cta", "label": "כפתור קריאה לפעולה", "name": "sl_intro_cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להשתמש בברירת המחדל (קישור לטופס יצירת קשר)." },
+		{ "key": "field_cag_sl_intro_image", "label": "תמונה", "name": "sl_intro_image", "type": "image", "return_format": "id", "preview_size": "medium" }
+	],
+	"location": [
+		[
+			{ "param": "page_template", "operator": "==", "value": "page-templates/security-living.php" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779843600
+}

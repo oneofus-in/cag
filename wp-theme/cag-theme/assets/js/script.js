@@ -159,7 +159,6 @@
             const heroImg = hero?.querySelector('.hero-img');
             const heroVeil = hero?.querySelector('.hero-veil');
             const heroScrim = hero?.querySelector('.hero-scrim');
-            const heroEyebrow = hero?.querySelector('.hero-eyebrow');
             const heroH1Lines = hero?.querySelectorAll('.hero h1 span');
             const heroP = hero?.querySelector('.hero-text');
             const heroActions = hero?.querySelector('.hero-actions');
@@ -183,7 +182,7 @@
                 // Phase 2 (0.55 → 1): frame expands to full bleed, image keeps breathing
                 tl
                     // content fades out first
-                    .to([heroEyebrow, heroP, heroActions], { opacity: 0, y: -28, ease: 'power2.in', duration: 0.25 }, 0)
+                    .to([heroP, heroActions], { opacity: 0, y: -28, ease: 'power2.in', duration: 0.25 }, 0)
                     .to(heroH1Lines, { opacity: 0, y: -28, ease: 'power3.in', duration: 0.3, stagger: 0.04 }, 0.02)
                     .to(heroMeta, { opacity: 0, ease: 'power2.in', duration: 0.3 }, 0)
                     // veil/scrim fade — clean image revealed

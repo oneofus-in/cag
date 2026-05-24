@@ -116,18 +116,6 @@ get_header();
 			<div class="section-head section-head--with-rule" data-anim="fade-up">
 				<span class="eyebrow">ארכיון</span>
 				<h2>כל <span class="gradient-text">הכתבות והמדריכים</span></h2>
-				<p>חיפוש לפי קטגוריה – או גלילה לכל הכתבות שלנו</p>
-			</div>
-
-			<!-- Category filter pills (from real WP categories; client-side filter in blog.js) -->
-			<div class="blog-filter" role="tablist" aria-label="סינון לפי קטגוריה" data-anim="fade-up">
-				<button class="blog-filter-pill is-active" type="button" data-filter="all">הכל</button>
-				<?php
-				$cag_cats = get_categories( array( 'hide_empty' => true ) );
-				foreach ( $cag_cats as $cag_c ) :
-				?>
-					<button class="blog-filter-pill" type="button" data-filter="<?php echo esc_attr( $cag_c->slug ); ?>"><?php echo esc_html( $cag_c->name ); ?></button>
-				<?php endforeach; ?>
 			</div>
 
 			<div class="articles-grid blog-grid">
@@ -160,12 +148,6 @@ get_header();
 						</article>
 					<?php endwhile; ?>
 				<?php endif; ?>
-			</div>
-
-			<!-- Empty state when a category filter has no matches (toggled by blog.js) -->
-			<div class="blog-empty" hidden>
-				<i class="fa-regular fa-folder-open"></i>
-				<p>אין כתבות בקטגוריה הזו עדיין. בקרוב נוסיף תוכן!</p>
 			</div>
 
 			<!-- Load more (static stub kept as-is — no real loading) -->

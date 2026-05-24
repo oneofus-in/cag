@@ -1,0 +1,117 @@
+{
+	"key": "group_cag_tourist_complexes",
+	"title": "תוכן עמוד מתחמי תיירות",
+	"fields": [
+		{ "key": "field_cag_tc_tab_intro", "label": "פתיחה", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_tc_intro_heading", "label": "כותרת (לפני הצבע)", "name": "tc_intro_heading", "type": "text" },
+		{ "key": "field_cag_tc_intro_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "tc_intro_highlight", "type": "text", "instructions": "החלק הצבעוני, באמצע הכותרת." },
+		{ "key": "field_cag_tc_intro_heading_after", "label": "כותרת (אחרי הצבע)", "name": "tc_intro_heading_after", "type": "text" },
+		{ "key": "field_cag_tc_intro_text", "label": "פסקת פתיחה", "name": "tc_intro_text", "type": "textarea", "rows": 3 },
+
+		{ "key": "field_cag_tc_tab_projects", "label": "פרויקטים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_tc_projects_heading", "label": "כותרת", "name": "tc_projects_heading", "type": "text" },
+		{ "key": "field_cag_tc_projects_subhead", "label": "תת-כותרת", "name": "tc_projects_subhead", "type": "text" },
+		{
+			"key": "field_cag_tc_projects",
+			"label": "פרויקטים (סליידר)",
+			"name": "tc_projects",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת פרויקט",
+			"sub_fields": [
+				{ "key": "field_cag_tc_project_image", "label": "תמונה", "name": "image", "type": "image", "return_format": "id", "preview_size": "medium" },
+				{ "key": "field_cag_tc_project_tag", "label": "תווית", "name": "tag", "type": "text" },
+				{ "key": "field_cag_tc_project_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_tc_project_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_tc_tab_solutions", "label": "פתרונות", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_tc_solutions_heading", "label": "כותרת", "name": "tc_solutions_heading", "type": "text" },
+		{ "key": "field_cag_tc_solutions_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "tc_solutions_highlight", "type": "text" },
+		{ "key": "field_cag_tc_solutions_intro", "label": "תת-כותרת", "name": "tc_solutions_intro", "type": "text" },
+		{
+			"key": "field_cag_tc_solutions_items",
+			"label": "כרטיסי פתרונות",
+			"name": "tc_solutions_items",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת פתרון",
+			"sub_fields": [
+				{ "key": "field_cag_tc_solution_icon", "label": "אייקון (Font Awesome)", "name": "icon", "type": "text", "instructions": "מחלקת Font Awesome, למשל: fa-solid fa-tree", "placeholder": "fa-solid fa-tree" },
+				{ "key": "field_cag_tc_solution_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_tc_solution_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_tc_tab_models", "label": "דגמים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_tc_models_heading", "label": "כותרת (לפני הצבע)", "name": "tc_models_heading", "type": "text" },
+		{ "key": "field_cag_tc_models_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "tc_models_highlight", "type": "text", "instructions": "החלק הצבעוני, באמצע הכותרת." },
+		{ "key": "field_cag_tc_models_heading_after", "label": "כותרת (אחרי הצבע)", "name": "tc_models_heading_after", "type": "text" },
+		{ "key": "field_cag_tc_models_intro", "label": "תת-כותרת", "name": "tc_models_intro", "type": "text" },
+		{
+			"key": "field_cag_tc_models",
+			"label": "דגמים",
+			"name": "tc_models",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת דגם",
+			"instructions": "המספור (1, 2, 3…) והפריסה לסירוגין (תמונה מימין/משמאל) נקבעים אוטומטית לפי הסדר.",
+			"sub_fields": [
+				{ "key": "field_cag_tc_model_image", "label": "תמונה", "name": "image", "type": "image", "return_format": "id", "preview_size": "medium" },
+				{ "key": "field_cag_tc_model_tag", "label": "תווית", "name": "tag", "type": "text" },
+				{ "key": "field_cag_tc_model_title", "label": "שם הדגם", "name": "title", "type": "text" },
+				{ "key": "field_cag_tc_model_price", "label": "מחיר", "name": "price", "type": "text", "instructions": "למשל: ₪150,000" },
+				{ "key": "field_cag_tc_model_price_note", "label": "הערת מחיר", "name": "price_note", "type": "text", "default_value": "(לא כולל מע״מ)" },
+				{ "key": "field_cag_tc_model_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 3 },
+				{
+					"key": "field_cag_tc_model_specs",
+					"label": "מפרט",
+					"name": "specs",
+					"type": "repeater",
+					"layout": "table",
+					"button_label": "הוספת שורת מפרט",
+					"sub_fields": [
+						{ "key": "field_cag_tc_spec_icon", "label": "אייקון (Font Awesome)", "name": "icon", "type": "text", "placeholder": "fa-solid fa-bed" },
+						{ "key": "field_cag_tc_spec_text", "label": "טקסט", "name": "text", "type": "text" }
+					]
+				},
+				{ "key": "field_cag_tc_model_cta", "label": "כפתור קריאה לפעולה", "name": "cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להסתיר את הכפתור." }
+			]
+		},
+
+		{ "key": "field_cag_tc_tab_chars", "label": "למה לבחור", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_tc_chars_image", "label": "תמונה", "name": "tc_chars_image", "type": "image", "return_format": "id", "preview_size": "medium" },
+		{ "key": "field_cag_tc_chars_img_tag", "label": "תווית על התמונה", "name": "tc_chars_img_tag", "type": "text" },
+		{ "key": "field_cag_tc_chars_heading", "label": "כותרת", "name": "tc_chars_heading", "type": "text" },
+		{ "key": "field_cag_tc_chars_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "tc_chars_highlight", "type": "text", "instructions": "מוצג בשורה שנייה." },
+		{
+			"key": "field_cag_tc_chars_items",
+			"label": "יתרונות (רשימת ✓)",
+			"name": "tc_chars_items",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת יתרון",
+			"sub_fields": [
+				{ "key": "field_cag_tc_char_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_tc_char_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
+			]
+		},
+		{ "key": "field_cag_tc_chars_cta", "label": "כפתור קריאה לפעולה", "name": "tc_chars_cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להסתיר את הכפתור." }
+	],
+	"location": [
+		[
+			{ "param": "page_template", "operator": "==", "value": "page-templates/tourist-complexes.php" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779670800
+}

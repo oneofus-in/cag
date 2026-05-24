@@ -1,0 +1,40 @@
+{
+	"key": "group_cag_accessories",
+	"title": "תוכן עמוד אבזרים נלווים",
+	"fields": [
+		{
+			"key": "field_cag_acc_items",
+			"label": "אבזרים להצגה בגריד",
+			"name": "acc_items",
+			"type": "relationship",
+			"instructions": "בחרו את הדגמים שיוצגו ברשת האבזרים. הסדר נקבע לפי סדר הבחירה.",
+			"required": 0,
+			"post_type": ["model"],
+			"taxonomy": [],
+			"filters": ["search", "taxonomy"],
+			"elements": ["featured_image"],
+			"min": "",
+			"max": "",
+			"return_format": "post_object"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/accessories.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1748044800
+}

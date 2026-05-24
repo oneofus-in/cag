@@ -3,6 +3,15 @@
  * Template Name: Caravan Camparks
  *
  * Ported from the static prototype's pages/caravan-camparks/index.html.
+ *
+ * Content driven by per-page ACF (group_cag_caravan_camparks.json, 2 tabs):
+ *   Tab 1 "מבוא"  — badge image, stamp text, split heading, wysiwyg body.
+ *   Tab 2 "רשימת חניונים" — cc_campsites repeater:
+ *     media_type (radio: maps|image), map_query or image, heading, body (wysiwyg),
+ *     meta (nested repeater: icon + label), cta (link).
+ * Zigzag (is-reverse) auto-derived from row index — not a field.
+ * Closing section stays hardcoded (static summary — not content-managed).
+ * Fallback = original hardcoded content (renders identically until populated).
  */
 get_header();
 ?>
@@ -12,18 +21,33 @@ get_header();
 	<?php get_template_part( 'template-parts/inner-hero/inner-hero' ); ?>
 
 	<!-- ══ Intro ══ -->
+	<?php
+	$cc_intro_img  = cag_field( 'cc_intro_image' );
+	$cc_intro_stmp = cag_field( 'cc_intro_stamp', "חניוני קרוואנים\nמומלצים" );
+	$cc_intro_head = cag_field( 'cc_intro_heading',   'כל חניוני הקרוואנים' );
+	$cc_intro_hl   = cag_field( 'cc_intro_highlight', 'ברחבי הארץ' );
+	$cc_intro_body = cag_field( 'cc_intro_body' );
+	?>
 	<section class="cc-intro">
 		<div class="container">
 			<div class="cc-intro-grid" data-anim="fade-up">
 				<div class="cc-intro-badge">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/aboutimage.png' ) ); ?>" alt="חניוני קרוואנים מומלצים">
-					<span class="cc-intro-stamp">חניוני קרוואנים<br>מומלצים</span>
+					<?php if ( $cc_intro_img ) : ?>
+						<?php echo wp_get_attachment_image( $cc_intro_img, 'medium', false, array( 'alt' => esc_attr( strip_tags( $cc_intro_stmp ) ) ) ); ?>
+					<?php else : ?>
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/aboutimage.png' ) ); ?>" alt="חניוני קרוואנים מומלצים">
+					<?php endif; ?>
+					<span class="cc-intro-stamp"><?php echo nl2br( esc_html( $cc_intro_stmp ) ); ?></span>
 				</div>
 				<div class="cc-intro-text">
-					<h2>כל חניוני הקרוואנים <span class="gradient-text">ברחבי הארץ</span></h2>
-					<p>החלטתם לצאת לטיול עם הקרוואן הביתי? נהדר! ריכזנו עבורכם את החניונים האיכותיים ביותר בארץ – לא רק במובן של חניית רכב פשוטה, אלא חניונים מאובזרים עם חיבורי חשמל ומים, שירותים, מקלחות וכל מה שתצטרכו לשהות נעימה.</p>
-					<p>חניוני הקרוואנים שריכזנו פרוסים ברחבי הארץ – מהגליל בצפון, דרך מרכז הארץ ועד הנגב והערבה בדרום. כל אתר מציע חוויה ייחודית: מקמפינג בחיק הטבע ועד יחידות אירוח יוקרתיות.</p>
-					<p class="cc-intro-note"><strong>למעוניינים ברשימה של חניוני קרוואנים מומלצים על ידי הארץ</strong> – ליצירת קשר עמנו את הטופס</p>
+					<h2><?php echo esc_html( $cc_intro_head ); ?> <span class="gradient-text"><?php echo esc_html( $cc_intro_hl ); ?></span></h2>
+					<?php if ( $cc_intro_body ) : ?>
+						<?php echo $cc_intro_body; ?>
+					<?php else : ?>
+						<p>החלטתם לצאת לטיול עם הקרוואן הביתי? נהדר! ריכזנו עבורכם את החניונים האיכותיים ביותר בארץ – לא רק במובן של חניית רכב פשוטה, אלא חניונים מאובזרים עם חיבורי חשמל ומים, שירותים, מקלחות וכל מה שתצטרכו לשהות נעימה.</p>
+						<p>חניוני הקרוואנים שריכזנו פרוסים ברחבי הארץ – מהגליל בצפון, דרך מרכז הארץ ועד הנגב והערבה בדרום. כל אתר מציע חוויה ייחודית: מקמפינג בחיק הטבע ועד יחידות אירוח יוקרתיות.</p>
+						<p class="cc-intro-note"><strong>למעוניינים ברשימה של חניוני קרוואנים מומלצים על ידי הארץ</strong> – ליצירת קשר עמנו את הטופס</p>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -32,6 +56,56 @@ get_header();
 	<!-- ══ Camparks list ══ -->
 	<section class="cc-list-section">
 		<div class="container">
+
+		<?php if ( function_exists( 'have_rows' ) && have_rows( 'cc_campsites' ) ) : ?>
+
+			<?php $cc_i = 0; while ( have_rows( 'cc_campsites' ) ) : the_row(); ?>
+				<?php
+				$cc_media    = get_sub_field( 'media_type' ) ?: 'maps';
+				$cc_mapembed = get_sub_field( 'map_embed' );
+				$cc_img_id   = get_sub_field( 'image' );
+				$cc_heading  = get_sub_field( 'heading' );
+				$cc_body     = get_sub_field( 'body' );
+				$cc_cta      = get_sub_field( 'cta' );
+				$cc_reverse  = ( $cc_i % 2 !== 0 );
+				?>
+				<article class="cc-row<?php echo $cc_reverse ? ' is-reverse' : ''; ?>" data-anim="fade-up">
+					<div class="cc-row-media">
+						<?php if ( $cc_media === 'image' && $cc_img_id ) : ?>
+							<?php echo wp_get_attachment_image( $cc_img_id, 'large', false, array( 'loading' => 'lazy', 'alt' => esc_attr( $cc_heading ) ) ); ?>
+						<?php elseif ( $cc_mapembed && preg_match( '/src=["\']([^"\']+)["\']/', $cc_mapembed, $cc_src_m ) ) : ?>
+							<iframe
+								src="<?php echo esc_url( $cc_src_m[1] ); ?>"
+								loading="lazy"
+								allowfullscreen
+								referrerpolicy="no-referrer-when-downgrade"
+								title="<?php echo esc_attr( $cc_heading ); ?>"></iframe>
+						<?php endif; ?>
+					</div>
+					<div class="cc-row-text">
+						<?php if ( $cc_heading ) : ?>
+							<h3><?php echo esc_html( $cc_heading ); ?></h3>
+						<?php endif; ?>
+						<?php if ( $cc_body ) : ?>
+							<?php echo $cc_body; ?>
+						<?php endif; ?>
+						<?php if ( have_rows( 'meta' ) ) : ?>
+							<p class="cc-meta-block">
+								<?php while ( have_rows( 'meta' ) ) : the_row(); ?>
+									<span><i class="<?php echo esc_attr( get_sub_field( 'icon' ) ); ?>"></i> <?php echo esc_html( get_sub_field( 'label' ) ); ?></span>
+								<?php endwhile; ?>
+							</p>
+						<?php endif; ?>
+						<?php if ( $cc_cta && ! empty( $cc_cta['url'] ) ) : ?>
+							<a href="<?php echo esc_url( $cc_cta['url'] ); ?>"<?php echo ! empty( $cc_cta['target'] ) ? ' target="' . esc_attr( $cc_cta['target'] ) . '" rel="noopener"' : ''; ?> class="cc-cta">
+								<?php echo esc_html( $cc_cta['title'] ?: 'לתאום ביקור לחצו כאן' ); ?> <i class="fa-solid fa-arrow-left"></i>
+							</a>
+						<?php endif; ?>
+					</div>
+				</article>
+			<?php $cc_i++; endwhile; ?>
+
+		<?php else : ?>
 
 			<!-- 1 — Kfar Hanokdim -->
 			<article class="cc-row" data-anim="fade-up">
@@ -102,7 +176,7 @@ get_header();
 				</div>
 			</article>
 
-			<!-- 4 — Tzemach Beach (Street View panorama) -->
+			<!-- 4 — Tzemach Beach -->
 			<article class="cc-row is-reverse" data-anim="fade-up">
 				<div class="cc-row-media">
 					<iframe
@@ -228,22 +302,36 @@ get_header();
 				</div>
 			</article>
 
+		<?php endif; ?>
+
 			<!-- Closing badge -->
+			<?php
+			$cc_cl_img  = cag_field( 'cc_closing_image' );
+			$cc_cl_body = cag_field( 'cc_closing_body' );
+			?>
 			<div class="cc-closing" data-anim="fade-up">
 				<div class="cc-closing-badge">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/aboutimage.png' ) ); ?>" alt="חניוני קרוואנים בישראל">
+					<?php if ( $cc_cl_img ) : ?>
+						<?php echo wp_get_attachment_image( $cc_cl_img, 'medium', false, array( 'alt' => 'חניוני קרוואנים בישראל' ) ); ?>
+					<?php else : ?>
+						<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/aboutimage.png' ) ); ?>" alt="חניוני קרוואנים בישראל">
+					<?php endif; ?>
 				</div>
 				<div class="cc-closing-text">
-					<p>מדריך לחניוני קרוואנים שמתאים לקרוואנים, לרכבי שטח ולכל מי שאוהב לחוות חופשה אחרת בלב הטבע.</p>
-					<p>בכמה מהחניונים הללו תמצאו:</p>
-					<ul class="cc-bullets cc-bullets-inline">
-						<li><i class="fa-solid fa-check"></i> חיבור לחשמל</li>
-						<li><i class="fa-solid fa-check"></i> חיבור למים</li>
-						<li><i class="fa-solid fa-check"></i> שירותים ומקלחות</li>
-						<li><i class="fa-solid fa-check"></i> פינות בישול ופיקניק</li>
-						<li><i class="fa-solid fa-check"></i> פעילויות לכל המשפחה</li>
-						<li><i class="fa-solid fa-check"></i> אטרקציות בסביבה</li>
-					</ul>
+					<?php if ( $cc_cl_body ) : ?>
+						<?php echo $cc_cl_body; ?>
+					<?php else : ?>
+						<p>מדריך לחניוני קרוואנים שמתאים לקרוואנים, לרכבי שטח ולכל מי שאוהב לחוות חופשה אחרת בלב הטבע.</p>
+						<p>בכמה מהחניונים הללו תמצאו:</p>
+						<ul class="cc-bullets cc-bullets-inline">
+							<li><i class="fa-solid fa-check"></i> חיבור לחשמל</li>
+							<li><i class="fa-solid fa-check"></i> חיבור למים</li>
+							<li><i class="fa-solid fa-check"></i> שירותים ומקלחות</li>
+							<li><i class="fa-solid fa-check"></i> פינות בישול ופיקניק</li>
+							<li><i class="fa-solid fa-check"></i> פעילויות לכל המשפחה</li>
+							<li><i class="fa-solid fa-check"></i> אטרקציות בסביבה</li>
+						</ul>
+					<?php endif; ?>
 				</div>
 			</div>
 

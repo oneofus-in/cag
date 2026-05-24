@@ -41,7 +41,9 @@
 
         function goTo(index) {
             current = (index + total) % total;
-            track.style.transform = 'translateX(' + (-current * 100) + '%)';
+            /* RTL track: positive translateX shifts the strip rightward, bringing the
+               next (left-positioned) slide into view — matches the left-pointing "next" arrow. */
+            track.style.transform = 'translateX(' + (current * 100) + '%)';
             updateDots();
         }
 

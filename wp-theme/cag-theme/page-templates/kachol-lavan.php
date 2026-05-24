@@ -12,54 +12,157 @@ get_header();
 	<?php get_template_part( 'template-parts/inner-hero/inner-hero' ); ?>
 
 	<!-- ══ הדגמים שלנו ══ -->
+	<?php
+	// Singular fields fall back to the original copy when empty (ACF unset).
+	$cag_kl_models_heading = function_exists( 'get_field' ) ? get_field( 'kl_models_heading' ) : '';
+	if ( ! $cag_kl_models_heading ) {
+		$cag_kl_models_heading = 'הדגמים שלנו בא.ג קראוונים';
+	}
+	$cag_kl_models_intro = function_exists( 'get_field' ) ? get_field( 'kl_models_intro' ) : '';
+	if ( ! $cag_kl_models_intro ) {
+		$cag_kl_models_intro = '<p>מגוון מבני לינה ומתחמים תוכננו מתוך הבנה אמיתית של השטח – עם גמישות מלאה להתאמה אישית לפי צורך, שימוש ותקציב, <strong>כל הדגמים מיוצרים כחול לבן, בייצור מקומי מוקפד</strong>, המאפשר שליטה מלאה בתהליך, זמינות גבוהה ויכולת לבצע התאמות מדויקות לאורך הדרך הצוות שלנו מלווה את הפרויקט משלב התכנון ועד סיום הבנייה, עם זמינות גבוהה וחשיבה פרקטית המביאה תוצאות בשטח</p>';
+	}
+	// CTA: ACF link field (title=label, url=href, target). Falls back to the original button.
+	$cag_kl_models_cta = function_exists( 'get_field' ) ? get_field( 'kl_models_cta' ) : false;
+	$cag_kl_cta_url    = ( is_array( $cag_kl_models_cta ) && ! empty( $cag_kl_models_cta['url'] ) ) ? $cag_kl_models_cta['url'] : home_url( '/#models' );
+	$cag_kl_cta_label  = ( is_array( $cag_kl_models_cta ) && ! empty( $cag_kl_models_cta['title'] ) ) ? $cag_kl_models_cta['title'] : 'הכירו את הדגמים שלנו';
+	$cag_kl_cta_target = ( is_array( $cag_kl_models_cta ) && ! empty( $cag_kl_models_cta['target'] ) ) ? $cag_kl_models_cta['target'] : '';
+	?>
 	<section class="section" id="models">
 		<div class="container">
 			<div class="section-head" data-anim="fade-up">
-				<h2>הדגמים שלנו בא.ג קראוונים</h2>
+				<h2><?php echo esc_html( $cag_kl_models_heading ); ?></h2>
 			</div>
 
 			<div class="kl-models-intro" data-anim="fade-up">
-				<p>מגוון מבני לינה ומתחמים תוכננו מתוך הבנה אמיתית של השטח – עם גמישות מלאה להתאמה אישית לפי צורך, שימוש ותקציב, <strong>כל הדגמים מיוצרים כחול לבן, בייצור מקומי מוקפד</strong>, המאפשר שליטה מלאה בתהליך, זמינות גבוהה ויכולת לבצע התאמות מדויקות לאורך הדרך הצוות שלנו מלווה את הפרויקט משלב התכנון ועד סיום הבנייה, עם זמינות גבוהה וחשיבה פרקטית המביאה תוצאות בשטח</p>
+				<?php echo $cag_kl_models_intro; // ACF wysiwyg / hardcoded fallback — trusted HTML. ?>
 				<div class="kl-intro-cta">
-					<a href="<?php echo esc_url( home_url( '/#models' ) ); ?>" class="btn btn-primary">הכירו את הדגמים שלנו <i class="fa-solid fa-arrow-left"></i></a>
+					<a href="<?php echo esc_url( $cag_kl_cta_url ); ?>" class="btn btn-primary"<?php echo $cag_kl_cta_target ? ' target="' . esc_attr( $cag_kl_cta_target ) . '"' : ''; ?>><?php echo esc_html( $cag_kl_cta_label ); ?> <i class="fa-solid fa-arrow-left"></i></a>
 				</div>
 			</div>
 
 			<div class="models-grid">
-				<div class="model-card" data-anim="zoom-in" data-delay="0">
-					<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (1).jpeg' ) ); ?>" alt="דגם שחף" loading="lazy">
-					<div class="model-card-body">
-						<span class="model-tag">דגם לינה מתקדם</span>
-						<h3>דגם שחף</h3>
+				<?php if ( function_exists( 'have_rows' ) && have_rows( 'kl_models' ) ) : ?>
+					<?php
+					$cag_kl_model_i = 0;
+					while ( $cag_kl_model_i < 4 && have_rows( 'kl_models' ) ) :
+						the_row();
+						$cag_kl_model_img   = get_sub_field( 'image' );
+						$cag_kl_model_tag   = get_sub_field( 'tag' );
+						$cag_kl_model_title = get_sub_field( 'title' );
+						$cag_kl_model_delay = number_format( $cag_kl_model_i * 0.08, 2 );
+						?>
+						<div class="model-card" data-anim="zoom-in" data-delay="<?php echo esc_attr( $cag_kl_model_delay ); ?>">
+							<?php if ( $cag_kl_model_img ) { echo wp_get_attachment_image( $cag_kl_model_img, 'large', false, array( 'class' => 'model-card-img', 'loading' => 'lazy' ) ); } ?>
+							<div class="model-card-body">
+								<?php if ( $cag_kl_model_tag ) : ?><span class="model-tag"><?php echo esc_html( $cag_kl_model_tag ); ?></span><?php endif; ?>
+								<?php if ( $cag_kl_model_title ) : ?><h3><?php echo esc_html( $cag_kl_model_title ); ?></h3><?php endif; ?>
+							</div>
+						</div>
+						<?php
+						$cag_kl_model_i++;
+					endwhile;
+					?>
+				<?php else : ?>
+					<div class="model-card" data-anim="zoom-in" data-delay="0">
+						<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (1).jpeg' ) ); ?>" alt="דגם שחף" loading="lazy">
+						<div class="model-card-body">
+							<span class="model-tag">דגם לינה מתקדם</span>
+							<h3>דגם שחף</h3>
+						</div>
 					</div>
-				</div>
-				<div class="model-card" data-anim="zoom-in" data-delay="0.08">
-					<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (2).jpeg' ) ); ?>" alt="דגם לופט" loading="lazy">
-					<div class="model-card-body">
-						<span class="model-tag">מבנה לינה דו-קומתי</span>
-						<h3>דגם לופט</h3>
+					<div class="model-card" data-anim="zoom-in" data-delay="0.08">
+						<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (2).jpeg' ) ); ?>" alt="דגם לופט" loading="lazy">
+						<div class="model-card-body">
+							<span class="model-tag">מבנה לינה דו-קומתי</span>
+							<h3>דגם לופט</h3>
+						</div>
 					</div>
-				</div>
-				<div class="model-card" data-anim="zoom-in" data-delay="0.16">
-					<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (3).jpeg' ) ); ?>" alt="דגם חדש" loading="lazy">
-					<div class="model-card-body">
-						<span class="model-tag">קראוון חדר שינה בודד</span>
-						<h3>דגם חדש</h3>
+					<div class="model-card" data-anim="zoom-in" data-delay="0.16">
+						<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (3).jpeg' ) ); ?>" alt="דגם חדש" loading="lazy">
+						<div class="model-card-body">
+							<span class="model-tag">קראוון חדר שינה בודד</span>
+							<h3>דגם חדש</h3>
+						</div>
 					</div>
-				</div>
-				<div class="model-card" data-anim="zoom-in" data-delay="0.24">
-					<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (4).jpeg' ) ); ?>" alt="דגם בית ספר שדה" loading="lazy">
-					<div class="model-card-body">
-						<span class="model-tag">מיטות דו-קומתיות</span>
-						<h3>דגם בית ספר שדה</h3>
+					<div class="model-card" data-anim="zoom-in" data-delay="0.24">
+						<img class="model-card-img" src="<?php echo esc_url( get_theme_file_uri( 'assets/uploads/Images/WhatsApp Image 2026-04-26 at 13.46.56 (4).jpeg' ) ); ?>" alt="דגם בית ספר שדה" loading="lazy">
+						<div class="model-card-body">
+							<span class="model-tag">מיטות דו-קומתיות</span>
+							<h3>דגם בית ספר שדה</h3>
+						</div>
 					</div>
-				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>
 
 	<!-- ══ Mini contact form ══ -->
 	<?php get_template_part( 'template-parts/mini-contact/mini-contact' ); ?>
+
+	<!-- ══ מקטעי תמונה + טקסט (מתחמי נופש, פודטראקים, …) — repeater עם פריסה מתחלפת ══ -->
+	<?php if ( function_exists( 'have_rows' ) && have_rows( 'kl_splits' ) ) : ?>
+		<?php
+		$cag_kl_split_i = 0;
+		while ( have_rows( 'kl_splits' ) ) :
+			the_row();
+			$cag_kl_s_heading = get_sub_field( 'heading' );
+			$cag_kl_s_body    = get_sub_field( 'body' );
+			$cag_kl_s_img_top = get_sub_field( 'image_top' );
+			$cag_kl_s_img_bot = get_sub_field( 'image_bot' );
+			if ( ! $cag_kl_s_img_bot ) {
+				$cag_kl_s_img_bot = $cag_kl_s_img_top; // bottom falls back to top.
+			}
+			$cag_kl_s_cta     = get_sub_field( 'cta' );
+			$cag_kl_s_reverse = ( 1 === $cag_kl_split_i % 2 ); // auto-zigzag: every other section flips sides + order.
+			$cag_kl_text_anim = $cag_kl_s_reverse ? 'fade-left' : 'fade-right';
+			$cag_kl_img_anim  = $cag_kl_s_reverse ? 'fade-right' : 'fade-left';
+			?>
+			<section class="section">
+				<div class="container">
+					<div class="resort-split">
+						<?php if ( $cag_kl_s_reverse ) : ?>
+							<div class="resort-img-grid" data-anim="<?php echo esc_attr( $cag_kl_img_anim ); ?>">
+								<?php if ( $cag_kl_s_img_top ) { echo wp_get_attachment_image( $cag_kl_s_img_top, 'large', false, array( 'class' => 'resort-img--top', 'loading' => 'lazy' ) ); } ?>
+								<?php if ( $cag_kl_s_img_bot ) { echo wp_get_attachment_image( $cag_kl_s_img_bot, 'large', false, array( 'class' => 'resort-img--bot', 'loading' => 'lazy' ) ); } ?>
+							</div>
+						<?php endif; ?>
+						<div class="resort-content" data-anim="<?php echo esc_attr( $cag_kl_text_anim ); ?>">
+							<?php if ( $cag_kl_s_heading ) : ?><h2><?php echo esc_html( $cag_kl_s_heading ); ?></h2><?php endif; ?>
+							<?php echo $cag_kl_s_body; // ACF wysiwyg — trusted, already-formatted HTML. ?>
+							<?php if ( have_rows( 'features' ) ) : ?>
+								<div class="feature-icons">
+									<?php
+									while ( have_rows( 'features' ) ) :
+										the_row();
+										$cag_kl_f_icon  = get_sub_field( 'icon' );
+										$cag_kl_f_label = get_sub_field( 'label' );
+										?>
+										<div class="feature-icon-card">
+											<?php if ( $cag_kl_f_icon ) : ?><i class="<?php echo esc_attr( $cag_kl_f_icon ); ?>"></i><?php endif; ?>
+											<?php if ( $cag_kl_f_label ) : ?><span><?php echo esc_html( $cag_kl_f_label ); ?></span><?php endif; ?>
+										</div>
+									<?php endwhile; ?>
+								</div>
+							<?php endif; ?>
+							<?php if ( is_array( $cag_kl_s_cta ) && ! empty( $cag_kl_s_cta['url'] ) ) : ?>
+								<a href="<?php echo esc_url( $cag_kl_s_cta['url'] ); ?>" class="btn btn-primary"<?php echo ! empty( $cag_kl_s_cta['target'] ) ? ' target="' . esc_attr( $cag_kl_s_cta['target'] ) . '"' : ''; ?>><?php echo esc_html( ! empty( $cag_kl_s_cta['title'] ) ? $cag_kl_s_cta['title'] : 'גלו עוד' ); ?> <i class="fa-solid fa-arrow-left"></i></a>
+							<?php endif; ?>
+						</div>
+						<?php if ( ! $cag_kl_s_reverse ) : ?>
+							<div class="resort-img-grid" data-anim="<?php echo esc_attr( $cag_kl_img_anim ); ?>">
+								<?php if ( $cag_kl_s_img_top ) { echo wp_get_attachment_image( $cag_kl_s_img_top, 'large', false, array( 'class' => 'resort-img--top', 'loading' => 'lazy' ) ); } ?>
+								<?php if ( $cag_kl_s_img_bot ) { echo wp_get_attachment_image( $cag_kl_s_img_bot, 'large', false, array( 'class' => 'resort-img--bot', 'loading' => 'lazy' ) ); } ?>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</section>
+			<?php
+			$cag_kl_split_i++;
+		endwhile;
+		?>
+	<?php else : ?>
 
 	<!-- ══ מתחמי נופש ותיירות ══ -->
 	<section class="section" id="resort">
@@ -149,63 +252,10 @@ get_header();
 		</div>
 	</section>
 
+	<?php endif; ?>
+
 	<!-- ══ שאלות נפוצות ══ -->
 	<?php get_template_part( 'template-parts/faq/faq' ); ?>
-
-	<!-- ══ ידע, ניסיון וביצוע ══ -->
-	<section class="section kl-about-section" style="display:none;">
-		<div class="container">
-			<div class="about-split">
-				<div class="about-content" data-anim="fade-right">
-					<h2 style="font-weight:400;">א.ג קראוונים – ידע, ניסיון וביצוע המתחברים <strong>למתחם</strong> אחד שלם</h2>
-					<p>בא.ג קראוונים פועלים כבר למעלה מ־20 שנה בתחום בניית מבנים והתאמה אישית, עם היכרות עמוקה של צרכי השטח והדגשים הנדרשים בפרויקטים מורכבים. החברה מתמחה בתכנון וייצור מבני לינה ומתחמים בפריסה רחבה, <strong>עבור יזמים, רשויות ולקוחות פרטיים, תוך שילוב בין ידע הנדסי, חשיבה פרקטית ויכולת ביצוע מוכחת.</strong></p>
-					<p>כל המבנים שלנו מיוצרים כחול לבן, בייצור מקומי מוקפד ובהתאמה מדויקת לכל פרויקט. הניסיון המצטבר והעבודה על מגוון רחב של פרויקטים ברחבי הארץ <strong>מאפשרים לנו בא.ג קראוונים להציע פתרונות מדויקים, אמינים ומוכנים לשטח – משלב התכנון ועד ההקמה.</strong></p>
-					<a href="#contact" class="btn btn-primary" style="align-self:flex-start;">לקביעת פגישת ייעוץ ללא עלות <i class="fa-solid fa-arrow-left"></i></a>
-				</div>
-				<div class="about-img" data-anim="fade-left">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/aboutimage.png' ) ); ?>" alt="אודותינו" style="width:100%;aspect-ratio:542/505;border-radius:var(--radius);object-fit:cover;display:block;">
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- ══ פרויקטים שמדברים בעד עצמם ══ -->
-	<section class="section kl-projects-section" style="display:none;">
-		<div class="container">
-			<div class="kl-projects-deco" data-anim="fade-up" aria-hidden="true">
-				<i class="fa-solid fa-house"></i>
-				<i class="fa-solid fa-house-chimney"></i>
-			</div>
-
-			<div class="section-head" data-anim="fade-up">
-				<span class="eyebrow">הפרויקטים שלנו</span>
-				<h2>פרויקטים שמדברים בעד עצמם</h2>
-				<p>הפרויקטים שלנו בא.ג קראוונים מציגים מגוון רחב של פתרונות, בהתאמה לצרכים שונים ולשימושים רבים. מבני לינה בודדים, פתרונות ניידים ונייחים וכן מתחמי נופש ואירוח שלמים המשלבים מספר יחידות תחת תכנון אחיד ומדוייק.</p>
-			</div>
-
-			<div class="projects-grid">
-				<div class="project-card" data-anim="zoom-in" data-delay="0">
-					<div class="img-placeholder sq"><span>להשלים תמונות נוספות</span></div>
-				</div>
-				<div class="project-card" data-anim="zoom-in" data-delay="0.08">
-					<div class="img-placeholder sq"><span>להשלים תמונות נוספות</span></div>
-				</div>
-				<div class="project-card" data-anim="zoom-in" data-delay="0.16">
-					<div class="img-placeholder sq"><span>להשלים תמונות נוספות</span></div>
-				</div>
-				<div class="project-card" data-anim="zoom-in" data-delay="0.24">
-					<div class="img-placeholder sq"><span>להשלים תמונות נוספות</span></div>
-				</div>
-				<div class="project-card" data-anim="zoom-in" data-delay="0.32">
-					<div class="img-placeholder sq"><span>להשלים תמונות נוספות</span></div>
-				</div>
-			</div>
-
-			<div class="section-cta" data-anim="fade-up">
-				<a href="<?php echo esc_url( home_url( '/#models' ) ); ?>" class="btn btn-primary">הכירו את הדגמים שלנו <i class="fa-solid fa-arrow-left"></i></a>
-			</div>
-		</div>
-	</section>
 
 </main>
 

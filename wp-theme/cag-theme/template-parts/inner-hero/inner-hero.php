@@ -16,7 +16,17 @@
 
 $cag_hero_poster = get_theme_file_uri( 'assets/img/hero-compound.jpg' );
 $cag_hero_video  = get_theme_file_uri( 'assets/uploads/bg.mp4' );
-$cag_hero_text   = has_excerpt() ? get_the_excerpt() : '';
+
+// On a CPT archive there is no singular post, so the_title()/has_excerpt() don't apply.
+// Allow the archive template to set the title/sub-text via query vars; fall back to the
+// post-type archive title. Regular pages/posts keep using the page title + excerpt.
+if ( is_post_type_archive() ) {
+	$cag_hero_title = get_query_var( 'cag_hero_title' ) ?: post_type_archive_title( '', false );
+	$cag_hero_text  = get_query_var( 'cag_hero_subtitle' ) ?: '';
+} else {
+	$cag_hero_title = get_the_title();
+	$cag_hero_text  = has_excerpt() ? get_the_excerpt() : '';
+}
 ?>
 <section class="hero" id="hero">
     <div class="hero-stage">
@@ -40,12 +50,12 @@ $cag_hero_text   = has_excerpt() ? get_the_excerpt() : '';
                     <nav class="hero-breadcrumbs" aria-label="פירורי לחם">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">בית</a>
                         <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-                        <span aria-current="page"><?php echo esc_html( get_the_title() ); ?></span>
+                        <span aria-current="page"><?php echo esc_html( $cag_hero_title ); ?></span>
                     </nav>
                 <?php endif; ?>
 
                 <h1>
-                    <span class="hero-line-1"><?php the_title(); ?></span>
+                    <span class="hero-line-1"><?php echo esc_html( $cag_hero_title ); ?></span>
                 </h1>
                 <p class="hero-text"><?php echo esc_html( $cag_hero_text ); ?></p>
             </div>

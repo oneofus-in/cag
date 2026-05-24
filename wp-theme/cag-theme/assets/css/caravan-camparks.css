@@ -73,7 +73,10 @@
     margin: 0 0 14px;
 }
 
-.cc-intro-note {
+.cc-intro-note,
+.cc-intro-text em {
+    display: block;
+    font-style: normal;
     border-inline-start: 4px solid var(--blue-500);
     padding: 14px 18px;
     background: var(--blue-50);
@@ -120,7 +123,7 @@
     height: 0;
     border-radius: var(--radius);
     overflow: hidden;
-    background: var(--ink-100);
+    background: transparent;
 }
 
 .cc-row-media iframe,
@@ -185,6 +188,42 @@
 }
 
 .cc-bullets li i {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+/* WYSIWYG plain <ul> inside a campsite row gets the same treatment as .cc-bullets */
+.cc-row-text ul:not(.cc-bullets):not(.cc-bullets-inline) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cc-row-text ul:not(.cc-bullets):not(.cc-bullets-inline) li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--ink-700);
+    font-size: 14.5px;
+    line-height: 1.55;
+}
+
+.cc-row-text ul:not(.cc-bullets):not(.cc-bullets-inline) li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
     width: 22px;
     height: 22px;
     border-radius: 50%;
@@ -302,12 +341,13 @@
     overflow: hidden;
     border: 5px solid #fff;
     box-shadow: var(--shadow-md);
+    background: #fff;
 }
 
 .cc-closing-badge img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
@@ -316,6 +356,42 @@
     font-size: 15.5px;
     line-height: 1.7;
     margin: 0 0 12px;
+}
+
+.cc-closing-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+.cc-closing-text ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-800);
+}
+
+.cc-closing-text ul li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 3px;
 }
 
 /* ═══════════════════════════════════════════

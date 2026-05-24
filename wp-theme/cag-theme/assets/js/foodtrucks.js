@@ -11,6 +11,9 @@
     const prevBtn   = document.querySelector('.ft-car-arrow--prev');
     const nextBtn   = document.querySelector('.ft-car-arrow--next');
     const slides    = Array.from(document.querySelectorAll('.ft-carousel-slide'));
+
+    if (!carousel || !track || slides.length === 0) return;
+
     const GAP       = 16;
     const total     = slides.length;
     let   current   = 0;
@@ -36,13 +39,14 @@
 
     function goTo(idx) {
         current = Math.max(0, Math.min(idx, maxIdx()));
-        track.style.transform = `translateX(-${current * stepWidth()}px)`;
-        prevBtn.disabled = current === 0;
-        nextBtn.disabled = current >= maxIdx();
+        track.style.transform = `translateX(-${(maxIdx() - current) * stepWidth()}px)`;
+        if (prevBtn) prevBtn.disabled = current === 0;
+        if (nextBtn) nextBtn.disabled = current >= maxIdx();
         renderDots();
     }
 
     function renderDots() {
+        if (!dotsWrap) return;
         const pages = maxIdx() + 1;
         dotsWrap.innerHTML = '';
         for (let i = 0; i < pages; i++) {
@@ -76,8 +80,8 @@
     function onPointerUp() {
         if (dragStartX === null) return;
         track.classList.remove('is-dragging');
-        if (dragDelta < -50) goTo(current + 1);
-        else if (dragDelta > 50) goTo(current - 1);
+        if (dragDelta > 50) goTo(current + 1);
+        else if (dragDelta < -50) goTo(current - 1);
         dragStartX = null;
         // suppress click if user dragged
         if (didDrag) {

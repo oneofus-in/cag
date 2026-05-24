@@ -10,9 +10,32 @@
  * derives the body class from this basename, so naming it videos-page keeps
  * those selectors matching. Template Name shown in the editor is still "Videos".
  *
- * Renders inner-hero only — the static page loaded mini-contact CSS/JS but had
- * no #mini-contact div, so nothing to render there.
+ * Content driven by per-page ACF (group_cag_videos_page.json, 3 tabs).
+ * Each tab: heading + gradient highlight word + intro + video repeater.
+ * Fallback = original hardcoded cards (renders identically until populated).
  */
+
+/* ── Section 1: פוד טראקים ── */
+$vg_ft_head = cag_field( 'ft_heading',   'פוד טראקים' );
+$vg_ft_hl   = cag_field( 'ft_highlight', 'לרשויות ועסקים' );
+$vg_ft_intro = cag_field( 'ft_intro',    'סרטונים של פוד טראקים שבנינו לעיריות, בתי ספר, גופים עסקיים ויחידים — כל פוד טראק מותאם אישית מקצה לקצה, מהתכנון ועד אספקת הפתרון המוכן לפעילות' );
+
+/* ── Section 2: קרוואנים ── */
+$vg_cv_head  = cag_field( 'cv_heading',   'קרוואנים' );
+$vg_cv_hl    = cag_field( 'cv_highlight', 'ומבני לינה' );
+$vg_cv_intro = cag_field( 'cv_intro',     'מגוון פרויקטים של קרוואנים מגורים, מבני משרד ניידים ומתחמי לינה — פתרונות שנבנים לפי צרכי הלקוח לשימוש קבוע או זמני' );
+
+/* ── Section 3: ביטחוני ── */
+$vg_sc_head  = cag_field( 'sc_heading',   'מגזר' );
+$vg_sc_hl    = cag_field( 'sc_highlight', 'ביטחוני' );
+$vg_sc_intro = cag_field( 'sc_intro',     'פרויקטים שביצענו עבור גופי ביטחון, צבא ומשטרה — נגררים ביטחוניים, מבני לינה לשטח ופתרונות מגורים ייעודיים לדרישות ביטחוניות קפדניות' );
+
+/* Reusable YouTube play-button SVG (same markup for every card) */
+$vg_play_svg = '<svg viewBox="0 0 68 48" aria-hidden="true">'
+	. '<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>'
+	. '<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>'
+	. '</svg>';
+
 get_header();
 ?>
 
@@ -24,92 +47,81 @@ get_header();
 	<section class="section vg-section" id="food-trucks">
 		<div class="container">
 			<div class="section-head" data-anim="fade-up">
-				<h2>פוד טראקים <span class="gradient-text">לרשויות ועסקים</span></h2>
-				<p>סרטונים של פוד טראקים שבנינו לעיריות, בתי ספר, גופים עסקיים ויחידים — כל פוד טראק מותאם אישית מקצה לקצה, מהתכנון ועד אספקת הפתרון המוכן לפעילות</p>
+				<h2><?php echo esc_html( $vg_ft_head ); ?> <span class="gradient-text"><?php echo esc_html( $vg_ft_hl ); ?></span></h2>
+				<p><?php echo esc_html( $vg_ft_intro ); ?></p>
 			</div>
 
 			<div class="vg-carousel-wrap" data-anim="fade-up">
 				<div class="vg-carousel"><div class="vg-carousel-track">
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="פוד טראק ביער מבית א.ג נגררים">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="פוד טראק ביער מבית א.ג נגררים" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">פוד טראק ביער</h3>
-						<p class="vg-card-desc">פוד טראק מותאם אישית שתוכנן ונבנה עבור אתר טבע — עמידות, עיצוב ופונקציונליות בשטח</p>
-					</div>
-				</article>
+				<?php if ( function_exists( 'have_rows' ) && have_rows( 'ft_videos' ) ) : ?>
+					<?php while ( have_rows( 'ft_videos' ) ) : the_row(); ?>
+						<?php
+						$vg_id    = esc_attr( get_sub_field( 'video_id' ) ?: 'OkAlWJ4C_Fs' );
+						$vg_title = esc_html( get_sub_field( 'title' ) );
+						$vg_desc  = esc_html( get_sub_field( 'description' ) );
+						$vg_thumb = esc_url( 'https://i.ytimg.com/vi/' . $vg_id . '/hqdefault.jpg' );
+						?>
+						<article class="vg-card">
+							<div class="vid-yt-player" data-video-id="<?php echo $vg_id; ?>" data-title="<?php echo $vg_title; ?>">
+								<img class="vid-yt-thumb" src="<?php echo $vg_thumb; ?>" alt="<?php echo $vg_title; ?>" loading="lazy">
+								<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
+									<?php echo $vg_play_svg; ?>
+								</button>
+							</div>
+							<div class="vg-card-body">
+								<h3 class="vg-card-title"><?php echo $vg_title; ?></h3>
+								<p class="vg-card-desc"><?php echo $vg_desc; ?></p>
+							</div>
+						</article>
+					<?php endwhile; ?>
+				<?php else : ?>
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="כיתת לימוד ופוד טראק לבתי ספר">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="כיתת לימוד ופוד טראק לבתי ספר" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">פוד טראק לבתי ספר</h3>
-						<p class="vg-card-desc">פתרון מזון מותאם למוסדות חינוך — שילוב של כיתת לימוד ופוד טראק תחת קורת גג אחת</p>
-					</div>
-				</article>
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="פוד טראק ביער מבית א.ג נגררים">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="פוד טראק ביער מבית א.ג נגררים" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">פוד טראק ביער</h3>
+							<p class="vg-card-desc">פוד טראק מותאם אישית שתוכנן ונבנה עבור אתר טבע — עמידות, עיצוב ופונקציונליות בשטח</p>
+						</div>
+					</article>
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="פוד טראק לעירייה – פרויקט מוקם">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="פוד טראק לעירייה" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">פוד טראק לעירייה</h3>
-						<p class="vg-card-desc">פרויקט פוד טראק מוקם עבור עירייה — מזון נגיש לציבור עם עיצוב ממותג ופתרון מלא</p>
-					</div>
-				</article>
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="כיתת לימוד ופוד טראק לבתי ספר">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="כיתת לימוד ופוד טראק לבתי ספר" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">פוד טראק לבתי ספר</h3>
+							<p class="vg-card-desc">פתרון מזון מותאם למוסדות חינוך — שילוב של כיתת לימוד ופוד טראק תחת קורת גג אחת</p>
+						</div>
+					</article>
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="א.ג נגררים פוד טראק בהתאמה אישית">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="פוד טראק בהתאמה אישית" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">פוד טראק בהתאמה אישית</h3>
-						<p class="vg-card-desc">סרטון סקירה של פוד טראק שתוכנן ספציפית לצרכי הלקוח — עיצוב, ציוד ופרטים טכניים</p>
-					</div>
-				</article>
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="פוד טראק לעירייה – פרויקט מוקם">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="פוד טראק לעירייה" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">פוד טראק לעירייה</h3>
+							<p class="vg-card-desc">פרויקט פוד טראק מוקם עבור עירייה — מזון נגיש לציבור עם עיצוב ממותג ופתרון מלא</p>
+						</div>
+					</article>
+
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="א.ג נגררים פוד טראק בהתאמה אישית">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="פוד טראק בהתאמה אישית" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">פוד טראק בהתאמה אישית</h3>
+							<p class="vg-card-desc">סרטון סקירה של פוד טראק שתוכנן ספציפית לצרכי הלקוח — עיצוב, ציוד ופרטים טכניים</p>
+						</div>
+					</article>
+
+				<?php endif; ?>
 
 				</div></div>
 				<button class="vg-car-arrow vg-car-arrow--prev" type="button" aria-label="הקודם"><i class="fa-solid fa-chevron-right"></i></button>
@@ -123,72 +135,70 @@ get_header();
 	<section class="section vg-section vg-section--alt" id="caravans">
 		<div class="container">
 			<div class="section-head" data-anim="fade-up">
-				<h2>קרוואנים <span class="gradient-text">ומבני לינה</span></h2>
-				<p>מגוון פרויקטים של קרוואנים מגורים, מבני משרד ניידים ומתחמי לינה — פתרונות שנבנים לפי צרכי הלקוח לשימוש קבוע או זמני</p>
+				<h2><?php echo esc_html( $vg_cv_head ); ?> <span class="gradient-text"><?php echo esc_html( $vg_cv_hl ); ?></span></h2>
+				<p><?php echo esc_html( $vg_cv_intro ); ?></p>
 			</div>
 
 			<div class="vg-carousel-wrap" data-anim="fade-up">
 				<div class="vg-carousel"><div class="vg-carousel-track">
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="א.ג קרוואנים – הפנינג של קינן קימפינג">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="הפנינג של קינן קימפינג" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">הפנינג קינן קימפינג</h3>
-						<p class="vg-card-desc">קרוואנים ומתחמי לינה שנבנו עבור אתר קמפינג — איכות, נוחות ועיצוב מותאם לסביבת הטבע</p>
-					</div>
-				</article>
+				<?php if ( function_exists( 'have_rows' ) && have_rows( 'cv_videos' ) ) : ?>
+					<?php while ( have_rows( 'cv_videos' ) ) : the_row(); ?>
+						<?php
+						$vg_id    = esc_attr( get_sub_field( 'video_id' ) ?: 'OkAlWJ4C_Fs' );
+						$vg_title = esc_html( get_sub_field( 'title' ) );
+						$vg_desc  = esc_html( get_sub_field( 'description' ) );
+						$vg_thumb = esc_url( 'https://i.ytimg.com/vi/' . $vg_id . '/hqdefault.jpg' );
+						?>
+						<article class="vg-card">
+							<div class="vid-yt-player" data-video-id="<?php echo $vg_id; ?>" data-title="<?php echo $vg_title; ?>">
+								<img class="vid-yt-thumb" src="<?php echo $vg_thumb; ?>" alt="<?php echo $vg_title; ?>" loading="lazy">
+								<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
+									<?php echo $vg_play_svg; ?>
+								</button>
+							</div>
+							<div class="vg-card-body">
+								<h3 class="vg-card-title"><?php echo $vg_title; ?></h3>
+								<p class="vg-card-desc"><?php echo $vg_desc; ?></p>
+							</div>
+						</article>
+					<?php endwhile; ?>
+				<?php else : ?>
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="קרוואן מבנה משרד – פתרון מקצה לקצה">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="קרוואן מבנה משרד" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">קרוואן מבנה משרד</h3>
-						<p class="vg-card-desc">מבנה משרד נייד ומאובזר — פתרון מהיר להקמה לעסקים וחברות הזקוקים לשטח עבודה גמיש</p>
-					</div>
-				</article>
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="א.ג קרוואנים – הפנינג של קינן קימפינג">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="הפנינג של קינן קימפינג" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">הפנינג קינן קימפינג</h3>
+							<p class="vg-card-desc">קרוואנים ומתחמי לינה שנבנו עבור אתר קמפינג — איכות, נוחות ועיצוב מותאם לסביבת הטבע</p>
+						</div>
+					</article>
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="מתחם לינה במרכז הארץ – סיור">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="מתחם לינה במרכז הארץ" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">מתחם לינה במרכז הארץ</h3>
-						<p class="vg-card-desc">סיור במתחם לינה מודולרי שהוקם עבור לקוח במרכז הארץ — תכנון, ייצור ואספקה מלאה</p>
-					</div>
-				</article>
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="קרוואן מבנה משרד – פתרון מקצה לקצה">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="קרוואן מבנה משרד" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">קרוואן מבנה משרד</h3>
+							<p class="vg-card-desc">מבנה משרד נייד ומאובזר — פתרון מהיר להקמה לעסקים וחברות הזקוקים לשטח עבודה גמיש</p>
+						</div>
+					</article>
+
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="מתחם לינה במרכז הארץ – סיור">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="מתחם לינה במרכז הארץ" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">מתחם לינה במרכז הארץ</h3>
+							<p class="vg-card-desc">סיור במתחם לינה מודולרי שהוקם עבור לקוח במרכז הארץ — תכנון, ייצור ואספקה מלאה</p>
+						</div>
+					</article>
+
+				<?php endif; ?>
 
 				</div></div>
 				<button class="vg-car-arrow vg-car-arrow--prev" type="button" aria-label="הקודם"><i class="fa-solid fa-chevron-right"></i></button>
@@ -202,72 +212,70 @@ get_header();
 	<section class="section vg-section" id="security">
 		<div class="container">
 			<div class="section-head" data-anim="fade-up">
-				<h2>מגזר <span class="gradient-text">ביטחוני</span></h2>
-				<p>פרויקטים שביצענו עבור גופי ביטחון, צבא ומשטרה — נגררים ביטחוניים, מבני לינה לשטח ופתרונות מגורים ייעודיים לדרישות ביטחוניות קפדניות</p>
+				<h2><?php echo esc_html( $vg_sc_head ); ?> <span class="gradient-text"><?php echo esc_html( $vg_sc_hl ); ?></span></h2>
+				<p><?php echo esc_html( $vg_sc_intro ); ?></p>
 			</div>
 
 			<div class="vg-carousel-wrap" data-anim="fade-up">
 				<div class="vg-carousel"><div class="vg-carousel-track">
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="א.ג קראוונים – סרטון תדמית">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="א.ג קראוונים סרטון תדמית" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">סרטון תדמית</h3>
-						<p class="vg-card-desc">הכירו את א.ג קראוונים — ניסיון, מומחיות ופתרונות מגוונים למגזר הביטחוני ולסקטור הפרטי</p>
-					</div>
-				</article>
+				<?php if ( function_exists( 'have_rows' ) && have_rows( 'sc_videos' ) ) : ?>
+					<?php while ( have_rows( 'sc_videos' ) ) : the_row(); ?>
+						<?php
+						$vg_id    = esc_attr( get_sub_field( 'video_id' ) ?: 'OkAlWJ4C_Fs' );
+						$vg_title = esc_html( get_sub_field( 'title' ) );
+						$vg_desc  = esc_html( get_sub_field( 'description' ) );
+						$vg_thumb = esc_url( 'https://i.ytimg.com/vi/' . $vg_id . '/hqdefault.jpg' );
+						?>
+						<article class="vg-card">
+							<div class="vid-yt-player" data-video-id="<?php echo $vg_id; ?>" data-title="<?php echo $vg_title; ?>">
+								<img class="vid-yt-thumb" src="<?php echo $vg_thumb; ?>" alt="<?php echo $vg_title; ?>" loading="lazy">
+								<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
+									<?php echo $vg_play_svg; ?>
+								</button>
+							</div>
+							<div class="vg-card-body">
+								<h3 class="vg-card-title"><?php echo $vg_title; ?></h3>
+								<p class="vg-card-desc"><?php echo $vg_desc; ?></p>
+							</div>
+						</article>
+					<?php endwhile; ?>
+				<?php else : ?>
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="א.ג נגררים מרפאה ניידת לחיילים">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="מרפאה ניידת לחיילים" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">מרפאה ניידת לחיילים</h3>
-						<p class="vg-card-desc">נגרר רפואי מצויד שתוכנן לצרכי חיל הרפואה בשטח — טיפול, פינוי ואספקת ציוד רפואי</p>
-					</div>
-				</article>
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="א.ג קראוונים – סרטון תדמית">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="א.ג קראוונים סרטון תדמית" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">סרטון תדמית</h3>
+							<p class="vg-card-desc">הכירו את א.ג קראוונים — ניסיון, מומחיות ופתרונות מגוונים למגזר הביטחוני ולסקטור הפרטי</p>
+						</div>
+					</article>
 
-				<article class="vg-card">
-					<div class="vid-yt-player"
-					     data-video-id="OkAlWJ4C_Fs"
-					     data-title="נגרר ביטחוני – פיקוד ושליטה">
-						<img class="vid-yt-thumb"
-						     src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg"
-						     alt="נגרר ביטחוני פיקוד ושליטה" loading="lazy">
-						<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון">
-							<svg viewBox="0 0 68 48" aria-hidden="true">
-								<path class="vid-yt-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path>
-								<polygon class="vid-yt-play-arrow" points="45,24 27,14 27,34"></polygon>
-							</svg>
-						</button>
-					</div>
-					<div class="vg-card-body">
-						<h3 class="vg-card-title">נגרר פיקוד ושליטה</h3>
-						<p class="vg-card-desc">עמדת פיקוד ניידת לבקרת מבצע ותיאום יחידות — תקשורת, ציוד ומערכות ניהול משולבות</p>
-					</div>
-				</article>
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="א.ג נגררים מרפאה ניידת לחיילים">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="מרפאה ניידת לחיילים" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">מרפאה ניידת לחיילים</h3>
+							<p class="vg-card-desc">נגרר רפואי מצויד שתוכנן לצרכי חיל הרפואה בשטח — טיפול, פינוי ואספקת ציוד רפואי</p>
+						</div>
+					</article>
+
+					<article class="vg-card">
+						<div class="vid-yt-player" data-video-id="OkAlWJ4C_Fs" data-title="נגרר ביטחוני – פיקוד ושליטה">
+							<img class="vid-yt-thumb" src="https://i.ytimg.com/vi/OkAlWJ4C_Fs/hqdefault.jpg" alt="נגרר ביטחוני פיקוד ושליטה" loading="lazy">
+							<button class="vid-yt-play-btn" type="button" aria-label="הפעלת סרטון"><?php echo $vg_play_svg; ?></button>
+						</div>
+						<div class="vg-card-body">
+							<h3 class="vg-card-title">נגרר פיקוד ושליטה</h3>
+							<p class="vg-card-desc">עמדת פיקוד ניידת לבקרת מבצע ותיאום יחידות — תקשורת, ציוד ומערכות ניהול משולבות</p>
+						</div>
+					</article>
+
+				<?php endif; ?>
 
 				</div></div>
 				<button class="vg-car-arrow vg-car-arrow--prev" type="button" aria-label="הקודם"><i class="fa-solid fa-chevron-right"></i></button>

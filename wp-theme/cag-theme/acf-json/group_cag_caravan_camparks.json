@@ -1,0 +1,205 @@
+{
+	"key": "group_cag_caravan_camparks",
+	"title": "תוכן עמוד חניוני קרוואנים",
+	"fields": [
+		{
+			"key": "field_cag_cc_tab_intro",
+			"label": "מבוא",
+			"name": "",
+			"type": "tab"
+		},
+		{
+			"key": "field_cag_cc_intro_image",
+			"label": "תמונת בדג׳ (עמודה ימנית)",
+			"name": "cc_intro_image",
+			"type": "image",
+			"return_format": "id",
+			"preview_size": "medium"
+		},
+		{
+			"key": "field_cag_cc_intro_stamp",
+			"label": "טקסט על הבדג׳",
+			"name": "cc_intro_stamp",
+			"type": "textarea",
+			"rows": 2,
+			"default_value": "חניוני קרוואנים\nמומלצים",
+			"instructions": "שורה חדשה = ירידת שורה בבדג׳"
+		},
+		{
+			"key": "field_cag_cc_intro_heading",
+			"label": "כותרת (לפני ה-gradient)",
+			"name": "cc_intro_heading",
+			"type": "text",
+			"default_value": "כל חניוני הקרוואנים"
+		},
+		{
+			"key": "field_cag_cc_intro_highlight",
+			"label": "מילת הדגשה (gradient)",
+			"name": "cc_intro_highlight",
+			"type": "text",
+			"default_value": "ברחבי הארץ"
+		},
+		{
+			"key": "field_cag_cc_intro_body",
+			"label": "תיאור (טקסט עשיר — פסקאות, bold)",
+			"name": "cc_intro_body",
+			"type": "wysiwyg",
+			"toolbar": "full",
+			"media_upload": 0
+		},
+		{
+			"key": "field_cag_cc_tab_list",
+			"label": "רשימת חניונים",
+			"name": "",
+			"type": "tab"
+		},
+		{
+			"key": "field_cag_cc_campsites",
+			"label": "חניונים",
+			"name": "cc_campsites",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת חניון",
+			"sub_fields": [
+				{
+					"key": "field_cag_cc_media_type",
+					"label": "סוג מדיה",
+					"name": "media_type",
+					"type": "radio",
+					"choices": {
+						"maps": "מפה (Google Maps)",
+						"image": "תמונה מקומית"
+					},
+					"default_value": "maps",
+					"layout": "horizontal",
+					"allow_null": 0
+				},
+				{
+					"key": "field_cag_cc_map_query",
+					"label": "קוד Embed של Google Maps",
+					"name": "map_embed",
+					"type": "textarea",
+					"instructions": "ב-Google Maps: שתף → הטמע מפה → העתק את כל קוד ה-iframe והדביקו כאן",
+					"conditional_logic": [
+						[
+							{
+								"field": "field_cag_cc_media_type",
+								"operator": "==",
+								"value": "maps"
+							}
+						]
+					],
+					"rows": 4
+				},
+				{
+					"key": "field_cag_cc_site_image",
+					"label": "תמונה",
+					"name": "image",
+					"type": "image",
+					"return_format": "id",
+					"preview_size": "medium",
+					"conditional_logic": [
+						[
+							{
+								"field": "field_cag_cc_media_type",
+								"operator": "==",
+								"value": "image"
+							}
+						]
+					]
+				},
+				{
+					"key": "field_cag_cc_site_heading",
+					"label": "כותרת החניון (h3)",
+					"name": "heading",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_cc_site_body",
+					"label": "תוכן (פסקאות, כותרות, רשימות)",
+					"name": "body",
+					"type": "wysiwyg",
+					"toolbar": "full",
+					"media_upload": 0,
+					"instructions": "ניתן להשתמש בכותרות (h3/h4), פסקאות ורשימות. אל תדביקו כאן את פרטי הקשר — יש לכך שדה נפרד."
+				},
+				{
+					"key": "field_cag_cc_site_meta",
+					"label": "פרטי קשר (אייקון + טקסט)",
+					"name": "meta",
+					"type": "repeater",
+					"layout": "table",
+					"button_label": "הוספת שורה",
+					"instructions": "לדוגמה: אייקון fa-solid fa-phone, טקסט 04-6916500",
+					"sub_fields": [
+						{
+							"key": "field_cag_cc_meta_icon",
+							"label": "אייקון FA",
+							"name": "icon",
+							"type": "text",
+							"placeholder": "fa-solid fa-phone",
+							"instructions": "כיתבו את מחלקת Font Awesome. לדוגמה: fa-solid fa-envelope"
+						},
+						{
+							"key": "field_cag_cc_meta_label",
+							"label": "טקסט",
+							"name": "label",
+							"type": "text"
+						}
+					]
+				},
+				{
+					"key": "field_cag_cc_site_cta",
+					"label": "כפתור CTA (אופציונלי)",
+					"name": "cta",
+					"type": "link",
+					"return_format": "array",
+					"instructions": "השאירו ריק אם אין צורך בכפתור"
+				}
+			]
+		},
+		{
+			"key": "field_cag_cc_tab_closing",
+			"label": "סיכום",
+			"name": "",
+			"type": "tab"
+		},
+		{
+			"key": "field_cag_cc_closing_image",
+			"label": "תמונת בדג׳ (עיגול)",
+			"name": "cc_closing_image",
+			"type": "image",
+			"return_format": "id",
+			"preview_size": "medium",
+			"instructions": "תמונה מרובעת או עגולה — תוצג בעיגול"
+		},
+		{
+			"key": "field_cag_cc_closing_body",
+			"label": "תוכן (טקסט + רשימה)",
+			"name": "cc_closing_body",
+			"type": "wysiwyg",
+			"toolbar": "full",
+			"media_upload": 0,
+			"instructions": "פסקאות ורשימה קצרה של מה שהחניונים מציעים"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/caravan-camparks.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779580800
+}

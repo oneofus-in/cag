@@ -75,8 +75,8 @@
 
 .st-carousel-track {
     display: flex;
+    flex-direction: row-reverse;
     gap: 16px;
-    direction: ltr;
     transition: transform .5s cubic-bezier(.4, 0, .2, 1);
     will-change: transform;
     user-select: none;
@@ -158,8 +158,8 @@
     pointer-events: none;
 }
 
-.st-car-arrow--prev { left: 16px; }
-.st-car-arrow--next { right: 16px; }
+.st-car-arrow--prev { right: 16px; }
+.st-car-arrow--next { left: 16px; }
 
 .st-car-dots {
     display: flex;

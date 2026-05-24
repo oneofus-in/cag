@@ -40,11 +40,16 @@ function cag_theme_setup() {
 }
 add_action( 'after_setup_theme', 'cag_theme_setup' );
 
-// ACF options page + field-group registration (PHP-defined, version-controlled).
+// ACF options page registration (the "הגדרות אתר" admin menu). The field
+// GROUPS — Site Settings, About Us, Kachol Lavan — are now managed via ACF
+// Local JSON in the theme's acf-json/ folder: edit them in the UI, and ACF
+// auto-saves each change back to JSON so they stay version-controlled and
+// deploy with the theme. (They were previously PHP-registered here.)
 require_once get_theme_file_path( 'inc/acf-options.php' );
 
-// Per-page-template ACF field groups (PHP-defined, version-controlled).
-require_once get_theme_file_path( 'inc/acf-about-us.php' );
+// "Models" (דגמים) custom post type + its taxonomies (brand / model_tag /
+// production_type). Each model gets a page at /listings/<slug>.
+require_once get_theme_file_path( 'inc/cpt.php' );
 
 /**
  * Read a value from the ACF "Site Settings" options page, with a fallback.
@@ -59,6 +64,28 @@ require_once get_theme_file_path( 'inc/acf-about-us.php' );
 function cag_opt( $name, $fallback = '' ) {
 	if ( function_exists( 'get_field' ) ) {
 		$val = get_field( $name, 'option' );
+		if ( $val !== null && $val !== '' && $val !== false && $val !== array() ) {
+			return $val;
+		}
+	}
+	return $fallback;
+}
+
+/**
+ * Read an ACF field on the current post/page, with a fallback.
+ *
+ * The per-page analog of cag_opt(): used by page templates whose body content
+ * is ACF-driven, so each field gracefully falls back to its original hardcoded
+ * copy when empty or when ACF is inactive.
+ *
+ * @param string $name     ACF field name on the current post.
+ * @param mixed  $fallback Returned when ACF is inactive or the field is empty.
+ * @return mixed
+ */
+function cag_field( $name, $fallback = '' ) {
+	if ( function_exists( 'get_field' ) ) {
+		$post_id = get_the_ID();
+		$val     = $post_id ? get_field( $name, $post_id ) : get_field( $name );
 		if ( $val !== null && $val !== '' && $val !== false && $val !== array() ) {
 			return $val;
 		}
@@ -101,6 +128,80 @@ function cag_link_target( $name, $fallback = '' ) {
 		return $link['target'];
 	}
 	return $fallback;
+}
+
+/**
+ * Normalize an ACF Link field value into url / label / target parts.
+ *
+ * The per-field counterpart to cag_link_url()/cag_link_target() (which read the
+ * options page): pass any Link field value — from cag_field() or get_sub_field()
+ * — and get back a tidy array with sensible fallbacks. Handles both the 'array'
+ * return format (default) and a plain URL string, plus ACF being inactive.
+ *
+ * @param array|string $link            ACF link field value.
+ * @param string       $fallback_url    Used when the field has no URL.
+ * @param string       $fallback_label  Used when the field has no link text.
+ * @param string       $fallback_target Used when the field sets no target.
+ * @return array{url:string,label:string,target:string}
+ */
+function cag_link_parts( $link, $fallback_url = '#', $fallback_label = '', $fallback_target = '' ) {
+	$url    = $fallback_url;
+	$label  = $fallback_label;
+	$target = $fallback_target;
+
+	if ( is_array( $link ) ) {
+		if ( ! empty( $link['url'] ) ) {
+			$url = $link['url'];
+		}
+		if ( ! empty( $link['title'] ) ) {
+			$label = $link['title'];
+		}
+		if ( ! empty( $link['target'] ) ) {
+			$target = $link['target'];
+		}
+	} elseif ( is_string( $link ) && '' !== $link ) {
+		$url = $link;
+	}
+
+	return array(
+		'url'    => $url,
+		'label'  => $label,
+		'target' => $target,
+	);
+}
+
+/**
+ * Render the target/rel attributes for a link, or an empty string.
+ *
+ * @param string $target '_blank' opens a new tab (and gets rel="noopener"); '' = same tab.
+ * @return string Attribute string with a leading space, or ''.
+ */
+function cag_target_attr( $target ) {
+	return $target ? ' target="' . esc_attr( $target ) . '" rel="noopener noreferrer"' : '';
+}
+
+/**
+ * URL of an ACF image field (return_format 'id') on the current post, with a
+ * theme-file fallback.
+ *
+ * For images used inside HTML attributes (a <video> poster, a CSS background,
+ * a data-src) where wp_get_attachment_image()'s full <img> markup doesn't fit.
+ * Falls back to a bundled theme asset so the section never renders empty.
+ *
+ * @param string $name          ACF image-field name on the current post.
+ * @param string $fallback_path Theme-relative path (e.g. 'assets/img/x.jpg') when empty.
+ * @param string $size          Registered image size.
+ * @return string Image URL (may be '' if both the field and fallback are empty).
+ */
+function cag_field_img_url( $name, $fallback_path = '', $size = 'large' ) {
+	$id = cag_field( $name );
+	if ( $id && is_numeric( $id ) ) {
+		$url = wp_get_attachment_image_url( (int) $id, $size );
+		if ( $url ) {
+			return $url;
+		}
+	}
+	return $fallback_path ? get_theme_file_uri( $fallback_path ) : '';
 }
 
 /**
@@ -323,8 +424,68 @@ function cag_enqueue_assets() {
 		cag_enqueue_inner_hero();
 		cag_enqueue_mini_contact();
 	}
+
+	// Single "model" CPT (/listings/<slug>). Auto-enqueue keys off the page
+	// template slug, which CPT singles don't have — so enqueue by query context
+	// here, mirroring the is_singular('post') block above.
+	if ( is_singular( 'model' ) ) {
+		wp_enqueue_style(
+			'cag-single-model',
+			get_theme_file_uri( 'assets/css/single-model.css' ),
+			array( 'cag-style' ),
+			wp_get_theme()->get( 'Version' )
+		);
+		wp_enqueue_script(
+			'cag-single-model',
+			get_theme_file_uri( 'assets/js/single-model.js' ),
+			array( 'cag-gsap-scrolltrigger' ),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+		cag_enqueue_inner_hero();
+		cag_enqueue_mini_contact();
+		cag_enqueue_faq();
+	}
+
+	// Model archive (/listings/, archive-model.php). Reuses the Caravans page design
+	// (caravans.css); [data-anim] reveals are handled globally by script.js.
+	if ( is_post_type_archive( 'model' ) ) {
+		wp_enqueue_style(
+			'cag-caravans',
+			get_theme_file_uri( 'assets/css/caravans.css' ),
+			array( 'cag-style' ),
+			wp_get_theme()->get( 'Version' )
+		);
+		cag_enqueue_inner_hero();
+		cag_enqueue_faq();
+	}
 }
 add_action( 'wp_enqueue_scripts', 'cag_enqueue_assets' );
+
+/**
+ * Cache-bust theme-local CSS/JS by file modification time.
+ *
+ * Every theme asset is enqueued with the static theme version (e.g. 0.1.1),
+ * so its URL never changes between edits and browsers keep serving the cached
+ * copy — making CSS/JS changes appear to "not show up". This rewrites the
+ * `ver` query arg to the file's filemtime for assets served from the theme
+ * directory, so any edit busts the cache. External assets (CDN, fonts) are
+ * left untouched.
+ */
+function cag_filemtime_cache_bust( $src ) {
+	$theme_uri = get_stylesheet_directory_uri();
+	if ( strpos( $src, $theme_uri ) !== 0 ) {
+		return $src;
+	}
+	$relative = ltrim( str_replace( $theme_uri, '', strtok( $src, '?' ) ), '/' );
+	$path     = get_stylesheet_directory() . '/' . $relative;
+	if ( file_exists( $path ) ) {
+		$src = add_query_arg( 'ver', filemtime( $path ), $src );
+	}
+	return $src;
+}
+add_filter( 'style_loader_src', 'cag_filemtime_cache_bust', 20 );
+add_filter( 'script_loader_src', 'cag_filemtime_cache_bust', 20 );
 
 /**
  * Auto-enqueue per-template CSS/JS by convention.
@@ -495,13 +656,26 @@ function cag_body_class_from_template( $classes ) {
 		$classes[] = 'blog-post-page';
 	}
 
+	// Single "model" CPT — scopes the related-models card overrides in single-model.css.
+	if ( is_singular( 'model' ) ) {
+		$classes[] = 'single-model';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'cag_body_class_from_template' );
 
 add_filter( 'show_admin_bar', '__return_false' );
 
+add_filter( 'tiny_mce_before_init', function( $settings ) {
+	$settings['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Preformatted=pre';
+	return $settings;
+} );
+
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
+// ── One-time post import ── REMOVE THIS LINE (and inc/import-posts.php) after use ──
+require_once get_theme_file_path( 'inc/import-posts.php' );
 
 /**
  * Make Yoast's breadcrumb separator our FontAwesome chevron, so the Yoast

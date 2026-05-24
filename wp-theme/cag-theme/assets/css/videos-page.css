@@ -91,12 +91,13 @@
 .vg-carousel {
     overflow: hidden;
     border-radius: var(--radius-lg);
+    padding: 20px 0;
 }
 
 .vg-carousel-track {
     display: flex;
     gap: 20px;
-    direction: ltr;
+    direction: rtl;
     transition: transform .55s cubic-bezier(.4, 0, .2, 1);
     will-change: transform;
     user-select: none;
@@ -141,6 +142,7 @@
     font-weight: 700;
     color: var(--blue-900);
     line-height: 1.35;
+    text-align: right;
 }
 
 .vg-card-desc {

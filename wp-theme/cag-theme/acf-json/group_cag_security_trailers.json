@@ -1,0 +1,64 @@
+{
+	"key": "group_cag_security_trailers",
+	"title": "תוכן עמוד נגררים ביטחוניים",
+	"fields": [
+		{ "key": "field_cag_st_tab_gallery", "label": "גלריה", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_st_gallery_heading", "label": "כותרת (לפני הצבע)", "name": "st_gallery_heading", "type": "text" },
+		{ "key": "field_cag_st_gallery_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "st_gallery_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_st_gallery_text", "label": "פסקת פתיחה", "name": "st_gallery_text", "type": "textarea", "rows": 3 },
+		{ "key": "field_cag_st_gallery", "label": "תמונות גלריה (קרוסלה)", "name": "st_gallery", "type": "gallery", "return_format": "array", "library": "all", "insert": "append", "preview_size": "medium", "instructions": "התמונות מוצגות בקרוסלה ובתצוגת לייטבוקס. טקסט חלופי (alt) נלקח מספריית המדיה." },
+
+		{ "key": "field_cag_st_tab_use", "label": "שימושים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_st_use_heading", "label": "כותרת (לפני הצבע)", "name": "st_use_heading", "type": "text" },
+		{ "key": "field_cag_st_use_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "st_use_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_st_use_intro", "label": "תת-כותרת", "name": "st_use_intro", "type": "text" },
+		{
+			"key": "field_cag_st_use_items",
+			"label": "כרטיסי שימוש",
+			"name": "st_use_items",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת שימוש",
+			"instructions": "השהיית האנימציה נקבעת אוטומטית לפי הסדר.",
+			"sub_fields": [
+				{ "key": "field_cag_st_use_icon", "label": "אייקון (Font Awesome)", "name": "icon", "type": "text", "instructions": "מחלקת Font Awesome, למשל: fa-solid fa-tower-broadcast", "placeholder": "fa-solid fa-tower-broadcast" },
+				{ "key": "field_cag_st_use_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_st_use_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_st_tab_intro", "label": "נגררים בהתאמה", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_st_intro_heading", "label": "כותרת (לפני הצבע)", "name": "st_intro_heading", "type": "text" },
+		{ "key": "field_cag_st_intro_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "st_intro_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_st_intro_lead", "label": "פסקת פתיחה (מודגשת)", "name": "st_intro_lead", "type": "textarea", "rows": 4 },
+		{ "key": "field_cag_st_intro_body", "label": "פסקת גוף", "name": "st_intro_body", "type": "textarea", "rows": 4 },
+		{
+			"key": "field_cag_st_intro_bullets",
+			"label": "רשימת יתרונות (✓)",
+			"name": "st_intro_bullets",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת שורה",
+			"sub_fields": [
+				{ "key": "field_cag_st_intro_bullet_text", "label": "טקסט", "name": "text", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_st_intro_cta", "label": "כפתור קריאה לפעולה", "name": "st_intro_cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להשתמש בברירת המחדל (קישור לטופס יצירת קשר)." },
+		{ "key": "field_cag_st_intro_image", "label": "תמונה", "name": "st_intro_image", "type": "image", "return_format": "id", "preview_size": "medium" }
+	],
+	"location": [
+		[
+			{ "param": "page_template", "operator": "==", "value": "page-templates/security-trailers.php" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779843600
+}

@@ -1,0 +1,119 @@
+{
+	"key": "group_cag_foodtrucks",
+	"title": "תוכן עמוד פוד טראקים",
+	"fields": [
+		{ "key": "field_cag_ft_tab_models", "label": "דגמים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_ft_models_heading", "label": "כותרת (לפני הצבע)", "name": "ft_models_heading", "type": "text" },
+		{ "key": "field_cag_ft_models_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "ft_models_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_ft_models_lead", "label": "פסקת פתיחה (מודגשת)", "name": "ft_models_lead", "type": "textarea", "rows": 4 },
+		{ "key": "field_cag_ft_models_body", "label": "פסקת גוף", "name": "ft_models_body", "type": "textarea", "rows": 4 },
+		{
+			"key": "field_cag_ft_models_bullets",
+			"label": "רשימת יתרונות (✓)",
+			"name": "ft_models_bullets",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת שורה",
+			"sub_fields": [
+				{ "key": "field_cag_ft_models_bullet_text", "label": "טקסט", "name": "text", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_ft_models_cta", "label": "כפתור קריאה לפעולה", "name": "ft_models_cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להשתמש בברירת המחדל (קישור לטופס יצירת קשר)." },
+		{ "key": "field_cag_ft_models_image", "label": "תמונה", "name": "ft_models_image", "type": "image", "return_format": "id", "preview_size": "medium" },
+
+		{ "key": "field_cag_ft_tab_features", "label": "מאפיינים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_ft_features_heading", "label": "כותרת (לפני הצבע)", "name": "ft_features_heading", "type": "text" },
+		{ "key": "field_cag_ft_features_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "ft_features_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_ft_features_intro", "label": "תת-כותרת", "name": "ft_features_intro", "type": "text" },
+		{
+			"key": "field_cag_ft_features_items",
+			"label": "כרטיסי מאפיינים",
+			"name": "ft_features_items",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת מאפיין",
+			"instructions": "השהיית האנימציה נקבעת אוטומטית לפי הסדר.",
+			"sub_fields": [
+				{ "key": "field_cag_ft_features_icon", "label": "אייקון (Font Awesome)", "name": "icon", "type": "text", "instructions": "מחלקת Font Awesome, למשל: fa-solid fa-shield-halved", "placeholder": "fa-solid fa-shield-halved" },
+				{ "key": "field_cag_ft_features_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_ft_features_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_ft_tab_business", "label": "לעסקים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_ft_business_heading", "label": "כותרת (לפני הצבע)", "name": "ft_business_heading", "type": "text" },
+		{ "key": "field_cag_ft_business_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "ft_business_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_ft_business_lead", "label": "פסקת פתיחה", "name": "ft_business_lead", "type": "textarea", "rows": 3 },
+		{
+			"key": "field_cag_ft_business_bullets",
+			"label": "רשימת יתרונות (✓)",
+			"name": "ft_business_bullets",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת שורה",
+			"sub_fields": [
+				{ "key": "field_cag_ft_business_bullet_text", "label": "טקסט", "name": "text", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_ft_business_cta", "label": "כפתור קריאה לפעולה", "name": "ft_business_cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להשתמש בברירת המחדל (קישור לטופס יצירת קשר)." },
+		{ "key": "field_cag_ft_business_image", "label": "תמונה", "name": "ft_business_image", "type": "image", "return_format": "id", "preview_size": "medium" },
+
+		{ "key": "field_cag_ft_tab_municipal", "label": "לעיריות ורשויות", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_ft_municipal_heading", "label": "כותרת (לפני הצבע)", "name": "ft_municipal_heading", "type": "text" },
+		{ "key": "field_cag_ft_municipal_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "ft_municipal_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_ft_municipal_lead", "label": "פסקת פתיחה", "name": "ft_municipal_lead", "type": "textarea", "rows": 3 },
+		{
+			"key": "field_cag_ft_municipal_bullets",
+			"label": "רשימת יתרונות (✓)",
+			"name": "ft_municipal_bullets",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת שורה",
+			"sub_fields": [
+				{ "key": "field_cag_ft_municipal_bullet_text", "label": "טקסט", "name": "text", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_ft_municipal_cta", "label": "כפתור קריאה לפעולה", "name": "ft_municipal_cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להשתמש בברירת המחדל (קישור לטופס יצירת קשר)." },
+		{ "key": "field_cag_ft_municipal_image", "label": "תמונה", "name": "ft_municipal_image", "type": "image", "return_format": "id", "preview_size": "medium" },
+
+		{ "key": "field_cag_ft_tab_complementary", "label": "מבנים משלימים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_ft_complementary_heading", "label": "כותרת (לפני הצבע)", "name": "ft_complementary_heading", "type": "text" },
+		{ "key": "field_cag_ft_complementary_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "ft_complementary_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_ft_complementary_subhead", "label": "תת-כותרת", "name": "ft_complementary_subhead", "type": "text" },
+		{ "key": "field_cag_ft_complementary_lead", "label": "פסקת פתיחה", "name": "ft_complementary_lead", "type": "textarea", "rows": 3 },
+		{
+			"key": "field_cag_ft_complementary_tags",
+			"label": "תגיות שימוש",
+			"name": "ft_complementary_tags",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת תגית",
+			"sub_fields": [
+				{ "key": "field_cag_ft_complementary_tag_text", "label": "טקסט", "name": "text", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_ft_complementary_cta", "label": "כפתור קריאה לפעולה", "name": "ft_complementary_cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק כדי להשתמש בברירת המחדל (קישור לטופס יצירת קשר)." },
+		{ "key": "field_cag_ft_complementary_image", "label": "תמונה", "name": "ft_complementary_image", "type": "image", "return_format": "id", "preview_size": "medium" },
+
+		{ "key": "field_cag_ft_tab_gallery", "label": "גלריה", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_ft_gallery_heading", "label": "כותרת (לפני הצבע)", "name": "ft_gallery_heading", "type": "text" },
+		{ "key": "field_cag_ft_gallery_highlight", "label": "כותרת מודגשת (גרדיאנט)", "name": "ft_gallery_highlight", "type": "text", "instructions": "החלק הצבעוני בכותרת." },
+		{ "key": "field_cag_ft_gallery_intro", "label": "תת-כותרת", "name": "ft_gallery_intro", "type": "text" },
+		{ "key": "field_cag_ft_gallery", "label": "תמונות גלריה (קרוסלה)", "name": "ft_gallery", "type": "gallery", "return_format": "array", "library": "all", "insert": "append", "preview_size": "medium", "instructions": "התמונות מוצגות בקרוסלה ובתצוגת לייטבוקס. טקסט חלופי (alt) נלקח מספריית המדיה." }
+	],
+	"location": [
+		[
+			{ "param": "page_template", "operator": "==", "value": "page-templates/foodtrucks.php" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779843600
+}

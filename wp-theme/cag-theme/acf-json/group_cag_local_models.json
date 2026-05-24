@@ -1,0 +1,99 @@
+{
+	"key": "group_cag_local_models",
+	"title": "תוכן עמוד דגמים מקומיים",
+	"fields": [
+		{ "key": "field_cag_lm_tab_models", "label": "דגמים", "name": "", "type": "tab", "placement": "top" },
+		{
+			"key": "field_cag_lm_models",
+			"label": "דגמים להצגה",
+			"name": "lm_models",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת דגם",
+			"instructions": "הסדר קובע את סדר התצוגה. מיקום התמונה (ימין/שמאל) מתחלף אוטומטית.",
+			"sub_fields": [
+				{ "key": "field_cag_lm_model_image", "label": "תמונה", "name": "image", "type": "image", "return_format": "id", "preview_size": "medium", "required": 1 },
+				{ "key": "field_cag_lm_model_tag", "label": "תגית (קטגוריה)", "name": "tag", "type": "text", "instructions": "לדוגמה: קראוון שינה בודד" },
+				{ "key": "field_cag_lm_model_name", "label": "שם הדגם", "name": "name", "type": "text", "required": 1 },
+				{ "key": "field_cag_lm_model_price", "label": "מחיר", "name": "price", "type": "text", "instructions": "לדוגמה: ₪150,000 — השאירו ריק אם אין מחיר קבוע" },
+				{ "key": "field_cag_lm_model_price_note", "label": "הערת מחיר", "name": "price_note", "type": "text", "instructions": "לדוגמה: (לא כולל מע״מ)" },
+				{ "key": "field_cag_lm_model_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 3 },
+				{
+					"key": "field_cag_lm_model_specs",
+					"label": "מפרטים (אייקון + ערך)",
+					"name": "specs",
+					"type": "repeater",
+					"layout": "table",
+					"button_label": "הוספת מפרט",
+					"instructions": "בדרך כלל 3 שורות: שטח, כמות אנשים, סוג קומה.",
+					"sub_fields": [
+						{ "key": "field_cag_lm_model_spec_icon", "label": "אייקון FA", "name": "icon", "type": "text", "placeholder": "fa-solid fa-vector-square" },
+						{ "key": "field_cag_lm_model_spec_value", "label": "ערך", "name": "value", "type": "text", "placeholder": "22 מ״ר" }
+					]
+				},
+				{ "key": "field_cag_lm_model_cta", "label": "כפתור קריאה לפעולה", "name": "cta", "type": "link", "return_format": "array", "instructions": "השאירו ריק לשימוש בברירת מחדל (#contact)." }
+			]
+		},
+
+		{ "key": "field_cag_lm_tab_features", "label": "מאפיינים משותפים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_lm_feat_heading", "label": "כותרת", "name": "lm_feat_heading", "type": "text" },
+		{ "key": "field_cag_lm_feat_subtitle", "label": "תת-כותרת", "name": "lm_feat_subtitle", "type": "textarea", "rows": 2 },
+		{
+			"key": "field_cag_lm_features",
+			"label": "כרטיסי מאפיינים",
+			"name": "lm_features",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת מאפיין",
+			"instructions": "עיכוב האנימציה נקבע אוטומטית לפי הסדר.",
+			"sub_fields": [
+				{ "key": "field_cag_lm_feat_icon", "label": "אייקון FA", "name": "icon", "type": "text", "placeholder": "fa-solid fa-shield-halved" },
+				{ "key": "field_cag_lm_feat_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_lm_feat_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
+			]
+		},
+
+		{ "key": "field_cag_lm_tab_custom", "label": "Custom Made", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_lm_custom_eyebrow", "label": "Eyebrow (מעל הכותרת)", "name": "lm_custom_eyebrow", "type": "text", "instructions": "לדוגמה: Custom Made" },
+		{ "key": "field_cag_lm_custom_heading", "label": "כותרת (חלק רגיל)", "name": "lm_custom_heading", "type": "text" },
+		{ "key": "field_cag_lm_custom_heading_em", "label": "כותרת (חלק מודגש — em)", "name": "lm_custom_heading_em", "type": "text" },
+		{ "key": "field_cag_lm_custom_subtitle", "label": "תת-כותרת", "name": "lm_custom_subtitle", "type": "textarea", "rows": 3 },
+		{ "key": "field_cag_lm_custom_stamp", "label": "חותמת (stamp)", "name": "lm_custom_stamp", "type": "text", "instructions": "לדוגמה: REV.A.G — 2026" },
+		{
+			"key": "field_cag_lm_custom_specs",
+			"label": "פריטי התאמה אישית",
+			"name": "lm_custom_specs",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת פריט",
+			"instructions": "מספר הפריט נקבע אוטומטית לפי הסדר.",
+			"sub_fields": [
+				{ "key": "field_cag_lm_cs_icon", "label": "אייקון FA", "name": "icon", "type": "text", "placeholder": "fa-solid fa-vector-square" },
+				{ "key": "field_cag_lm_cs_title", "label": "כותרת", "name": "title", "type": "text" },
+				{ "key": "field_cag_lm_cs_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 },
+				{ "key": "field_cag_lm_cs_range", "label": "תווית טווח", "name": "range", "type": "text", "instructions": "לדוגמה: 18–80 מ״ר" }
+			]
+		},
+		{ "key": "field_cag_lm_custom_cta", "label": "כפתור CTA", "name": "lm_custom_cta", "type": "link", "return_format": "array" },
+		{ "key": "field_cag_lm_custom_meta", "label": "טקסט מטא (ליד הכפתור)", "name": "lm_custom_meta", "type": "text", "instructions": "לדוגמה: ייעוץ ראשוני ללא עלות וללא התחייבות" }
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "page-templates/local-models.php"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1748044800
+}

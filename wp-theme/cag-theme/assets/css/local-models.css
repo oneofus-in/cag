@@ -129,12 +129,14 @@
 
 .lm-model-media {
     display: flex;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
 }
 
 .lm-model-img {
     width: 100%;
-    aspect-ratio: 4/3;
-    border-radius: var(--radius-lg);
+    height: 100%;
     object-fit: cover;
     display: block;
 }

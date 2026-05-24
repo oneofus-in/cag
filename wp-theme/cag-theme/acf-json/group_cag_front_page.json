@@ -1,0 +1,865 @@
+{
+	"key": "group_cag_front_page",
+	"title": "תוכן עמוד הבית",
+	"fields": [
+		{
+			"key": "field_cag_fp_tab_hero",
+			"label": "אזור פתיחה (Hero)",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_hero_video",
+			"label": "סרטון רקע",
+			"name": "hero_video",
+			"type": "file",
+			"return_format": "url",
+			"mime_types": "mp4,webm,mov",
+			"instructions": "סרטון הרקע שמתנגן באזור הפתיחה. אם ריק — נטען סרטון ברירת המחדל של התבנית."
+		},
+		{
+			"key": "field_cag_fp_hero_poster",
+			"label": "תמונת רקע (פוסטר)",
+			"name": "hero_poster",
+			"type": "image",
+			"return_format": "id",
+			"preview_size": "medium",
+			"instructions": "מוצגת עד שהסרטון נטען."
+		},
+		{
+			"key": "field_cag_fp_hero_title_1",
+			"label": "כותרת — שורה ראשונה",
+			"name": "hero_title_1",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_hero_title_2",
+			"label": "כותרת — שורה שנייה (מודגשת)",
+			"name": "hero_title_2",
+			"type": "textarea",
+			"rows": 2,
+			"new_lines": "",
+			"instructions": "ירידת שורה כאן תיהפך ל-<br> בתצוגה."
+		},
+		{
+			"key": "field_cag_fp_hero_text",
+			"label": "טקסט פתיחה",
+			"name": "hero_text",
+			"type": "textarea",
+			"rows": 3,
+			"new_lines": ""
+		},
+		{
+			"key": "field_cag_fp_hero_cta_1",
+			"label": "כפתור 1",
+			"name": "hero_cta_1",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_hero_cta_2",
+			"label": "כפתור 2",
+			"name": "hero_cta_2",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_hero_meta",
+			"label": "פריטי מונה (Meta)",
+			"name": "hero_meta",
+			"type": "repeater",
+			"instructions": "המספור (01, 02, 03) מתווסף אוטומטית.",
+			"layout": "table",
+			"button_label": "הוספת פריט",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_hero_meta_label",
+					"label": "טקסט",
+					"name": "label",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_tab_models",
+			"label": "דגמים מובילים",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_models_eyebrow",
+			"label": "תווית עליונה",
+			"name": "models_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_models_heading",
+			"label": "כותרת",
+			"name": "models_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_models_highlight",
+			"label": "כותרת מודגשת (גרדיאנט)",
+			"name": "models_highlight",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_models_intro",
+			"label": "טקסט תיאור",
+			"name": "models_intro",
+			"type": "textarea",
+			"rows": 3,
+			"new_lines": ""
+		},
+		{
+			"key": "field_cag_fp_models_cta_1",
+			"label": "כפתור 1",
+			"name": "models_cta_1",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_models_cta_2",
+			"label": "כפתור 2",
+			"name": "models_cta_2",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_models_featured",
+			"label": "דגמים מומלצים (מה-CPT)",
+			"name": "models_featured",
+			"type": "relationship",
+			"instructions": "בחרו עד 4 דגמים מה-CPT. הסדר שתבחרו הוא סדר התצוגה. כשהשדה מלא הוא גובר על כרטיסי הדגמים הידניים למטה.",
+			"post_type": [
+				"model"
+			],
+			"filters": [
+				"search"
+			],
+			"elements": [],
+			"min": "",
+			"max": 4,
+			"return_format": "object"
+		},
+		{
+			"key": "field_cag_fp_models_cards",
+			"label": "כרטיסי דגמים",
+			"name": "models_cards",
+			"type": "repeater",
+			"instructions": "המספור (01, 02…) מתווסף אוטומטית.",
+			"layout": "block",
+			"button_label": "הוספת דגם",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_models_card_image",
+					"label": "תמונה",
+					"name": "image",
+					"type": "image",
+					"return_format": "id",
+					"preview_size": "medium"
+				},
+				{
+					"key": "field_cag_fp_models_card_meta",
+					"label": "תווית (למשל: דו-קומתי)",
+					"name": "meta",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_models_card_title",
+					"label": "שם הדגם",
+					"name": "title",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_models_card_body",
+					"label": "תיאור",
+					"name": "body",
+					"type": "textarea",
+					"rows": 3
+				},
+				{
+					"key": "field_cag_fp_models_card_price",
+					"label": "מחיר (למשל: ₪320,000)",
+					"name": "price",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_tab_about",
+			"label": "אודות",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_about_eyebrow",
+			"label": "תווית עליונה",
+			"name": "about_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_about_heading",
+			"label": "כותרת",
+			"name": "about_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_about_highlight",
+			"label": "כותרת מודגשת (גרדיאנט)",
+			"name": "about_highlight",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_about_body",
+			"label": "תוכן",
+			"name": "about_body",
+			"type": "wysiwyg",
+			"tabs": "visual",
+			"toolbar": "basic",
+			"media_upload": 0
+		},
+		{
+			"key": "field_cag_fp_about_bullets",
+			"label": "נקודות (Bullets)",
+			"name": "about_bullets",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת נקודה",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_about_bullet_text",
+					"label": "טקסט",
+					"name": "text",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_about_cta_1",
+			"label": "כפתור ראשי",
+			"name": "about_cta_1",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_about_cta_2",
+			"label": "כפתור משני",
+			"name": "about_cta_2",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_about_image_main",
+			"label": "תמונה ראשית",
+			"name": "about_image_main",
+			"type": "image",
+			"return_format": "id",
+			"preview_size": "medium"
+		},
+		{
+			"key": "field_cag_fp_about_image_side",
+			"label": "תמונה משנית",
+			"name": "about_image_side",
+			"type": "image",
+			"return_format": "id",
+			"preview_size": "medium"
+		},
+		{
+			"key": "field_cag_fp_about_badge_title",
+			"label": "תג — כותרת",
+			"name": "about_badge_title",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_about_badge_subtitle",
+			"label": "תג — כיתוב",
+			"name": "about_badge_subtitle",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_tab_foodtruck",
+			"label": "פוד טראקים",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_ft_image_main",
+			"label": "תמונה ראשית",
+			"name": "foodtruck_image_main",
+			"type": "image",
+			"return_format": "id",
+			"preview_size": "medium"
+		},
+		{
+			"key": "field_cag_fp_ft_thumbs",
+			"label": "תמונות קטנות (Thumbnails)",
+			"name": "foodtruck_thumbs",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת תמונה",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_ft_thumb_image",
+					"label": "תמונה",
+					"name": "image",
+					"type": "image",
+					"return_format": "id",
+					"preview_size": "thumbnail"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_ft_eyebrow",
+			"label": "תווית עליונה",
+			"name": "foodtruck_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_ft_heading",
+			"label": "כותרת",
+			"name": "foodtruck_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_ft_highlight",
+			"label": "כותרת מודגשת (גרדיאנט)",
+			"name": "foodtruck_highlight",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_ft_body",
+			"label": "תוכן",
+			"name": "foodtruck_body",
+			"type": "wysiwyg",
+			"tabs": "visual",
+			"toolbar": "basic",
+			"media_upload": 0
+		},
+		{
+			"key": "field_cag_fp_ft_bullets",
+			"label": "נקודות (Bullets)",
+			"name": "foodtruck_bullets",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת נקודה",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_ft_bullet_text",
+					"label": "טקסט",
+					"name": "text",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_ft_cta_1",
+			"label": "כפתור ראשי",
+			"name": "foodtruck_cta_1",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_ft_cta_2",
+			"label": "כפתור משני",
+			"name": "foodtruck_cta_2",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_tab_auth",
+			"label": "רשויות",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_auth_bg",
+			"label": "תמונת רקע",
+			"name": "auth_bg",
+			"type": "image",
+			"return_format": "id",
+			"preview_size": "medium"
+		},
+		{
+			"key": "field_cag_fp_auth_eyebrow",
+			"label": "תווית עליונה",
+			"name": "auth_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_auth_heading",
+			"label": "כותרת",
+			"name": "auth_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_auth_body",
+			"label": "תוכן",
+			"name": "auth_body",
+			"type": "textarea",
+			"rows": 4,
+			"new_lines": ""
+		},
+		{
+			"key": "field_cag_fp_auth_cta_1",
+			"label": "כפתור ראשי",
+			"name": "auth_cta_1",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_auth_cta_2",
+			"label": "כפתור משני",
+			"name": "auth_cta_2",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_auth_icons",
+			"label": "אייקונים",
+			"name": "auth_icons",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת אייקון",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_auth_icon_class",
+					"label": "מחלקת אייקון (Font Awesome)",
+					"name": "icon",
+					"type": "text",
+					"instructions": "למשל: fa-solid fa-utensils"
+				},
+				{
+					"key": "field_cag_fp_auth_icon_label",
+					"label": "טקסט",
+					"name": "label",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_tab_security",
+			"label": "מגזר ביטחוני",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_sec_eyebrow",
+			"label": "תווית עליונה",
+			"name": "security_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_sec_heading",
+			"label": "כותרת",
+			"name": "security_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_sec_highlight",
+			"label": "כותרת מודגשת (גרדיאנט)",
+			"name": "security_highlight",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_sec_intro",
+			"label": "טקסט תיאור",
+			"name": "security_intro",
+			"type": "textarea",
+			"rows": 3,
+			"new_lines": ""
+		},
+		{
+			"key": "field_cag_fp_sec_panels",
+			"label": "פאנלים",
+			"name": "security_panels",
+			"type": "repeater",
+			"instructions": "המספור (01, 02…) מתווסף אוטומטית.",
+			"layout": "block",
+			"button_label": "הוספת פאנל",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_sec_panel_image",
+					"label": "תמונה",
+					"name": "image",
+					"type": "image",
+					"return_format": "id",
+					"preview_size": "medium"
+				},
+				{
+					"key": "field_cag_fp_sec_panel_title",
+					"label": "כותרת",
+					"name": "title",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_sec_panel_body",
+					"label": "תיאור",
+					"name": "body",
+					"type": "textarea",
+					"rows": 3
+				},
+				{
+					"key": "field_cag_fp_sec_panel_features",
+					"label": "תכונות",
+					"name": "features",
+					"type": "repeater",
+					"layout": "table",
+					"button_label": "הוספת תכונה",
+					"sub_fields": [
+						{
+							"key": "field_cag_fp_sec_panel_feature_text",
+							"label": "טקסט",
+							"name": "text",
+							"type": "text"
+						}
+					]
+				},
+				{
+					"key": "field_cag_fp_sec_panel_cta_1",
+					"label": "כפתור ראשי",
+					"name": "cta_1",
+					"type": "link",
+					"return_format": "array"
+				},
+				{
+					"key": "field_cag_fp_sec_panel_cta_2",
+					"label": "כפתור משני",
+					"name": "cta_2",
+					"type": "link",
+					"return_format": "array"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_tab_catalog",
+			"label": "קטלוג",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_cat_eyebrow",
+			"label": "תווית עליונה",
+			"name": "catalog_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_cat_heading",
+			"label": "כותרת (לפני המודגש)",
+			"name": "catalog_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_cat_highlight",
+			"label": "כותרת מודגשת (גרדיאנט)",
+			"name": "catalog_highlight",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_cat_heading_after",
+			"label": "כותרת (אחרי המודגש)",
+			"name": "catalog_heading_after",
+			"type": "textarea",
+			"rows": 2,
+			"new_lines": "",
+			"instructions": "ירידת שורה כאן תיהפך ל-<br> בתצוגה."
+		},
+		{
+			"key": "field_cag_fp_cat_text",
+			"label": "תוכן",
+			"name": "catalog_text",
+			"type": "wysiwyg",
+			"tabs": "visual",
+			"toolbar": "basic",
+			"media_upload": 0
+		},
+		{
+			"key": "field_cag_fp_cat_wa",
+			"label": "כפתור וואטסאפ",
+			"name": "catalog_wa",
+			"type": "link",
+			"return_format": "array"
+		},
+		{
+			"key": "field_cag_fp_cat_tab_local",
+			"label": "תווית טאב — ייצור מקומי",
+			"name": "catalog_tab_local_label",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_cat_tab_import",
+			"label": "תווית טאב — ייבוא",
+			"name": "catalog_tab_import_label",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_cat_local_cards",
+			"label": "כרטיסים — ייצור מקומי",
+			"name": "catalog_local_cards",
+			"type": "repeater",
+			"max": 6,
+			"layout": "block",
+			"button_label": "הוספת כרטיס",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_cat_local_image",
+					"label": "תמונה",
+					"name": "image",
+					"type": "image",
+					"return_format": "id",
+					"preview_size": "thumbnail"
+				},
+				{
+					"key": "field_cag_fp_cat_local_title",
+					"label": "שם",
+					"name": "title",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_cat_local_price",
+					"label": "מחיר",
+					"name": "price",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_cat_import_listings",
+			"label": "דגמים מייבוא — בחירה מה-CPT",
+			"name": "catalog_import_listings",
+			"type": "relationship",
+			"instructions": "בחרו את הדגמים שיוצגו בטאב הייבוא. הסדר שתבחרו הוא סדר התצוגה. תמונה ומחיר נלקחים מה-CPT אוטומטית — אם המחיר ריק מוצג קישור להצעת מחיר.",
+			"post_type": [
+				"model"
+			],
+			"filters": [
+				"search"
+			],
+			"elements": [],
+			"min": "",
+			"max": 6,
+			"return_format": "object"
+		},
+		{
+			"key": "field_cag_fp_tab_articles",
+			"label": "כתבות ותוכן",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_art_eyebrow",
+			"label": "תווית עליונה",
+			"name": "articles_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_art_heading",
+			"label": "כותרת",
+			"name": "articles_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_art_highlight",
+			"label": "כותרת מודגשת (גרדיאנט)",
+			"name": "articles_highlight",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_art_newsletters",
+			"label": "ניוזלטרים",
+			"name": "articles_newsletters",
+			"type": "repeater",
+			"instructions": "טאב הבלוג נטען אוטומטית מהפוסטים האחרונים — כאן רק ניוזלטרים.",
+			"layout": "block",
+			"button_label": "הוספת ניוזלטר",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_art_nl_issue",
+					"label": "גיליון (למשל: גיליון 03 · אביב 2025)",
+					"name": "issue",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_art_nl_title",
+					"label": "כותרת",
+					"name": "title",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_art_nl_body",
+					"label": "תקציר",
+					"name": "body",
+					"type": "textarea",
+					"rows": 3
+				},
+				{
+					"key": "field_cag_fp_art_nl_link",
+					"label": "קישור",
+					"name": "link",
+					"type": "link",
+					"return_format": "array"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_art_press",
+			"label": "כתבות ופרסומים",
+			"name": "articles_press",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת כתבה",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_art_press_source",
+					"label": "מקור (למשל: כלכליסט)",
+					"name": "source",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_art_press_date",
+					"label": "תאריך",
+					"name": "date",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_art_press_title",
+					"label": "כותרת",
+					"name": "title",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_art_press_link",
+					"label": "קישור",
+					"name": "link",
+					"type": "link",
+					"return_format": "array"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_tab_social",
+			"label": "רשתות חברתיות",
+			"name": "",
+			"type": "tab",
+			"placement": "top"
+		},
+		{
+			"key": "field_cag_fp_social_eyebrow",
+			"label": "תווית עליונה",
+			"name": "social_eyebrow",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_social_heading",
+			"label": "כותרת",
+			"name": "social_heading",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_social_highlight",
+			"label": "כותרת מודגשת (גרדיאנט)",
+			"name": "social_highlight",
+			"type": "text"
+		},
+		{
+			"key": "field_cag_fp_social_links",
+			"label": "קישורי פלטפורמות",
+			"name": "social_links",
+			"type": "repeater",
+			"instructions": "האייקונים בפינה העליונה של האזור.",
+			"layout": "table",
+			"button_label": "הוספת פלטפורמה",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_social_link_icon",
+					"label": "מחלקת אייקון (Font Awesome)",
+					"name": "icon",
+					"type": "text",
+					"instructions": "למשל: fa-brands fa-instagram"
+				},
+				{
+					"key": "field_cag_fp_social_link_aria",
+					"label": "שם נגיש (aria-label)",
+					"name": "aria",
+					"type": "text"
+				},
+				{
+					"key": "field_cag_fp_social_link_url",
+					"label": "קישור",
+					"name": "link",
+					"type": "link",
+					"return_format": "array"
+				}
+			]
+		},
+		{
+			"key": "field_cag_fp_social_posts",
+			"label": "פוסטים (Marquee)",
+			"name": "social_posts",
+			"type": "repeater",
+			"instructions": "רצועת הפוסטים הנגללת. הרצועה משוכפלת אוטומטית ללולאה חלקה.",
+			"layout": "block",
+			"button_label": "הוספת פוסט",
+			"sub_fields": [
+				{
+					"key": "field_cag_fp_social_post_image",
+					"label": "תמונה",
+					"name": "image",
+					"type": "image",
+					"return_format": "id",
+					"preview_size": "thumbnail"
+				},
+				{
+					"key": "field_cag_fp_social_post_platform",
+					"label": "פלטפורמה",
+					"name": "platform",
+					"type": "select",
+					"instructions": "בחר את הרשת החברתית שממנה מגיע הפוסט",
+					"choices": {
+						"facebook":  "Facebook",
+						"instagram": "Instagram",
+						"youtube":   "YouTube"
+					},
+					"default_value": "instagram",
+					"return_format": "value",
+					"allow_null": 0
+				},
+				{
+					"key": "field_cag_fp_social_post_link",
+					"label": "קישור",
+					"name": "link",
+					"type": "link",
+					"return_format": "array"
+				}
+			]
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1748044800
+}

@@ -1,0 +1,67 @@
+{
+	"key": "group_cag_kachol_lavan",
+	"title": "תוכן עמוד כחול לבן",
+	"fields": [
+		{ "key": "field_cag_kl_tab_models", "label": "סקשן הדגמים", "name": "", "type": "tab", "placement": "top" },
+		{ "key": "field_cag_kl_models_heading", "label": "כותרת הסקשן", "name": "kl_models_heading", "type": "text" },
+		{ "key": "field_cag_kl_models_intro", "label": "פסקת פתיחה", "name": "kl_models_intro", "type": "wysiwyg", "tabs": "visual", "toolbar": "basic", "media_upload": 0 },
+		{ "key": "field_cag_kl_models_cta", "label": "כפתור קריאה לפעולה", "name": "kl_models_cta", "type": "link", "return_format": "array", "instructions": "בחרו עמוד או הדביקו קישור, וקבעו את טקסט הכפתור. השאירו ריק כדי להסתיר את הכפתור." },
+		{
+			"key": "field_cag_kl_models",
+			"label": "כרטיסי דגמים",
+			"name": "kl_models",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת דגם",
+			"sub_fields": [
+				{ "key": "field_cag_kl_model_image", "label": "תמונה", "name": "image", "type": "image", "return_format": "id", "preview_size": "medium" },
+				{ "key": "field_cag_kl_model_tag", "label": "תווית", "name": "tag", "type": "text", "instructions": "הטקסט הקטן מעל שם הדגם, למשל \"דגם לינה מתקדם\"." },
+				{ "key": "field_cag_kl_model_title", "label": "שם הדגם", "name": "title", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_kl_tab_splits", "label": "מקטעי תמונה + טקסט", "name": "", "type": "tab", "placement": "top" },
+		{
+			"key": "field_cag_kl_splits",
+			"label": "מקטעים",
+			"name": "kl_splits",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת מקטע",
+			"instructions": "כל מקטע מוצג לסירוגין (תמונה מימין/משמאל) — אין צורך להגדיר פריסה.",
+			"sub_fields": [
+				{ "key": "field_cag_kl_split_heading", "label": "כותרת", "name": "heading", "type": "text" },
+				{ "key": "field_cag_kl_split_body", "label": "תוכן", "name": "body", "type": "wysiwyg", "tabs": "visual", "toolbar": "basic", "media_upload": 0 },
+				{ "key": "field_cag_kl_split_img_top", "label": "תמונה עליונה", "name": "image_top", "type": "image", "return_format": "id", "preview_size": "medium" },
+				{ "key": "field_cag_kl_split_img_bot", "label": "תמונה תחתונה (אופציונלי)", "name": "image_bot", "type": "image", "return_format": "id", "preview_size": "medium", "instructions": "אם ריק — התמונה העליונה תוצג בשני המקומות." },
+				{
+					"key": "field_cag_kl_split_features",
+					"label": "אייקונים",
+					"name": "features",
+					"type": "repeater",
+					"layout": "table",
+					"button_label": "הוספת אייקון",
+					"sub_fields": [
+						{ "key": "field_cag_kl_feature_icon", "label": "אייקון (Font Awesome)", "name": "icon", "type": "text", "instructions": "מחלקת ה-Font Awesome, למשל: fa-solid fa-utensils", "placeholder": "fa-solid fa-utensils" },
+						{ "key": "field_cag_kl_feature_label", "label": "תווית", "name": "label", "type": "text" }
+					]
+				},
+				{ "key": "field_cag_kl_split_cta", "label": "כפתור קריאה לפעולה", "name": "cta", "type": "link", "return_format": "array", "instructions": "בחרו עמוד או הדביקו קישור, וקבעו את טקסט הכפתור. השאירו ריק כדי להסתיר את הכפתור." }
+			]
+		}
+	],
+	"location": [
+		[
+			{ "param": "page_template", "operator": "==", "value": "page-templates/kachol-lavan.php" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779670800
+}

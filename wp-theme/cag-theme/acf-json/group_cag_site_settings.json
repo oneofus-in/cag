@@ -1,0 +1,76 @@
+{
+	"key": "group_cag_site_settings",
+	"title": "הגדרות אתר",
+	"fields": [
+		{ "key": "field_cag_tab_header", "label": "הדר", "name": "", "type": "tab" },
+		{ "key": "field_cag_logo_white", "label": "לוגו בהיר (על רקע כהה)", "name": "logo_white", "type": "image", "return_format": "url", "preview_size": "medium" },
+		{ "key": "field_cag_logo_dark", "label": "לוגו כהה (כשהכותרת לבנה)", "name": "logo_dark", "type": "image", "return_format": "url", "preview_size": "medium" },
+		{ "key": "field_cag_phone_label", "label": "תווית טלפון", "name": "phone_label", "type": "text", "default_value": "להתקשרות" },
+		{ "key": "field_cag_phone_number", "label": "מספר טלפון (תצוגה)", "name": "phone_number", "type": "text", "default_value": "050-550-0180", "instructions": "מוצג ככתבה; קישור ההתקשרות נגזר ממנו אוטומטית." },
+
+		{ "key": "field_cag_tab_contact", "label": "יצירת קשר", "name": "", "type": "tab" },
+		{ "key": "field_cag_prefooter_heading", "label": "כותרת טופס יצירת קשר", "name": "prefooter_heading", "type": "text", "default_value": "נשמח לשמוע ממך" },
+		{ "key": "field_cag_prefooter_text", "label": "תיאור טופס יצירת קשר", "name": "prefooter_text", "type": "textarea", "rows": 3 },
+		{ "key": "field_cag_prefooter_image", "label": "תמונת טופס יצירת קשר", "name": "prefooter_image", "type": "image", "return_format": "url", "preview_size": "medium" },
+		{ "key": "field_cag_contact_heading", "label": "כותרת \"צור קשר\" בפוטר", "name": "contact_heading", "type": "text", "default_value": "צור קשר" },
+		{ "key": "field_cag_contact_phone", "label": "טלפון", "name": "contact_phone", "type": "text", "default_value": "050-550-0180" },
+		{ "key": "field_cag_contact_email", "label": "אימייל", "name": "contact_email", "type": "text", "default_value": "ag0505500180@gmail.com" },
+		{ "key": "field_cag_contact_address", "label": "כתובת (תצוגה)", "name": "contact_address", "type": "text", "default_value": "יוחנן הסנדלר 8, אזור תעשייה כפר סבא" },
+		{ "key": "field_cag_contact_address_link", "label": "קישור ניווט לכתובת (Waze/Maps)", "name": "contact_address_link", "type": "link", "return_format": "array" },
+		{ "key": "field_cag_whatsapp", "label": "מספר וואטסאפ (ספרות בלבד, כולל קידומת מדינה)", "name": "whatsapp_number", "type": "text", "default_value": "972505500180", "instructions": "לדוגמה: 972505500180" },
+
+		{ "key": "field_cag_tab_footer", "label": "פוטר", "name": "", "type": "tab" },
+		{ "key": "field_cag_footer_tagline", "label": "תיאור בפוטר (מתחת ללוגו)", "name": "footer_tagline", "type": "textarea", "rows": 3, "new_lines": "br" },
+		{ "key": "field_cag_hours_heading", "label": "כותרת שעות פתיחה", "name": "hours_heading", "type": "text", "default_value": "שעות פתיחה" },
+		{
+			"key": "field_cag_hours",
+			"label": "שעות פתיחה",
+			"name": "hours",
+			"type": "repeater",
+			"layout": "table",
+			"button_label": "הוספת שורה",
+			"sub_fields": [
+				{ "key": "field_cag_hours_day", "label": "יום/ימים", "name": "day", "type": "text" },
+				{ "key": "field_cag_hours_time", "label": "שעות", "name": "time", "type": "text" }
+			]
+		},
+		{ "key": "field_cag_copyright", "label": "טקסט זכויות יוצרים", "name": "copyright_text", "type": "wysiwyg", "toolbar": "basic", "media_upload": 0 },
+		{ "key": "field_cag_accessibility_link", "label": "קישור הצהרת נגישות", "name": "accessibility_link", "type": "link", "return_format": "array" },
+		{ "key": "field_cag_privacy_link", "label": "קישור מדיניות פרטיות", "name": "privacy_link", "type": "link", "return_format": "array" },
+
+		{ "key": "field_cag_tab_minicontact", "label": "בלוק יצירת קשר (Mini Contact)", "name": "", "type": "tab" },
+		{ "key": "field_cag_minicontact_heading", "label": "כותרת", "name": "minicontact_heading", "type": "text", "default_value": "יש לכם שאלות?", "instructions": "הטופס עצמו מנוהל ב-Contact Form 7; כאן עורכים רק את הטקסט." },
+		{ "key": "field_cag_minicontact_text", "label": "טקסט", "name": "minicontact_text", "type": "textarea", "rows": 3, "default_value": "אנו מזמינים אתכם לשיחה ראשונית, ללא עלות וללא התחייבות, בה נכיר את הצרכים ונבחן יחד את הדרך המתאימה ביותר עבורכם!" },
+
+		{ "key": "field_cag_tab_faq", "label": "שאלות נפוצות (FAQ)", "name": "", "type": "tab" },
+		{ "key": "field_cag_faq_heading", "label": "כותרת", "name": "faq_heading", "type": "text", "default_value": "שאלות נפוצות" },
+		{ "key": "field_cag_faq_subheading", "label": "תיאור", "name": "faq_subheading", "type": "textarea", "rows": 2, "default_value": "כאן תמצאו תשובות לשאלות הנפוצות ביותר שאנו מקבלים מלקוחותינו – ואם לא מצאתם, תמיד ניתן ליצור קשר" },
+		{
+			"key": "field_cag_faq_items",
+			"label": "שאלות ותשובות",
+			"name": "faq_items",
+			"type": "repeater",
+			"layout": "block",
+			"button_label": "הוספת שאלה",
+			"sub_fields": [
+				{ "key": "field_cag_faq_q", "label": "שאלה", "name": "question", "type": "text" },
+				{ "key": "field_cag_faq_a", "label": "תשובה", "name": "answer", "type": "textarea", "rows": 4 }
+			]
+		}
+	],
+	"location": [
+		[
+			{ "param": "options_page", "operator": "==", "value": "cag-site-settings" }
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "",
+	"show_in_rest": 0,
+	"modified": 1779667200
+}

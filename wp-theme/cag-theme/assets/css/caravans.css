@@ -216,6 +216,12 @@
     display: block;
 }
 
+/* Price-less card: footer holds a single full-width quote button. */
+.cv-model-footer--quote .btn {
+    flex: 1;
+    justify-content: center;
+}
+
 /* ── Responsive ─────────────────────────────────── */
 
 @media (max-width: 900px) {

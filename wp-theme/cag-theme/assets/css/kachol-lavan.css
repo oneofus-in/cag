@@ -140,6 +140,13 @@
     margin: 0;
 }
 
+/* Bold runs inside the body copy are brand-blue. The static markup set this
+   inline; now the body comes from the ACF wysiwyg field, so style it here. */
+.resort-content strong {
+    color: var(--blue-700);
+    font-weight: 700;
+}
+
 .resort-img-grid {
     display: flex;
     flex-direction: column;

@@ -2,27 +2,10 @@
 (function () {
     'use strict';
 
-    // ── GSAP scroll animations ──────────────────────────────
-    if (window.gsap && window.ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger);
-
-        document.querySelectorAll('[data-anim]').forEach(el => {
-            const type  = el.dataset.anim;
-            const delay = parseFloat(el.dataset.delay || 0);
-            let from = { opacity: 0, y: 36 };
-            if (type === 'fade-right')     from = { opacity: 0, x: 40 };
-            else if (type === 'fade-left') from = { opacity: 0, x: -40 };
-            else if (type === 'zoom-in')   from = { opacity: 0, scale: 0.94, y: 20 };
-
-            gsap.from(el, {
-                ...from,
-                duration: 0.9,
-                ease: 'power3.out',
-                delay,
-                scrollTrigger: { trigger: el, start: 'top 88%' },
-            });
-        });
-    }
+    // [data-anim] scroll reveals are handled globally in script.js (with a
+    // refresh-proof fromTo). Do NOT re-animate them here: a second gsap.from()
+    // reads each element's current opacity — already 0 from script.js's from-
+    // state — as its END value, so it animates 0→0 and the content never shows.
 
     // ── Lightbox video player ───────────────────────────────
     const lightbox = document.getElementById('vid-lightbox');
@@ -106,7 +89,9 @@
 
         function goTo(idx) {
             current = Math.max(0, Math.min(idx, maxIdx()));
-            track.style.transform = `translateX(-${current * stepWidth()}px)`;
+            // RTL: first card sits at the right; advancing moves the track right
+            // to reveal cards that flow off to the left.
+            track.style.transform = `translateX(${current * stepWidth()}px)`;
             if (prevBtn) prevBtn.disabled = current === 0;
             if (nextBtn) nextBtn.disabled = current >= maxIdx();
             renderDots();
@@ -146,8 +131,9 @@
         function onPointerUp() {
             if (dragStartX === null) return;
             track.classList.remove('is-dragging');
-            if (dragDelta < -50) goTo(current + 1);
-            else if (dragDelta > 50) goTo(current - 1);
+            // RTL: drag right → next, drag left → previous (mirror of LTR).
+            if (dragDelta > 50) goTo(current + 1);
+            else if (dragDelta < -50) goTo(current - 1);
             dragStartX = null;
             if (didDrag) track.addEventListener('click', e => e.stopPropagation(), { capture: true, once: true });
         }

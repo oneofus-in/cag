@@ -88,7 +88,7 @@
    ═══════════════════════════════════════════ */
 .acc-price-strip {
     position: absolute;
-    bottom: 14px;
+    top: 14px;
     right: 0;
     background: var(--grad);
     color: #fff;
@@ -138,6 +138,6 @@
     .acc-price-strip {
         font-size: 12.5px;
         padding: 9px 16px 9px 22px;
-        bottom: 10px;
+        top: 10px;
     }
 }
