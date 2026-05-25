@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Front page template (homepage).
  *
@@ -398,11 +398,7 @@ get_header();
 </section>
 
 <!-- Authorities Strip — with bg image -->
-<section class="section authorities" id="authorities">
-	<div class="auth-bg" aria-hidden="true">
-		<img src="<?php echo esc_url( cag_field_img_url( 'auth_bg', 'assets/img/services-bath.jpg' ) ); ?>" alt="">
-		<div class="auth-bg-overlay"></div>
-	</div>
+<section class="section authorities" id="authorities" style="background-image: url('<?php echo esc_url( cag_field_img_url( 'auth_bg', 'assets/img/services-bath.jpg' ) ); ?>')">
 	<div class="container">
 		<div class="auth-card" data-anim="zoom-in">
 			<div class="auth-text">
@@ -612,15 +608,15 @@ get_header();
 										: $cag_imp_price_raw;
 								}
 								?>
-								<div class="w-card">
+								<a class="w-card" href="<?php echo esc_url( get_permalink( $cag_imp_pid ) ); ?>">
 									<?php if ( $cag_imp_img_id ) { echo wp_get_attachment_image( $cag_imp_img_id, 'medium', false, array( 'alt' => get_the_title( $cag_imp_pid ) ) ); } ?>
 									<span><?php echo esc_html( get_the_title( $cag_imp_pid ) ); ?></span>
 									<?php if ( $cag_imp_price_display ) : ?>
 										<span class="w-price"><?php echo esc_html( $cag_imp_price_display ); ?></span>
 									<?php else : ?>
-										<a href="<?php echo esc_url( home_url( '/יצירת-קשר/' ) ); ?>" class="w-price w-price-cta">להצעת מחיר לחצו כאן</a>
+										<span class="w-price w-price-cta">לפרטים נוספים לחצו כאן</span>
 									<?php endif; ?>
-								</div>
+								</a>
 							<?php endforeach; ?>
 						<?php else : ?>
 							<div class="w-card"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/img/caravan-front.jpg' ) ); ?>" alt=""><span>Weinsberg 450FU</span><span class="w-price">₪195,000</span></div>

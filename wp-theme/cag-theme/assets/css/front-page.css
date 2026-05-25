@@ -390,9 +390,9 @@
     margin-bottom: 8px;
 }
 .model-body h3 {
-    font-size: 22px;
+    font-size: 18px;
     color: #0c3058;
-    font-weight: 900;
+    font-weight: 700;
     margin-bottom: 10px;
     letter-spacing: -0.015em;
     line-height: 1.15;
@@ -569,14 +569,14 @@ a.model-price:hover {
     isolation: isolate;
     padding: 140px 0;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.auth-bg { position: absolute; inset: 0; z-index: -1; }
-.auth-bg img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-}
-.auth-bg-overlay {
+.authorities::before {
+    content: '';
     position: absolute; inset: 0;
+    z-index: -1;
     background:
         radial-gradient(900px 500px at 100% 0%, rgba(0,104,245,.22), transparent 60%),
         linear-gradient(305deg, rgba(12,48,88,.92), rgba(0,104,245,.82));
@@ -734,7 +734,7 @@ a.model-price:hover {
    ========================================= */
 .catalog { background: var(--ink-50); }
 .catalog-grid {
-    display: grid; grid-template-columns: 1fr 1.15fr;
+    display: grid; grid-template-columns: 1fr 1.5fr;
     gap: 60px;
     align-items: flex-start;
 }
@@ -1377,6 +1377,8 @@ a.model-price:hover {
 }
 
 @media (max-width: 900px) {
+    .header { top: 5px; }
+
     .models-showcase { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .articles-grid,
     .weinsberg-grid,
@@ -1437,7 +1439,7 @@ a.model-price:hover {
     /* Models — keep 2 columns but tighter */
     .models-showcase { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .model-body { padding: 16px 14px 18px; }
-    .model-body h3 { font-size: 18px; }
+    .model-body h3 { font-size: 16px; }
     .model-body p { font-size: 13px; margin-bottom: 12px; }
     .model-meta { font-size: 10px; }
     .model-price { padding: 8px 10px; margin-bottom: 12px; }
@@ -1491,8 +1493,8 @@ a.model-price:hover {
 
     /* Articles — tabs need to fit 3 in 390px */
     .art-tabs { padding: 5px; gap: 4px; }
-    .art-tab-btn { padding: 11px 8px; font-size: 12px; gap: 6px; }
-    .art-tab-btn i { font-size: 12px; }
+    .art-tab-btn { padding: 11px 8px; font-size: 12px; gap: 6px;flex-direction: column; }
+    .art-tab-btn i { font-size: 22px; }
 
     /* Contact */
     .contact-feature-content,

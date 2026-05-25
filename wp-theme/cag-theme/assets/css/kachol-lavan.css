@@ -385,8 +385,12 @@
         gap: 36px;
     }
 
-    /* images below text on mobile → push to after content */
+    /* image first on mobile */
     .resort-img-grid {
+        order: -1;
+    }
+
+    .resort-content {
         order: 1;
     }
 

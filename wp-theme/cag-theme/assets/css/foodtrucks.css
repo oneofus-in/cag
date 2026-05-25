@@ -579,8 +579,12 @@
         direction: rtl;
     }
 
-    .ft-split--reverse .ft-split-media {
+    .ft-split-media {
         order: -1;
+    }
+
+    .ft-split-img {
+        max-height: 260px;
     }
 
     .ft-municipalities-section {

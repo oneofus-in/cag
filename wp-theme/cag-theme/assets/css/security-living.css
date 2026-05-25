@@ -382,6 +382,15 @@
         grid-template-columns: 1fr;
         gap: 36px;
     }
+
+    .sl-intro-media {
+        order: -1;
+    }
+
+    .sl-intro-img {
+        aspect-ratio: 16 / 9;
+        max-height: 260px;
+    }
 }
 
 @media (max-width: 640px) {

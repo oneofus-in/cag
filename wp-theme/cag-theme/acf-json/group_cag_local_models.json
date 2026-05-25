@@ -35,24 +35,6 @@
 			]
 		},
 
-		{ "key": "field_cag_lm_tab_features", "label": "מאפיינים משותפים", "name": "", "type": "tab", "placement": "top" },
-		{ "key": "field_cag_lm_feat_heading", "label": "כותרת", "name": "lm_feat_heading", "type": "text" },
-		{ "key": "field_cag_lm_feat_subtitle", "label": "תת-כותרת", "name": "lm_feat_subtitle", "type": "textarea", "rows": 2 },
-		{
-			"key": "field_cag_lm_features",
-			"label": "כרטיסי מאפיינים",
-			"name": "lm_features",
-			"type": "repeater",
-			"layout": "block",
-			"button_label": "הוספת מאפיין",
-			"instructions": "עיכוב האנימציה נקבע אוטומטית לפי הסדר.",
-			"sub_fields": [
-				{ "key": "field_cag_lm_feat_icon", "label": "אייקון FA", "name": "icon", "type": "text", "placeholder": "fa-solid fa-shield-halved" },
-				{ "key": "field_cag_lm_feat_title", "label": "כותרת", "name": "title", "type": "text" },
-				{ "key": "field_cag_lm_feat_desc", "label": "תיאור", "name": "desc", "type": "textarea", "rows": 2 }
-			]
-		},
-
 		{ "key": "field_cag_lm_tab_custom", "label": "Custom Made", "name": "", "type": "tab", "placement": "top" },
 		{ "key": "field_cag_lm_custom_eyebrow", "label": "Eyebrow (מעל הכותרת)", "name": "lm_custom_eyebrow", "type": "text", "instructions": "לדוגמה: Custom Made" },
 		{ "key": "field_cag_lm_custom_heading", "label": "כותרת (חלק רגיל)", "name": "lm_custom_heading", "type": "text" },

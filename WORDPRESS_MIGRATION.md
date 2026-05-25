@@ -73,7 +73,16 @@ One page at a time, with verification between (Itamar's cadence). Ask which page
 
 - ✅ **RESOLVED — Model CPT built + model card migration done (2026-05-24).** The `model` CPT is live at `/listings/<slug>`. Single template `single-model.php` complete. All pages that hardcoded model cards (`caravans.php`, `local-models.php`, front-page repeaters, kachol-lavan `kl_models`, tourist-complexes `tc_models`) now query the CPT. `.cv-model-card` markup reused across all.
 - Make webhook for the CF7 forms — deferred (Itamar, later in project).
-- Real content: video IDs ✅ done · photos ✅ done · social links ✅ done · blog/article content 🔄 in progress.
+- Real content: video IDs ✅ done · photos ✅ done · social links ✅ done · blog/article content ✅ done (2026-05-25).
+- ⬜ **Visual QA — manual review of every page after ACF content is entered.** Required stage: once all pages are dynamic and content is populated, walk every page by eye and click every button and link to catch broken/missing ones. Checklist per page:
+  1. Open the page on `cag-wp.local` and scroll top to bottom — spot any empty sections, broken images, or layout regressions.
+  2. Click every CTA button and internal link — confirm it lands on the right page (not a 404, not `#` stub, not a dead anchor like the caravans `#contact`).
+  3. Click every external link — confirm it opens the correct target in a new tab.
+  4. Check every form — submit a test entry and confirm CF7 sends the email.
+  5. On mobile width (~390px) — repeat the scroll + click pass.
+  Applies to: homepage · all 13 inner pages · `single-model.php` · blog archive + a sample post.
+  **This stage was added 2026-05-25 — Itamar does the visual pass himself after the per-page ACF phase is complete.**
+
 - ⬜ **SEO — match WP page slugs to the OLD live site's URLs (don't lose rankings).** The WP pages were created with Hebrew titles, so WordPress auto-generated **URL-encoded Hebrew slugs** that almost certainly **don't match** the URLs Google has indexed for cag.co.il. Before/at launch:
   1. **Pull the real indexed URLs** of the current live site — Google Search Console (Pages/Coverage), the live `sitemap.xml`, or a `site:cag.co.il` search. Don't trust the prototype's `/cag/pages/{slug}/` dev paths; confirm the actual production structure (flat `/foodtrucks/` vs `/pages/foodtrucks/` vs Hebrew slugs).
   2. **Set each WP page slug to match** its old URL exactly (wp-admin → Pages → Edit → Permalink). The template stays attached regardless of slug (Template Name approach), so changing slugs is safe.
@@ -82,6 +91,14 @@ One page at a time, with verification between (Itamar's cadence). Ask which page
 
   Slug checklist (one per ported page — confirm each against the live URL): `accessories` · `blog` · `caravan-camparks` · `caravans` · `contact-us` · `foodtrucks` · `kachol-lavan` · `local-models` · `security-living` · `security-trailers` · `tourist-complexes` · `videos` · `about-us`. ⚠️ Itamar to confirm the old site's exact URL structure first, then set slugs + redirects.
 - End-state skill (write at the very end — see bottom of this doc).
+
+---
+
+## Visual QA — Issues Found
+
+> Logged during the visual QA pass. Each item: page · location · what's wrong. Check off when fixed.
+
+- [ ] **Homepage / Hero / Mobile** — CTA button in the hero section is not visible enough on mobile. Needs higher contrast or more prominent styling.
 
 ---
 
@@ -219,11 +236,18 @@ Tell him:
 
 > Append entries here as we work. Newest at the top. Date format: YYYY-MM-DD.
 
+### 2026-05-25 — Blog/article content complete. All real content now entered.
+
+- Blog posts written and entered in wp-admin. All real content phases complete: video IDs, photos, social links, and blog/article content.
+- **Remaining before launch:** SEO slug alignment (pull indexed URLs → set WP slugs → 301 redirects → resubmit sitemap); caravans `#contact` dead anchor decision; deployment to SiteGround via All-in-One WP Migration.
+
+---
+
 ### 2026-05-24 — Content + CPT migration wrap-up
 
 - **Video IDs** ✅ — real YouTube IDs entered in the videos-page repeaters.
 - **Photos** ✅ — placeholder/reused photos replaced.
-- **Blog/article content** 🔄 — in progress.
+- **Blog/article content** ✅ — done (2026-05-25).
 - **CPT model card migration** ✅ — all pages that hardcoded model cards (`local-models`, front-page, kachol-lavan, tourist-complexes`) now query the `model` CPT. `.cv-model-card` markup reused.
 - **Social links** ✅ — `social_links` repeater (platform icons + URLs) and `social_posts` repeater (marquee images) populated on the front-page ACF tab "רשתות חברתיות".
 

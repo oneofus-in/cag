@@ -76,39 +76,6 @@ get_header();
 	<!-- ══ Mini contact form ══ -->
 	<?php get_template_part( 'template-parts/mini-contact/mini-contact' ); ?>
 
-	<!-- ══ Common features grid ══ -->
-	<?php
-	$feat_heading  = get_field( 'lm_feat_heading' );
-	$feat_subtitle = get_field( 'lm_feat_subtitle' );
-	$lm_features   = get_field( 'lm_features' );
-	if ( $feat_heading || $feat_subtitle || $lm_features ) :
-	?>
-	<section class="lm-features">
-		<div class="container">
-			<?php if ( $feat_heading || $feat_subtitle ) : ?>
-				<div class="section-head" data-anim="fade-up">
-					<?php if ( $feat_heading ) : ?><h2><?php echo esc_html( $feat_heading ); ?></h2><?php endif; ?>
-					<?php if ( $feat_subtitle ) : ?><p><?php echo esc_html( $feat_subtitle ); ?></p><?php endif; ?>
-				</div>
-			<?php endif; ?>
-
-			<?php if ( $lm_features ) : ?>
-				<div class="lm-features-grid">
-					<?php foreach ( $lm_features as $i => $feat ) :
-						$delay = number_format( $i * 0.06, 2 );
-					?>
-						<div class="lm-feature" data-anim="fade-up" data-delay="<?php echo $delay; ?>">
-							<div class="lm-feature-icon"><i class="<?php echo esc_attr( $feat['icon'] ); ?>"></i></div>
-							<h4><?php echo esc_html( $feat['title'] ); ?></h4>
-							<p><?php echo esc_html( $feat['desc'] ); ?></p>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-		</div>
-	</section>
-	<?php endif; ?>
-
 	<!-- ══ Custom Made section ══ -->
 	<?php
 	$custom_eyebrow    = get_field( 'lm_custom_eyebrow' );
