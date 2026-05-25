@@ -377,6 +377,10 @@ function cag_enqueue_assets() {
 		cag_enqueue_inner_hero();
 	}
 
+	if ( is_page_template( 'page-templates/simple.php' ) ) {
+		cag_enqueue_inner_hero();
+	}
+
 	// Blog posts index (the page set under Settings → Reading → "Posts page").
 	// home.php / single.php aren't custom Templates, so the auto-enqueue helper
 	// and is_page_template() don't apply — enqueue by query context instead.

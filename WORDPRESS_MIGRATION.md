@@ -90,6 +90,11 @@ One page at a time, with verification between (Itamar's cadence). Ask which page
   4. **Re-submit the new sitemap** in Search Console after go-live and watch Coverage for 404s.
 
   Slug checklist (one per ported page — confirm each against the live URL): `accessories` · `blog` · `caravan-camparks` · `caravans` · `contact-us` · `foodtrucks` · `kachol-lavan` · `local-models` · `security-living` · `security-trailers` · `tourist-complexes` · `videos` · `about-us`. ⚠️ Itamar to confirm the old site's exact URL structure first, then set slugs + redirects.
+
+  **✅ Mapping done (2026-05-25).** Old GSC export ([wp-theme/Table.csv](wp-theme/Table.csv), 186 indexed URLs) diffed against the new site's live Yoast sitemaps + REST API. Strategy locked with Itamar: the 6 main pages get their slug renamed to the **exact** old slug; all 33 model `/listings/` URLs already match 1:1 (no action); everything model/brand/series/filter-like (incl. all `?taxonomy=` query strings) 301s → `/listings/`; all articles/blog/category URLs + their image pages 301 → `/blog/` (archive, **no `/blog/<slug>` targets**); image-attachment pages under `/listings/` collapse to the parent model via one regex rule. Deliverables in `wp-theme/`: [redirects-import.csv](wp-theme/redirects-import.csv) (94 rules — import via Redirection plugin), [slug-renames.sh](wp-theme/slug-renames.sh) (6 `wp post update` cmds — run in Local → Open site shell), [url-migration-map.md](wp-theme/url-migration-map.md) (full per-URL audit).
+
+  **✅ SEO pre-launch steps complete (2026-05-25):** 6 page slugs renamed via WP-CLI + wp-admin (post IDs 6/23/29/27/17/21); Redirection plugin installed + 94 rules imported from `redirects-import.csv`; `/sample-page/` deleted. ⬜ Still pending at launch: re-upload the 2 old PDFs (#23/#130 in Table.csv) to `/wp-content/uploads/` at their original paths; resubmit `sitemap_index.xml` in Search Console.
+- ✅ **Legal pages — done (2026-05-25).** Simple page template built (`page-templates/simple.php` + `assets/css/simple.css`) — inner-hero + `the_content()` prose body, enqueues inner-hero CSS/JS automatically. Privacy Policy page created at slug `מדיניות-פרטיות`; Accessibility Statement at `הצהרת-נגישות`. Both footer ACF `link` fields wired. Interim homepage redirects removed from `redirects-import.csv`.
 - End-state skill (write at the very end — see bottom of this doc).
 
 ---
@@ -235,6 +240,18 @@ Tell him:
 ## Progress Log
 
 > Append entries here as we work. Newest at the top. Date format: YYYY-MM-DD.
+
+### 2026-05-25 — SEO pre-launch + Simple template + staging upload complete.
+
+- **SEO slug renames** ✅ — 6 pages renamed to match old indexed URLs (post IDs 6/23/29/27/17/21) via WP-CLI + wp-admin.
+- **Redirection plugin** ✅ — installed + 94 rules imported from `wp-theme/redirects-import.csv`.
+- **Sample page** ✅ — deleted.
+- **Simple page template** ✅ — `page-templates/simple.php` + `assets/css/simple.css` built. Inner-hero + `the_content()` prose layout for legal/text pages.
+- **Legal pages** ✅ — Privacy Policy (`מדיניות-פרטיות`) + Accessibility Statement (`הצהרת-נגישות`) created, slugged to match old indexed URLs, wired to footer ACF link fields.
+- **Staging upload** ✅ — site exported via All-in-One WP Migration and imported to SiteGround staging for boss review.
+- **Remaining before go-live:** boss approval → re-upload 2 old PDFs (Table.csv rows #23/#130) → import to production at cag.co.il → resubmit sitemap in Search Console.
+
+---
 
 ### 2026-05-25 — Blog/article content complete. All real content now entered.
 

@@ -1,0 +1,93 @@
+/* =============================================
+   Simple template — legal / prose pages
+   ============================================= */
+
+.simple-content {
+    padding-block: 64px 80px;
+}
+
+.simple-body {
+    max-width: 780px;
+    margin-inline: auto;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink-800);
+}
+
+/* Headings */
+.simple-body h1,
+.simple-body h2,
+.simple-body h3,
+.simple-body h4 {
+    font-family: var(--font-display);
+    color: var(--blue-900);
+    line-height: 1.3;
+    margin-block: 2em 0.5em;
+}
+
+.simple-body h1 { font-size: clamp(1.6rem, 3vw, 2rem); }
+.simple-body h2 { font-size: clamp(1.3rem, 2.5vw, 1.55rem); }
+.simple-body h3 { font-size: clamp(1.1rem, 2vw, 1.25rem); }
+.simple-body h4 { font-size: 1rem; font-weight: 700; }
+
+/* First heading gets no top margin */
+.simple-body > *:first-child { margin-block-start: 0; }
+
+/* Paragraphs */
+.simple-body p {
+    margin-block-end: 1.2em;
+}
+
+/* Lists */
+.simple-body ul,
+.simple-body ol {
+    margin-block-end: 1.2em;
+    padding-inline-start: 1.6em;
+}
+
+.simple-body li {
+    margin-block-end: 0.4em;
+}
+
+/* Links */
+.simple-body a {
+    color: var(--blue-700);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--tr);
+}
+
+.simple-body a:hover {
+    color: var(--blue-500);
+}
+
+/* Horizontal rule */
+.simple-body hr {
+    border: none;
+    border-block-start: 1px solid var(--ink-200);
+    margin-block: 2.5em;
+}
+
+/* Strong / emphasis */
+.simple-body strong { font-weight: 700; color: var(--ink-900); }
+.simple-body em     { font-style: italic; }
+
+/* Block quote */
+.simple-body blockquote {
+    border-inline-start: 4px solid var(--blue-700);
+    margin-inline-start: 0;
+    padding-inline-start: 1.25em;
+    color: var(--ink-600);
+    font-style: italic;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+    .simple-content {
+        padding-block: 40px 60px;
+    }
+
+    .simple-body {
+        font-size: 0.9375rem;
+    }
+}
